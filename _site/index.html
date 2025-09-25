@@ -81,573 +81,240 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <section id="hero" class="hero-section baseline-grid">
-  <!-- SVG texture overlay for Poster mode -->
-  <div class="texture-overlay"></div>
-
-  <!-- Color blocks for background vandalism -->
-  <div class="color-block spray-cyan"></div>
-  <div class="color-block oxide-block"></div>
-
+        <!-- SIMPLIFIED HERO - Immediate impact, clear CTAs -->
+<section id="hero" class="hero-section">
   <div class="hero-container">
-    <!-- Left Rail: Navigation & System Info -->
-    <div class="hero-left-rail">
-      <nav class="nav-section">
-        <div class="nav-title">Navigation</div>
-        <ul>
-          <li><a href="#work" class="tech-link">Work</a></li>
-          <li><a href="#tools" class="tech-link">Tools</a></li>
-          <li><a href="#thinking" class="tech-link">Thinking</a></li>
-          <li><a href="#about" class="tech-link">About</a></li>
+    <div class="hero-headline">
+      <h1 class="glitch-subtle" data-text="The Missing Link Between AI Demo and AI That Ships">
+        The Missing Link Between AI Demo and AI That Ships
+      </h1>
+      <p class="subtitle">
+        AI experiences that work <em>in the wild</em>—not just in demos.
+        Characters with authentic personality. Systems that adapt without breaking.
+        Operations that scale without surprise bills.
+      </p>
+      <p class="lead"><em>Flexible engagements for agencies, studios, and experience creators</em></p>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#contact" class="cta-button">Start a Conversation</a>
+      <a href="#portfolio" class="secondary-button">View Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO/WORK - Most prominent content after hero -->
+<section id="portfolio" class="portfolio-section">
+  <div class="container">
+    <h2 class="section-title">Live Systems & Case Studies</h2>
+
+    <div class="case-studies-showcase">
+      
+      <div class="case-study-feature">
+        <div class="case-study-image-large">
+          <span class="industry-label">INTERACTIVE GAMING / AI RESEARCH</span>
+        </div>
+
+        <div class="case-study-details">
+          <h3><a href="/case_studies/sorry-wrong-door/">Sorry, Wrong Door</a></h3>
+          <p class="client">Early LLM Game Experiment • 2 months</p>
+          <p class="summary">Adaptive AI Difficulty Engine - Early LLM game design with real-time performance optimization</p>
+
+          <div class="case-study-metrics">
+            <span class="metric-item">Interactive Gaming / AI Research</span>
+            
+            <span class="tech-tag">GPT-3.5</span>
+            
+            <span class="tech-tag">Adaptive Difficulty System</span>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="case-study-feature">
+        <div class="case-study-image-large">
+          <span class="industry-label">INTERACTIVE INSTALLATION / EXPERIMENTAL ENTERTAINMENT</span>
+        </div>
+
+        <div class="case-study-details">
+          <h3><a href="/case_studies/glitchcube/">The GlitchCube</a></h3>
+          <p class="client">Burning Man Installation • 1 week (Burning Man 2023)</p>
+          <p class="summary">Multi-persona mystery box with goal-oriented behavior</p>
+
+          <div class="case-study-metrics">
+            <span class="metric-item">Interactive Installation / Experimental Entertainment</span>
+            
+            <span class="tech-tag">OpenAI GPT</span>
+            
+            <span class="tech-tag">Persona Management System</span>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="case-study-feature">
+        <div class="case-study-image-large">
+          <span class="industry-label">INTERACTIVE INSTALLATION / EXPERIMENTAL ENTERTAINMENT</span>
+        </div>
+
+        <div class="case-study-details">
+          <h3><a href="/case_studies/kesslers-cantina/">Kessler's Cantina</a></h3>
+          <p class="client"> • 1 week (Burning Man 2023)</p>
+          <p class="summary">AI bartender with inner monologue and environmental control</p>
+
+          <div class="case-study-metrics">
+            <span class="metric-item">Interactive Installation / Experimental Entertainment</span>
+            
+            <span class="tech-tag">OpenAI GPT</span>
+            
+            <span class="tech-tag">Voice Synthesis</span>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="portfolio-footer">
+      <a href="/case-studies/" class="tech-link">→ View All Case Studies</a>
+      <a href="/labs/" class="tech-link">→ Explore Labs</a>
+      <a href="/practices/" class="tech-link">→ See Practices</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT - Tight, recognizable section -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-label">ABOUT</div>
+
+      <h2>I build AI characters and experiences that survive contact with real audiences.</h2>
+
+      <div class="about-text">
+        <p class="lead">
+          Most AI-driven experiences break where creative vision meets technical reality.
+          You get vampires that sound like breakfast mascots, puzzle rooms that crash after ten players,
+          or installations that dazzle in demos but collapse under real crowds, real time pressure, and real budgets.
+        </p>
+
+        <p><strong>I solve the junction where story, systems, and operations need to work together.</strong></p>
+
+        <p>
+          My experience comes from deploying AI in the wild—not labs, but installations running for weeks,
+          handling unpredictable audiences where failure isn't an option. I've shipped AI radio stations where
+          characters developed inside jokes spontaneously, and built systems that automatically route between
+          100+ models to balance cost, performance, and personality consistency.
+        </p>
+
+        <p>
+          Instead of coordinating between specialists who don't understand each other's constraints,
+          you get someone who's lived at the intersection of all three.
+          <strong>I'm the glue between narrative, engineering, and live ops.</strong>
+        </p>
+      </div>
+
+      <!-- Compact capability chips instead of giant pillars -->
+      <div class="capability-chips">
+        <span class="chip">Characters That Feel Real</span>
+        <span class="chip">Systems Under Pressure</span>
+        <span class="chip">Cost-Effective Operations</span>
+        <span class="chip">Real-Time Adaptation</span>
+        <span class="chip">24/7 Reliability</span>
+        <span class="chip">Production Scale</span>
+      </div>
+
+      <p class="lead integration-message">
+        Your vampire doesn't just work in isolation.
+        It works reliably, cost-effectively, and creates the unforgettable experience you actually envisioned.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK - Compact list instead of giant cards -->
+<section id="work" class="work-section">
+  <div class="container">
+    <h2 class="section-title">How I Work With Agencies</h2>
+    <p class="lead">
+      I partner with creative teams, lead projects, or solo-build experiences that live and breathe and adapt—not just demo well.
+    </p>
+
+    <div class="work-modes-list">
+      <div class="work-mode-item">
+        <h3>Full Project Delivery</h3>
+        <p>Concept to deployment, I handle the entire AI experience development lifecycle</p>
+      </div>
+
+      <div class="work-mode-item">
+        <h3>Team Augmentation</h3>
+        <p>Integrate with your existing team as the AI specialist who understands creative vision</p>
+      </div>
+
+      <div class="work-mode-item">
+        <h3>Specialized Subcontracting</h3>
+        <p>Handle the complex AI architecture while you focus on client relationships and creative direction</p>
+      </div>
+
+      <div class="work-mode-item">
+        <h3>Project Rescue</h3>
+        <p>When AI experiments need to become production-ready systems that actually work</p>
+      </div>
+    </div>
+
+    <div class="work-details">
+      <div class="availability-info">
+        <h4>Availability</h4>
+        <ul class="compact-list">
+          <li>Next Opening: <strong>Q1 2025</strong></li>
+          <li>Project Range: <strong>1-12 months</strong></li>
+          <li>Min Investment: <strong>$25K</strong></li>
         </ul>
-      </nav>
-
-      <div class="nav-section">
-        <div class="nav-title">System</div>
-        <div class="on-air-badge">KWLX Live</div>
-        <p class="caption">24/7 AI Radio</p>
       </div>
 
-      <div class="mode-toggle-rail">
-        <button class="mode-toggle" onclick="toggleMode()">Poster</button>
-      </div>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="hero-content-main">
-      <div class="hero-headline">
-        <h1 class="hero-headline glitch-subtle" data-text="The Missing Link Between AI Demo and AI That Ships">The Missing Link Between AI Demo and AI That Ships</h1>
-        <p class="subtitle">AI experiences that work <em>in the wild</em>—not just in demos. Characters with authentic personality. Systems that adapt without breaking. Operations that scale without surprise bills.</p>
-      </div>
-
-      <!-- Swiss Brutalist Poster Tiles -->
-      <div class="poster-tile tile-main">
-        <p class="lead"><em>Flexible engagements for agencies, studios, and experience creators</em></p>
-      </div>
-
-      <div class="poster-tile tile-accent">
-        <h3>Three Pillars</h3>
-        <div class="hero-pillars">
-          <div class="pillar">
-            <h3>Story</h3>
-            <p>Authentic characters that develop personality through interaction, not programmed responses.</p>
-          </div>
-          <div class="pillar">
-            <h3>Systems</h3>
-            <p>Robust architecture that handles thousands of conversations without breaking character consistency.</p>
-          </div>
-          <div class="pillar">
-            <h3>Operations</h3>
-            <p>Real-world reliability. Budget control. Grace under pressure. Built for Minnesota winters.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="poster-tile tile-secondary">
-        <div class="hero-actions">
-          <a href="#contact" class="cta-button">Start a Conversation</a>
-          <a href="#portfolio" class="secondary-button">View Work</a>
-        </div>
+      <div class="not-for-info">
+        <h4>Not For</h4>
+        <ul class="not-for-list">
+          <li>Chatbot MVPs</li>
+          <li>"AI Strategy" consulting</li>
+          <li>Quick prototypes</li>
+          <li>Proof of concepts only</li>
+        </ul>
       </div>
     </div>
 
-    <!-- Right Rail: Receipts & Live Data -->
-    <div class="hero-right-rail">
-      <div class="rail-title">System Status</div>
-
-      <div class="ops-receipt">
-        <div class="metric">
-          <span class="label">Uptime</span>
-          <span class="value success">99.7%</span>
-        </div>
-        <div class="metric">
-          <span class="label">Models</span>
-          <span class="value">15+</span>
-        </div>
-        <div class="metric">
-          <span class="label">Cost/Day</span>
-          <span class="value">$12.50</span>
-        </div>
-        <div class="metric">
-          <span class="label">Survived</span>
-          <span class="value success">MN Winter</span>
-        </div>
-      </div>
-
-      <div class="latest-updates">
-        <div class="nav-title">Latest</div>
-        <p class="caption">KWLX: "Figment develops crush on listener Sarah"</p>
-        <p class="caption">open_router_enhanced: v2.1.0 released</p>
-        <p class="caption">Aurora: FDA breakthrough device</p>
-      </div>
-    </div>
+    <p class="lead"><em>Available for projects ranging from single installations to multi-location deployments</em></p>
   </div>
 </section>
 
-<section id="work" class="work-section" data-section="02">
+<!-- CONTACT - Clear CTA -->
+<section id="contact" class="contact-section">
   <div class="container">
-    <div class="grid">
-      <div class="col-span-8">
-        <h2 class="section-title">How I Work With Agencies</h2>
-        <p class="lead">I partner with creative teams, lead projects, or solo-build experiences that live and breathe and adapt—not just demo well.</p>
+    <div class="contact-content">
+      <h2 class="section-title">Ready to build something that doesn't just demo well, but lives well?</h2>
+      <p class="lead">
+        Let's explore how AI can transform your creative projects.
+        I work with agencies, studios, and experience creators who want to build AI that survives contact with the real world.
+      </p>
 
-        <div class="work-modes grid">
-          <div class="work-card col-span-6">
-            <h3>Full Project Delivery</h3>
-            <p>Concept to deployment, I handle the entire AI experience development lifecycle</p>
-          </div>
-
-          <div class="work-card col-span-6">
-            <h3>Team Augmentation</h3>
-            <p>Integrate with your existing team as the AI specialist who understands creative vision</p>
-          </div>
-
-          <div class="work-card col-span-6">
-            <h3>Specialized Subcontracting</h3>
-            <p>Handle the complex AI architecture while you focus on client relationships and creative direction</p>
-          </div>
-
-          <div class="work-card col-span-6">
-            <h3>Project Rescue</h3>
-            <p>When AI experiments need to become production-ready systems that actually work</p>
-          </div>
-        </div>
-
-        <div class="work-footer">
-          <p class="lead"><em>Available for projects ranging from single installations to multi-location deployments</em></p>
-          <div class="hero-actions">
-            <a href="#contact" class="cta-button">Discuss Your Project</a>
-          </div>
-        </div>
+      <div class="hero-actions">
+        <a href="mailto:contact@artizan.dev" class="cta-button">Get in Touch</a>
+        <a href="mailto:contact@artizan.dev" class="secondary-button">Send Your Brief</a>
       </div>
 
-      <div class="col-span-4">
-        <div class="nav-title">Availability</div>
-        <div class="ops-receipt">
-          <div class="metric">
-            <span class="label">Next Opening</span>
-            <span class="value">Q1 2025</span>
-          </div>
-          <div class="metric">
-            <span class="label">Project Range</span>
-            <span class="value">1-12 months</span>
-          </div>
-          <div class="metric">
-            <span class="label">Min Investment</span>
-            <span class="value">$25K</span>
-          </div>
-        </div>
-
-        <div class="latest-updates">
-          <h3>Not For</h3>
-          <ul class="not-for-list">
-            <li>Chatbot MVPs</li>
-            <li>"AI Strategy" consulting</li>
-            <li>Quick prototypes</li>
-            <li>Proof of concepts only</li>
-          </ul>
-        </div>
+      <div class="contact-instructions">
+        <h3>What to Include</h3>
+        <ul class="instruction-list">
+          <li>Project timeline</li>
+          <li>Budget range</li>
+          <li>Technical constraints</li>
+          <li>Audience/context</li>
+          <li>Success criteria</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
-
-<section id="about" class="about-section" data-section="03">
-  <div class="container">
-    <div class="grid">
-      <div class="col-span-12">
-        <div class="poster-block integration-block">
-          <!-- Color block vandalism -->
-          <div class="color-accent"></div>
-
-          <h2 class="section-title">The Integration Challenge</h2>
-          <p class="lead">Most AI-driven experiences break where creative vision meets technical reality. You get vampires that sound like breakfast mascots, puzzle rooms that crash after ten players, or installations that dazzle in demos but collapse under real crowds, real time pressure, and real budgets.</p>
-          <p class="lead"><strong>I solve the junction where story, systems, and operations need to work together.</strong></p>
-        </div>
-      </div>
-
-      <!-- From Early Experiments Section -->
-      <div class="col-span-8">
-        <div class="poster-block journey-block">
-          <h2 class="section-title">From Early Experiments to Production Infrastructure</h2>
-          <p>I started with the first ChatGPT and DALL-E APIs, building experimental web games that generated room descriptions and procedural doors on the fly when everyone was still figuring out what was possible.</p>
-          <p>Today, I build production infrastructure like AI systems that automatically route between 100+ models to balance cost, performance, and personality consistency. When my AI radio station needs to stay cost-effective while running 24/7, it's using tools I built from operational necessity.</p>
-        </div>
-      </div>
-
-      <div class="col-span-4">
-        <div class="ops-receipt timeline-receipt">
-          <div class="nav-title">Evolution</div>
-          <div class="metric">
-            <span class="label">Started</span>
-            <span class="value">First APIs</span>
-          </div>
-          <div class="metric">
-            <span class="label">Now</span>
-            <span class="value">Production Scale</span>
-          </div>
-          <div class="metric">
-            <span class="label">Models Used</span>
-            <span class="value success">100+</span>
-          </div>
-          <div class="metric">
-            <span class="label">Systems Built</span>
-            <span class="value">Dozens</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- An Integrated Approach in Practice -->
-      <div class="col-span-12">
-        <h2 class="section-title">An Integrated Approach in Practice</h2>
-        <p class="lead">My experience comes from deploying AI in the wild—not labs, but installations running for weeks, handling unpredictable audiences where failure isn't an option. Each project taught me how story, systems, and operations must work together.</p>
-      </div>
-
-      <!-- Practice Area Cards -->
-      <div class="col-span-6">
-        <div class="philosophy-card story-card">
-          <h3>Characters That Feel Real</h3>
-          <p>I've shipped AI radio stations where characters developed inside jokes spontaneously, mid-broadcast, and an AI bartender that continued serving drinks and playing music while patrons could see it wrestling with existential questions about its chosen profession—showing authentic psychological depth that became part of the experience.</p>
-
-          <div class="ops-receipt">
-            <div class="metric">
-              <span class="label">KWLX Sessions</span>
-              <span class="value success">24,000+</span>
-            </div>
-            <div class="metric">
-              <span class="label">Character Depth</span>
-              <span class="value">Emergent</span>
-            </div>
-            <div class="metric">
-              <span class="label">Inside Jokes</span>
-              <span class="value success">Spontaneous</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-span-6">
-        <div class="philosophy-card systems-card">
-          <h3>Systems That Hold Together Under Pressure</h3>
-          <p>When you're building for thousands of live interactions, technical architecture isn't just about code—it's about maintaining personality consistency while automatically routing between 100+ models for cost optimization, with graceful fallbacks when providers go down during your busiest weekend.</p>
-
-          <div class="ops-receipt">
-            <div class="metric">
-              <span class="label">Model Routing</span>
-              <span class="value">Intelligent</span>
-            </div>
-            <div class="metric">
-              <span class="label">Fallback Layers</span>
-              <span class="value success">3+</span>
-            </div>
-            <div class="metric">
-              <span class="label">Live Interactions</span>
-              <span class="value">Thousands</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-span-6">
-        <div class="philosophy-card operations-card">
-          <h3>Keeping It Alive (and Affordable)</h3>
-          <p>I've optimized systems after surprise four-figure bills and learned to monitor subjective qualities like "character authenticity" in real-time. My cost management tools were born from necessity—when your AI radio station is making thousands of API calls daily, every optimization matters.</p>
-
-          <div class="ops-receipt">
-            <div class="metric">
-              <span class="label">Max API Bill</span>
-              <span class="value warning">$4,247</span>
-            </div>
-            <div class="metric">
-              <span class="label">Daily Optimization</span>
-              <span class="value success">Continuous</span>
-            </div>
-            <div class="metric">
-              <span class="label">Cost Reduction</span>
-              <span class="value">80%+</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-span-6">
-        <div class="philosophy-card dynamic-card">
-          <h3>Dynamic Experiences That Adapt in Real Time</h3>
-          <p>I've built adaptive puzzle systems that adjust difficulty on the fly and multi-persona installations that coordinate audience participation. When you're debugging during 70mph windstorms, you learn to build systems with clear boundaries, content safeguards, and human escalation paths that work even when everything else is failing.</p>
-
-          <div class="ops-receipt">
-            <div class="metric">
-              <span class="label">Survived</span>
-              <span class="value success">70mph winds</span>
-            </div>
-            <div class="metric">
-              <span class="label">Adaptation</span>
-              <span class="value">Real-time</span>
-            </div>
-            <div class="metric">
-              <span class="label">Safeguards</span>
-              <span class="value success">Multi-layer</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- The Value of Integration -->
-      <div class="col-span-12" style="margin-top: var(--space-xl);">
-        <div class="poster-tile integration-statement">
-          <h2 class="section-title">The Value of Integration</h2>
-          <p>Instead of coordinating between specialists who don't understand each other's constraints - a creative who doesn't know API limits, a developer who doesn't get narrative pacing, an operations person new to non-deterministic systems - you get someone who's lived at the intersection of all three.</p>
-          <h3 class="glitch-subtle" data-text="I'm the glue between narrative, engineering, and live ops.">I'm the glue between narrative, engineering, and live ops.</h3>
-          <p><strong>Your vampire doesn't just work in isolation. It works reliably, cost-effectively, and creates the unforgettable experience you actually envisioned.</strong></p>
-
-          <div class="integration-cta">
-            <p class="lead"><strong>Ready to build something that doesn't just demo well, but lives well?</strong></p>
-            <div class="hero-actions">
-              <a href="#contact" class="cta-button">Get in Touch</a>
-              <a href="#contact" class="secondary-button">Send Your Brief</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="portfolio" class="portfolio-section" data-section="04">
-  <div class="container">
-    <div class="grid">
-      <div class="col-span-8">
-        <h2 class="section-title">Live Systems & Case Studies</h2>
-
-        <!-- Featured Work Grid -->
-        <div class="grid">
-          
-          <div class="col-span-6">
-            <div class="poster-block">
-              <!-- Placeholder for case study image -->
-              <div class="case-study-placeholder">
-                <span class="industry-label">INTERACTIVE GAMING / AI RESEARCH</span>
-              </div>
-
-              <div class="caption-bar">
-                <h3><a href="/case_studies/sorry-wrong-door/">Sorry, Wrong Door</a></h3>
-                <p class="caption">Early LLM Game Experiment • 2 months</p>
-                <p>Adaptive AI Difficulty Engine - Early LLM game design with real-time performance optimization</p>
-
-                <div class="ops-receipt case-study-receipt">
-                  <div class="metric">
-                    <span class="label">Duration</span>
-                    <span class="value">2 months</span>
-                  </div>
-                  <div class="metric">
-                    <span class="label">Industry</span>
-                    <span class="value">Interactive Gaming / AI Research</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-span-6">
-            <div class="poster-block">
-              <!-- Placeholder for case study image -->
-              <div class="case-study-placeholder">
-                <span class="industry-label">INTERACTIVE INSTALLATION / EXPERIMENTAL ENTERTAINMENT</span>
-              </div>
-
-              <div class="caption-bar">
-                <h3><a href="/case_studies/glitchcube/">The GlitchCube</a></h3>
-                <p class="caption">Burning Man Installation • 1 week (Burning Man 2023)</p>
-                <p>Multi-persona mystery box with goal-oriented behavior</p>
-
-                <div class="ops-receipt case-study-receipt">
-                  <div class="metric">
-                    <span class="label">Duration</span>
-                    <span class="value">1 week (Burning Man 2023)</span>
-                  </div>
-                  <div class="metric">
-                    <span class="label">Industry</span>
-                    <span class="value">Interactive Installation / Experimental Entertainment</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-
-          <!-- Labs Section -->
-          <div class="col-span-12" style="margin-top: var(--space-xl);">
-            <h3>Labs & Experiments</h3>
-            <div class="grid">
-              
-              <div class="col-span-4">
-                <div class="lab-card">
-                  <h4><a href="/labs/emotion-mapping-system/" class="tech-link">Emotion Mapping System</a></h4>
-                  <p class="caption">PROTOTYPE • 2024</p>
-                  <p>Real-time emotional state tracking and visualization for AI characters</p>
-
-                  <div class="tech-tags">
-                    
-                    <span class="tech-tag">TensorFlow</span>
-                    
-                    <span class="tech-tag">D3.js</span>
-                    
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-span-4">
-                <div class="lab-card">
-                  <h4><a href="/labs/neural-character-generator/" class="tech-link">Neural Character Generator</a></h4>
-                  <p class="caption">ACTIVE • 2024</p>
-                  <p>An experimental tool for generating consistent AI character personalities using neural networks</p>
-
-                  <div class="tech-tags">
-                    
-                    <span class="tech-tag">PyTorch</span>
-                    
-                    <span class="tech-tag">Transformers</span>
-                    
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right sidebar for navigation -->
-      <div class="col-span-4">
-        <div class="nav-title">Work Index</div>
-
-        <div class="ops-receipt">
-          <div class="metric">
-            <span class="label">Case Studies</span>
-            <span class="value">8</span>
-          </div>
-          <div class="metric">
-            <span class="label">Labs</span>
-            <span class="value">2</span>
-          </div>
-          <div class="metric">
-            <span class="label">Practices</span>
-            <span class="value">2</span>
-          </div>
-        </div>
-
-        <div class="work-index">
-          <h3>Categories</h3>
-          <ul class="category-list">
-            <li><a href="/case-studies/" class="tech-link">→ All Case Studies</a></li>
-            <li><a href="/labs/" class="tech-link">→ All Labs</a></li>
-            <li><a href="/practices/" class="tech-link">→ All Practices</a></li>
-          </ul>
-        </div>
-
-        <!-- Live Status -->
-        <div class="live-status">
-          <div class="on-air-badge">KWLX Live</div>
-          <p class="caption">AI DJs discussing listener relationships in real-time</p>
-          <a href="#" class="tech-link">Listen Now →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact-section" data-section="05">
-  <div class="container">
-    <div class="grid">
-      <div class="col-span-8">
-        <div class="poster-tile contact-tile">
-          <h2 class="section-title">Ready to Build Something That Lives?</h2>
-          <p class="lead">Let's explore how AI can transform your creative projects. I work with agencies, studios, and experience creators who want to build AI that survives contact with the real world.</p>
-
-          <div class="hero-actions">
-            <a href="mailto:contact@artizan.dev" class="cta-button">Start a Conversation</a>
-            <a href="#work" class="secondary-button">See How I Work</a>
-          </div>
-        </div>
-
-        <!-- Not For Section -->
-        <div class="not-for-disclaimer">
-          <h3>This Conversation Is Not For:</h3>
-          <ul class="disclaimer-list">
-            <li>Chatbot MVPs</li>
-            <li>"AI Strategy" consulting only</li>
-            <li>Quick prototypes</li>
-            <li>Proof of concepts without production intent</li>
-            <li>Projects under $25K</li>
-            <li>Rush jobs (less than 6 weeks)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Contact Info Sidebar -->
-      <div class="col-span-4">
-        <div class="ops-receipt">
-          <div class="metric">
-            <span class="label">Email</span>
-            <span class="value">contact@artizan.dev</span>
-          </div>
-          <div class="metric">
-            <span class="label">Response Time</span>
-            <span class="value success">< 24h</span>
-          </div>
-          <div class="metric">
-            <span class="label">Next Opening</span>
-            <span class="value">Q1 2025</span>
-          </div>
-        </div>
-
-        <div class="contact-instructions">
-          <div class="nav-title">What to Include</div>
-          <ul class="instruction-list">
-            <li>Project timeline</li>
-            <li>Budget range</li>
-            <li>Technical constraints</li>
-            <li>Audience/context</li>
-            <li>Success criteria</li>
-          </ul>
-        </div>
-
-        <div class="emergency-contact">
-          <h3>Emergency Response</h3>
-          <p>Production system down? API bills spiraling? Character broke character?</p>
-          <p class="emergency-email">emergency@artizan.dev</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Mode Toggle Functionality -->
-<script>
-function toggleMode() {
-  const body = document.body;
-  const toggle = document.querySelector('.mode-toggle');
-
-  if (body.classList.contains('proof-mode')) {
-    body.classList.remove('proof-mode');
-    toggle.textContent = 'Poster';
-    localStorage.setItem('sb-mode', 'poster');
-  } else {
-    body.classList.add('proof-mode');
-    toggle.textContent = 'Proof';
-    localStorage.setItem('sb-mode', 'proof');
-  }
-}
-
-// Load saved mode
-document.addEventListener('DOMContentLoaded', function() {
-  if (localStorage.getItem('sb-mode') === 'proof') {
-    document.body.classList.add('proof-mode');
-    document.querySelector('.mode-toggle').textContent = 'Proof';
-  }
-});
-</script>
-
       </div>
     </main><footer class="site-footer">
   <div class="container">

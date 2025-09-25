@@ -3,7 +3,7 @@
 
 // Page headers (Individual Collection Pages)
 .page-header, .post-header, .practice-header, .lab-header, .case-study-header {
-  padding: 3rem 0 2rem; /* Reduced from 8rem 0 4rem */
+  padding: 1.5rem 0 1rem; /* Ultra-compact headers */
   background: var(--ink);
   position: relative;
   overflow: hidden;
@@ -88,7 +88,7 @@
 
 // Main content areas
 .page-content, .post-content, .practice-content, .lab-content, .case-study-content {
-  padding: var(--space-sm) 0; /* Minimal padding for brutalist density */
+  padding: var(--space-xs) 0; /* Ultra-minimal padding */
   background: var(--paper);
   color: var(--ink);
 
@@ -100,9 +100,9 @@
   h2 {
     font-family: var(--font-display);
     font-variation-settings: 'wght' 700;
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-top: var(--space-lg); /* Reduced from xl */
-    margin-bottom: var(--space-sm); /* Reduced from md */
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem); /* Slightly smaller */
+    margin-top: var(--space-md); /* Further reduced */
+    margin-bottom: var(--space-xs); /* Minimal bottom margin */
     color: var(--ink);
     text-transform: uppercase;
     position: relative;
@@ -122,9 +122,9 @@
   h3 {
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: clamp(1.5rem, 3vw, 1.8rem);
-    margin-top: var(--space-md); /* Reduced from lg */
-    margin-bottom: var(--space-xs); /* Reduced from sm */
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem); /* Smaller headings */
+    margin-top: var(--space-sm); /* Further reduced */
+    margin-bottom: var(--space-xs); /* Minimal */
     color: var(--oxide-teal);
   }
 
@@ -137,16 +137,16 @@
   }
 
   p {
-    margin-bottom: var(--space-xs); /* Reduced from sm */
-    line-height: 1.6; /* Tightened from 1.8 */
+    margin-bottom: var(--space-xs); /* Minimal paragraph spacing */
+    line-height: 1.5; /* Further tightened */
     color: var(--graphite);
-    font-size: 1.05rem;
+    font-size: 1rem; /* Standard size */
   }
 
   // Enhanced lists with system aesthetic
   ul, ol {
-    margin-bottom: var(--space-sm); /* Reduced from md */
-    padding-left: var(--space-sm); /* Reduced from md */
+    margin-bottom: var(--space-xs); /* Minimal */
+    padding-left: var(--space-sm); /* Tight indents */
 
     li {
       margin-bottom: var(--space-xs);
@@ -162,9 +162,9 @@
   // Enhanced blockquotes with baroque touch
   blockquote {
     border-left: 3px solid var(--hot-magenta);
-    background: transparent; /* Removed shimmer background */
-    padding: var(--space-sm); /* Reduced from md */
-    margin: var(--space-md) 0; /* Reduced from lg */
+    background: transparent;
+    padding: var(--space-xs) var(--space-sm); /* Tighter padding */
+    margin: var(--space-sm) 0; /* Minimal vertical margin */
     font-style: italic;
     color: var(--ink);
     position: relative;

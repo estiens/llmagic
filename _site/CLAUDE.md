@@ -50,11 +50,19 @@ The site uses three Jekyll collections that automatically generate pages:
    - Index page: `/case-studies.html`
    - Front matter requires: `title`, `client`, `summary`, `date`, `duration`, `industry`, `technologies`
 
-### Styling Architecture
-- **`_sass/artizan.scss`** - Main theme styles, CSS variables, and base styling
-- **`_sass/content.scss`** - Styles specific to content collections
-- **`assets/css/main.scss`** - Entry point that imports all Sass files (requires front matter)
-- Design system uses CSS custom properties for colors and fonts, making customization straightforward
+### Styling Architecture (100% Custom - No CSS Frameworks)
+- **`_sass/artizan.scss`** - Core theme: spacing, typography, colors, grid, homepage sections
+- **`_sass/content.scss`** - Collection-specific styles (practices, labs, case studies)
+- **`_sass/components.scss`** - Reusable UI components
+- **`_sass/case-study-modes.scss`** - Poster/Proof mode toggle system
+- **`_sass/utilities.scss`** - Helper classes
+- **`assets/css/main.scss`** - Entry point that imports all Sass files
+
+**Design System:**
+- Custom CSS variables for theming (no framework dependencies)
+- Tightened spacing scale for dense, poster-like layout
+- Typography: Fraunces (display), Inter (body), IBM Plex Mono (technical)
+- Colors: spray-cyan, hot-magenta, radio-mustard, oxide-teal on paper/ink base
 
 ### Key Configuration
 - **`_config.yml`** - Main Jekyll configuration, navigation menu, and collection settings
@@ -72,3 +80,17 @@ _layouts/default.html     # Base layout with HTML structure
 ```
 
 All layouts inherit from `default.html` which includes `_includes/head.html`, `_includes/header.html`, and `_includes/footer.html`.
+
+### JavaScript Files
+- **`assets/js/main.js`** - Core functionality: smooth scroll, header effects, navigation
+- **`assets/js/mode-toggle.js`** - Poster/Proof mode switching for case studies
+- **`assets/js/animations.js`** - **DEPRECATED/DISABLED** - can be removed
+- **`assets/js/kwlx-easter-egg.js`** - Special feature for KWLX case study
+
+**Note:** GSAP and particles.js are loaded but unused - can be removed from `_includes/head.html`
+
+### Known Issues to Fix
+- Remove deprecated `animations.js` and its script references
+- Remove unused GSAP/particles.js CDN links
+- Fix or remove toggleMode() function referenced in index.html
+- Migrate Sass @import to @use/@forward to fix deprecation warnings

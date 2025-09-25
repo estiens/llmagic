@@ -59,14 +59,14 @@
   --baseline: 8px;                           // Vertical rhythm
   --container-max: 1440px;                   // Max content width
 
-  // Spacing Scale - 8px Baseline Grid
-  --space-xs: 0.5rem;    // 8px
-  --space-sm: 1rem;      // 16px
-  --space-md: 1.5rem;    // 24px
-  --space-lg: 2rem;      // 32px
-  --space-xl: 3rem;      // 48px
-  --space-xxl: 4rem;     // 64px
-  --space-huge: 6rem;    // 96px
+  // Spacing Scale - Tightened for density
+  --space-xs: 0.25rem;   // 4px
+  --space-sm: 0.5rem;    // 8px
+  --space-md: 1rem;      // 16px
+  --space-lg: 1.5rem;    // 24px
+  --space-xl: 2rem;      // 32px
+  --space-xxl: 3rem;     // 48px
+  --space-huge: 4rem;    // 64px
 
   // Shadow System - STREET BAROQUE DEPTH
   --shadow-sm: 0 1px 2px rgba(15, 15, 16, 0.08);
@@ -438,9 +438,14 @@ a {
 
 // Sections - Swiss Layout
 section {
-  padding: var(--space-md) 0; /* Drastically reduced from xxl */
+  padding: var(--space-sm) 0; /* Ultra-tight section padding */
   position: relative;
   z-index: 2;
+
+  // Prevent double padding between sections
+  & + section {
+    padding-top: 0;
+  }
 
   // Subtle section alternation in Poster mode only
   &:nth-child(even) {
@@ -644,22 +649,23 @@ body {
 
 // Hero Section - Swiss Brutalist Layout
 .hero-section {
-  min-height: 50vh; /* Reduced from 75vh for density */
-  padding: var(--space-sm) 0; /* Minimal padding for brutalist impact */
+  min-height: 35vh; /* Ultra-compact hero for immediate impact */
+  padding: var(--space-xs) 0; /* Minimal padding for brutalist density */
   position: relative;
   overflow: hidden;
   background: var(--paper);
 
-  // Three-rail grid system (fixed)
+  // Simplified single-column hero
   .hero-container {
-    display: grid;
-    grid-template-columns: 180px 1fr 180px; /* Slightly narrower rails */
-    gap: var(--space-sm); /* Tighter gaps */
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 var(--space-sm); /* Minimal side padding */
-    min-height: 40vh; /* Much more compact */
-    align-items: start;
+    padding: var(--space-md) var(--space-lg);
+    min-height: 30vh; /* Ultra-compact */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   // Swiss grid overlay (subtle)
@@ -749,7 +755,7 @@ body {
   }
 }
 
-// Swiss Brutalist Poster Tiles (simplified for flex layout)
+// Swiss Brutalist Poster Tiles (removed from hero)
 .poster-tile {
   padding: var(--space-xs); /* Minimal padding for brutalist density */
   position: relative;
@@ -757,6 +763,7 @@ body {
   z-index: 2;
   border: var(--border-weight) solid var(--graphite);
   margin-bottom: var(--space-xs); /* Tight vertical stacking */
+  display: none; /* Hide poster tiles in hero */
 
   // Poster tile variations
   &.tile-main {
@@ -826,21 +833,22 @@ body {
 
 // Hero Content Elements
 .hero-headline {
-  margin-bottom: var(--space-sm); /* Drastically reduced */
+  margin-bottom: var(--space-xs); /* Ultra-tight */
 
   h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Slightly smaller for density */
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 0.95;
     margin-bottom: var(--space-xs); /* Minimal spacing */
   }
 
   .subtitle {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.15rem); /* Tighter subtitle */
     color: var(--graphite);
     font-weight: 400;
     max-width: 60ch;
+    margin: 0 auto;
   }
 }
 
@@ -883,13 +891,15 @@ body {
 
 .hero-actions {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm); /* Tighter button spacing */
   align-items: center;
-  margin-top: var(--space-lg);
+  justify-content: center;
+  margin-top: var(--space-md); /* Reduced margin */
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--space-xs);
   }
 }
 
@@ -1038,7 +1048,7 @@ body {
 // Component Classes for removing inline styles
 // Work Section Components
 .work-section {
-  padding: var(--space-xxl) 0;
+  padding: var(--space-md) 0; /* Reduced section padding */
   background: var(--paper);
   position: relative;
 
@@ -1047,12 +1057,12 @@ body {
   }
 
   .work-card {
-    background: rgba(53, 208, 226, 0.02);
-    border: var(--border-weight) solid var(--graphite);
-    padding: var(--space-lg);
+    background: transparent; /* Simplified cards */
+    border: none; /* Remove borders for list style */
+    padding: var(--space-sm); /* Minimal padding */
     transition: var(--transition-base);
-    min-width: 300px; // Prevent extreme compression
-    word-wrap: break-word; // Allow text to wrap properly
+    min-width: 280px;
+    word-wrap: break-word;
 
     &:hover {
       background: rgba(53, 208, 226, 0.05);
@@ -1391,6 +1401,306 @@ body {
         color: var(--paper);
         font-family: var(--font-mono);
         font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+// NEW HOMEPAGE COMPONENTS
+
+// About Section - Tight and recognizable
+.about-section {
+  padding: var(--space-md) 0;
+  background: var(--paper);
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-label {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    color: var(--graphite);
+    border-left: 4px solid var(--radio-mustard);
+    padding-left: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-text {
+    margin-bottom: var(--space-md);
+
+    p {
+      margin-bottom: var(--space-sm);
+    }
+  }
+
+  .capability-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: var(--space-md) 0;
+
+    .chip {
+      background: transparent;
+      border: 1px dashed var(--graphite);
+      padding: var(--space-xs) var(--space-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      transition: var(--transition-fast);
+
+      &:hover {
+        background: var(--radio-mustard);
+        border-color: var(--radio-mustard);
+        color: var(--ink);
+      }
+    }
+  }
+
+  .integration-message {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--graphite);
+    font-weight: 600;
+  }
+}
+
+// Work Modes - Compact list instead of cards
+.work-modes-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .work-mode-item {
+    h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+      letter-spacing: 0.025em;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--graphite);
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+}
+
+.work-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--graphite);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  h4 {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--graphite);
+    margin-bottom: var(--space-xs);
+  }
+
+  .compact-list {
+    list-style: none;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+
+    li {
+      margin-bottom: var(--space-xs);
+      color: var(--graphite);
+
+      strong {
+        color: var(--ink);
+      }
+    }
+  }
+}
+
+// Enhanced Case Studies for homepage
+.case-studies-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+
+  .case-study-feature {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border: 2px solid var(--graphite);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: var(--transition-base);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 6px 6px 0 var(--ink);
+      border-color: var(--spray-cyan);
+    }
+
+    .case-study-image-large {
+      height: 200px;
+      background: linear-gradient(135deg, var(--spray-cyan), var(--oxide-teal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      .industry-label {
+        color: var(--paper);
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+    }
+
+    .case-study-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        margin-bottom: var(--space-xs);
+
+        a {
+          color: var(--ink);
+          text-decoration: none;
+
+          &:hover {
+            color: var(--radio-mustard);
+          }
+        }
+      }
+
+      .client {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--spray-cyan);
+        text-transform: uppercase;
+        margin-bottom: var(--space-sm);
+      }
+
+      .summary {
+        color: var(--graphite);
+        margin-bottom: var(--space-sm);
+        line-height: 1.5;
+      }
+
+      .case-study-metrics {
+        display: flex;
+        gap: var(--space-xs);
+        flex-wrap: wrap;
+
+        .metric-item,
+        .tech-tag {
+          background: var(--radio-mustard);
+          color: var(--ink);
+          padding: 2px 8px;
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+      }
+    }
+  }
+}
+
+.portfolio-footer {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--graphite);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+// Contact section improvements
+.contact-section {
+  padding: var(--space-lg) 0;
+  background: var(--ink);
+  color: var(--paper);
+
+  .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h2 {
+    color: var(--radio-mustard);
+  }
+
+  .hero-actions {
+    margin: var(--space-lg) 0;
+  }
+
+  .contact-instructions {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--graphite);
+
+    h3 {
+      font-family: var(--font-mono);
+      color: var(--spray-cyan);
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .instruction-list {
+      list-style: none;
+      padding: 0;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+
+      li {
+        margin-bottom: var(--space-xs);
+        color: rgba(255,255,255,0.8);
+
+        &::before {
+          content: '→ ';
+          color: var(--spray-cyan);
+        }
       }
     }
   }
