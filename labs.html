@@ -1,0 +1,65 @@
+---
+layout: page
+title: "Labs"
+description: "Experimental projects and research initiatives pushing the boundaries of AI creativity"
+permalink: /labs/
+---
+
+<div class="labs-listing">
+  <div class="labs-intro">
+    <p>Our labs represent experimental projects and research initiatives where we explore new possibilities in AI-driven creativity. These projects range from early-stage prototypes to advanced research systems, each contributing to our understanding of how AI can enhance creative processes.</p>
+  </div>
+
+  <div class="labs-grid">
+    {% for lab in site.labs %}
+      <article class="lab-card">
+        <header class="lab-card-header">
+          <h2><a href="{{ lab.url }}">{{ lab.title }}</a></h2>
+          {% if lab.description %}
+            <p class="lab-description">{{ lab.description }}</p>
+          {% endif %}
+          <div class="lab-meta">
+            {% if lab.date %}
+              <time datetime="{{ lab.date | date_to_xmlschema }}">
+                Started {{ lab.date | date: "%B %Y" }}
+              </time>
+            {% endif %}
+            {% if lab.status %}
+              <span class="lab-status status-{{ lab.status }}">{{ lab.status | capitalize }}</span>
+            {% endif %}
+          </div>
+        </header>
+        
+        <div class="lab-excerpt">
+          {{ lab.excerpt | strip_html | truncate: 180 }}
+        </div>
+        
+        {% if lab.technologies %}
+          <div class="lab-technologies">
+            <h4>Technologies:</h4>
+            <ul class="tech-list">
+              {% for tech in lab.technologies limit:4 %}
+                <li class="tech-item">{{ tech }}</li>
+              {% endfor %}
+              {% if lab.technologies.size > 4 %}
+                <li class="tech-more">+{{ lab.technologies.size | minus: 4 }} more</li>
+              {% endif %}
+            </ul>
+          </div>
+        {% endif %}
+        
+        <footer class="lab-card-footer">
+          <div class="lab-links">
+            <a href="{{ lab.url }}" class="read-more">Learn More →</a>
+            {% if lab.github_url %}
+              <a href="{{ lab.github_url }}" class="external-link" target="_blank">GitHub</a>
+            {% endif %}
+            {% if lab.demo_url %}
+              <a href="{{ lab.demo_url }}" class="external-link" target="_blank">Demo</a>
+            {% endif %}
+          </div>
+        </footer>
+      </article>
+    {% endfor %}
+  </div>
+</div>

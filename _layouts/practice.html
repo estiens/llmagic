@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<article class="practice">
+  <header class="practice-header">
+    <div class="container">
+      <h1 class="practice-title">{{ page.title | escape }}</h1>
+      {% if page.subtitle %}
+        <p class="practice-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      <div class="practice-meta">
+        {% if page.date %}
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%B %d, %Y" }}
+          </time>
+        {% endif %}
+        {% if page.category %}
+          <span class="practice-category">{{ page.category }}</span>
+        {% endif %}
+        {% if page.status %}
+          <span class="practice-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="practice-content">
+    <div class="container">
+      {{ content }}
+    </div>
+  </div>
+
+  {% if page.tools or page.technologies %}
+  <footer class="practice-footer">
+    <div class="container">
+      {% if page.tools %}
+        <div class="practice-tools">
+          <h3>Tools & Technologies</h3>
+          <ul class="tools-list">
+            {% for tool in page.tools %}
+              <li class="tool-item">{{ tool }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      
+      {% if page.related_practices %}
+        <div class="related-practices">
+          <h3>Related Practices</h3>
+          <div class="practices-grid">
+            {% for practice_slug in page.related_practices %}
+              {% assign practice = site.practices | where: "slug", practice_slug | first %}
+              {% if practice %}
+                <div class="practice-card">
+                  <h4><a href="{{ practice.url }}">{{ practice.title }}</a></h4>
+                  <p>{{ practice.excerpt | strip_html | truncate: 100 }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </footer>
+  {% endif %}
+</article>

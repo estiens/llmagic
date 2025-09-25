@@ -1,0 +1,335 @@
+// Street Baroque Case Study Dual-Mode System
+// Core CSS for poster/proof mode switching architecture
+
+// Root-level mode switching variables
+:root {
+  // Default poster mode variables
+  --mode-poster: 1;
+  --mode-proof: 0;
+  --grid-columns: 12;
+  --content-max: 80ch;
+  --sidebar-width: 25vw;
+  --texture-opacity: 0.8;
+  --color-primary: var(--spray-cyan);
+  --content-padding: 1rem;
+  --section-spacing: 2rem;
+
+  // Typography scale adjustments
+  --headline-size: clamp(3rem, 8vw, 8rem);
+  --body-size: 1.05rem;
+  --caption-size: 0.9rem;
+
+  // Animation and interaction
+  --mode-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Proof mode overrides
+:root[data-mode="proof"],
+.case-study[data-mode="proof"] {
+  --mode-poster: 0;
+  --mode-proof: 1;
+  --grid-columns: 8;
+  --content-max: 65ch;
+  --sidebar-width: 20vw;
+  --texture-opacity: 0.1;
+  --color-primary: var(--graphite);
+  --content-padding: 1rem;
+  --section-spacing: 1.5rem;
+
+  // Proof mode typography
+  --headline-size: clamp(2.5rem, 5vw, 4rem);
+  --body-size: 1.1rem;
+  --caption-size: 0.85rem;
+}
+
+// Auto mode inherits from determined mode but maintains auto flag
+:root[data-mode="auto"] {
+  // CSS can't determine time, so JS sets the actual mode
+  // This selector exists for potential CSS-only features
+}
+
+// Mode-aware layout container
+.case-study-main {
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  gap: var(--section-spacing);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--content-padding);
+  transition: var(--mode-transition);
+
+  // Single column when no sidebar
+  &:not(:has(.artifact-sidebar)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Content blocks with mode-aware styling
+.content-blocks {
+  position: relative;
+
+  .primary-content {
+    max-width: var(--content-max);
+
+    // Poster mode: asymmetrical layouts and rich textures
+    [data-mode="poster"] & {
+      h2 {
+        font-family: var(--font-display);
+        font-variation-settings: 'wght' 800, 'opsz' 144;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        margin: var(--section-spacing) 0 1.5rem;
+        position: relative;
+        transform: rotate(-0.5deg);
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 0;
+          width: 120px;
+          height: 4px;
+          background: linear-gradient(90deg, var(--spray-cyan), var(--hot-magenta));
+          transform: skew(-15deg);
+        }
+      }
+
+      h3 {
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        color: var(--oxide-teal);
+        margin: 2rem 0 1rem;
+        position: relative;
+
+        &::before {
+          content: '→';
+          color: var(--radio-mustard);
+          margin-right: 0.5rem;
+          font-weight: 900;
+        }
+      }
+
+      p {
+        font-size: var(--body-size);
+        line-height: 1.7;
+        color: var(--graphite);
+        margin-bottom: 1.5rem;
+
+        strong, em {
+          color: var(--ink);
+          position: relative;
+          background: linear-gradient(120deg, transparent 0%, rgba(53, 208, 226, 0.1) 50%, transparent 100%);
+          padding: 0.1em 0.2em;
+        }
+      }
+
+      ul, ol {
+        margin: 1.5rem 0;
+        padding-left: 2rem;
+
+        li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+          color: var(--graphite);
+
+          &::marker {
+            color: var(--spray-cyan);
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    // Proof mode: clinical precision and high readability
+    [data-mode="proof"] & {
+      h2 {
+        font-family: var(--font-display);
+        font-variation-settings: 'wght' 600, 'opsz' 36;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: var(--ink);
+        margin: var(--section-spacing) 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--graphite);
+      }
+
+      h3 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 1.4rem;
+        color: var(--oxide-teal);
+        margin: 2rem 0 0.75rem;
+      }
+
+      p {
+        font-size: var(--body-size);
+        line-height: 1.8;
+        color: var(--graphite);
+        margin-bottom: 1.25rem;
+        max-width: 75ch;
+
+        strong {
+          color: var(--ink);
+          font-weight: 600;
+        }
+
+        em {
+          color: var(--oxide-teal);
+          font-style: italic;
+        }
+      }
+
+      ul, ol {
+        margin: 1.25rem 0;
+        padding-left: 1.5rem;
+        max-width: 70ch;
+
+        li {
+          margin-bottom: 0.5rem;
+          line-height: 1.7;
+          color: var(--graphite);
+
+          &::marker {
+            color: var(--spray-cyan);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Poster mode hero styling (embedded in layout)
+.poster-hero {
+  .poster-texture-overlay {
+    opacity: calc(var(--texture-opacity) * 0.8);
+  }
+
+  .poster-decorations {
+    opacity: var(--mode-poster);
+    transition: var(--mode-transition);
+  }
+}
+
+// Proof mode hero styling (embedded in layout)
+.proof-hero {
+  .proof-specs {
+    border-color: rgba(42, 44, 46, calc(0.2 + var(--mode-proof) * 0.3));
+  }
+}
+
+// Responsive mode behavior
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 35vw;
+    --content-padding: 1.5rem;
+    --section-spacing: 3rem;
+  }
+
+  .case-study-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 100vw;
+    --content-padding: 1rem;
+    --section-spacing: 2rem;
+    --headline-size: clamp(2rem, 6vw, 3rem) !important;
+  }
+
+  // Force proof mode typography on mobile for readability
+  .content-blocks .primary-content {
+    [data-mode="poster"] & {
+      h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        transform: none;
+
+        &::after {
+          width: 60px;
+          height: 2px;
+        }
+      }
+    }
+  }
+}
+
+// Print styles - always use proof mode
+@media print {
+  :root {
+    --mode-poster: 0 !important;
+    --mode-proof: 1 !important;
+    --texture-opacity: 0 !important;
+  }
+
+  .mode-toggle-container,
+  .artifact-sidebar,
+  .artifact-trigger {
+    display: none !important;
+  }
+
+  .case-study-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  :root {
+    --texture-opacity: 0 !important;
+  }
+
+  [data-mode="poster"] {
+    --texture-opacity: 0 !important;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --mode-transition: none !important;
+  }
+
+  .poster-decorations,
+  .mode-toggle .mode-indicator,
+  .sidebar-toggle .toggle-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+// Dark mode adaptations (if implemented)
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Dark mode would adjust color values here
+    // Currently Street Baroque uses light theme primarily
+  }
+}
+
+// Focus management for accessibility
+.case-study[data-mode] {
+  h2, h3, h4, h5, h6 {
+    scroll-margin-top: 2rem;
+
+    &:focus {
+      outline: 2px solid var(--spray-cyan);
+      outline-offset: 0.25rem;
+    }
+  }
+}
+
+// Smooth scrolling for mode transitions
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}

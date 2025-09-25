@@ -1,0 +1,142 @@
+<!-- Mode Toggle Controls -->
+<div class="mode-toggle-container">
+  <div class="mode-toggle" id="modeToggle">
+    <button class="mode-option" data-mode="poster" title="Poster Mode: Expressive layouts with full textures">
+      <span class="mode-icon">🎨</span>
+      <span class="mode-label">Poster</span>
+    </button>
+    <button class="mode-option" data-mode="auto" title="Auto Mode: Adapts to time and preference">
+      <span class="mode-icon">⚡</span>
+      <span class="mode-label">Auto</span>
+    </button>
+    <button class="mode-option" data-mode="proof" title="Proof Mode: Clinical clarity for reading">
+      <span class="mode-icon">📋</span>
+      <span class="mode-label">Proof</span>
+    </button>
+    <div class="mode-indicator"></div>
+  </div>
+
+  <div class="mode-description">
+    <span class="current-mode-text">Poster Mode Active</span>
+  </div>
+</div>
+
+<style>
+.mode-toggle-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.mode-toggle {
+  display: flex;
+  background: rgba(245, 241, 230, 0.95);
+  border: var(--border-weight) solid var(--graphite);
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.mode-option {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--graphite);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 60px;
+}
+
+.mode-option:hover {
+  color: var(--ink);
+  background: rgba(53, 208, 226, 0.1);
+}
+
+.mode-option.active {
+  color: var(--ink);
+}
+
+.mode-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.mode-label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.mode-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33.333%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--spray-cyan), var(--hot-magenta));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  opacity: 0.1;
+}
+
+.mode-indicator.proof {
+  transform: translateX(200%);
+}
+
+.mode-indicator.auto {
+  transform: translateX(100%);
+}
+
+.mode-description {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--oxide-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(245, 241, 230, 0.9);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--oxide-teal);
+  border-radius: 0;
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .mode-toggle-container {
+    top: 1rem;
+    right: 1rem;
+    transform: scale(0.9);
+    transform-origin: top right;
+  }
+
+  .mode-option {
+    padding: 0.5rem 0.75rem;
+    min-width: 50px;
+  }
+
+  .mode-label {
+    display: none;
+  }
+}
+
+/* Hide on KWLX feature pages to avoid conflict */
+.kwlx-feature .mode-toggle-container {
+  display: none;
+}
+</style>

@@ -1,0 +1,302 @@
+// ARTIZAN Components - Street Baroque Systems
+// Reusable component patterns for consistent styling
+
+// Base Component Mixin
+@mixin component-base {
+  position: relative;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+}
+
+// Data Block/Receipt Pattern
+@mixin data-block {
+  background: var(--paper);
+  border: var(--border-weight) solid var(--graphite);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  position: relative;
+
+  &::after {
+    content: 'DATA_BLOCK';
+    position: absolute;
+    top: 50%;
+    right: calc(-1 * var(--space-xl));
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 0.6rem;
+    color: var(--graphite);
+    opacity: calc(0.6 * var(--mode-poster));
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-xs);
+
+    &:last-child {
+      margin-bottom: 0;
+      border-top: 1px solid var(--graphite);
+      padding-top: var(--space-xs);
+      font-weight: 600;
+    }
+  }
+
+  .label {
+    color: var(--graphite);
+  }
+
+  .value {
+    color: var(--ink);
+    font-weight: 500;
+
+    &.success { color: var(--oxide-teal); }
+    &.warning { color: var(--radio-mustard); }
+    &.error { color: var(--hot-magenta); }
+  }
+}
+
+// Card Pattern
+@mixin card-base {
+  @include component-base;
+  background: var(--paper);
+  border: var(--border-weight) solid var(--graphite);
+  padding: var(--space-lg);
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--spray-cyan);
+    background: rgba(53, 208, 226, 0.02);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+}
+
+// Button Pattern
+@mixin button-base {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--border-weight) solid var(--ink);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+}
+
+// Primary Button Variant
+@mixin button-primary {
+  @include button-base;
+  background: var(--radio-mustard);
+  color: var(--ink);
+  border-color: var(--ink);
+
+  &:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+}
+
+// Secondary Button Variant
+@mixin button-secondary {
+  @include button-base;
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--graphite);
+
+  &:hover {
+    background: var(--graphite);
+    color: var(--paper);
+    border-color: var(--graphite);
+  }
+}
+
+// Status Badge Pattern
+@mixin status-badge($color) {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+  border: 1px solid $color;
+  background: rgba($color, 0.1);
+  color: $color;
+}
+
+// Tech Tag Pattern
+@mixin tech-tag {
+  background: rgba(53, 208, 226, 0.05);
+  color: var(--ink);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  border: 1px solid var(--spray-cyan);
+  transition: var(--transition-base);
+
+  &:hover {
+    border-color: var(--hot-magenta);
+    background: rgba(255, 61, 154, 0.05);
+    color: var(--hot-magenta);
+  }
+}
+
+// Section Header Pattern
+@mixin section-header {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--ink);
+  position: relative;
+
+  &.with-accent {
+    padding-left: var(--space-md);
+    border-left: var(--border-heavy) solid var(--radio-mustard);
+  }
+}
+
+// List Pattern
+@mixin styled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: var(--space-sm);
+    margin-bottom: var(--space-xs);
+
+    &::before {
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+  }
+}
+
+// Success List Variant
+@mixin success-list {
+  @include styled-list;
+
+  li::before {
+    content: '→';
+    color: var(--spray-cyan);
+  }
+}
+
+// Error List Variant
+@mixin error-list {
+  @include styled-list;
+
+  li::before {
+    content: '×';
+    color: var(--hot-magenta);
+  }
+}
+
+// Grid Pattern
+@mixin responsive-grid($min-width: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: var(--space-md);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+// Apply patterns to existing components
+.ops-receipt {
+  @include data-block;
+  counter-increment: receipt-counter;
+
+  &::before {
+    content: 'RECEIPT_' counter(receipt-counter, decimal-leading-zero);
+    position: absolute;
+    top: -6px;
+    left: var(--space-sm);
+    background: var(--paper);
+    color: var(--graphite);
+    font-size: 0.6rem;
+    padding: 0 var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+.cta-button {
+  @include button-primary;
+}
+
+.secondary-button {
+  @include button-secondary;
+}
+
+// Component-specific applications
+.work-card, .case-study-card, .lab-card, .practice-card {
+  @include card-base;
+}
+
+.section-title {
+  @include section-header;
+
+  &.with-accent {
+    @extend .section-title;
+  }
+}
+
+.tech-list, .tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+
+  .tech-item, .tool-item {
+    @include tech-tag;
+  }
+}
+
+.not-for-list {
+  @include error-list;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--graphite);
+}
+
+.instruction-list {
+  @include success-list;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--graphite);
+}
+
+// Grids
+.practices-grid, .labs-grid, .case-studies-grid {
+  @include responsive-grid(380px);
+}
+
+.work-modes {
+  @include responsive-grid(320px);
+}

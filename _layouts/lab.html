@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<article class="lab">
+  <header class="lab-header">
+    <div class="container">
+      <h1 class="lab-title">{{ page.title | escape }}</h1>
+      {% if page.description %}
+        <p class="lab-description">{{ page.description }}</p>
+      {% endif %}
+      <div class="lab-meta">
+        {% if page.date %}
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            Started {{ page.date | date: "%B %Y" }}
+          </time>
+        {% endif %}
+        {% if page.status %}
+          <span class="lab-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
+        {% endif %}
+        {% if page.team %}
+          <span class="lab-team">Team: {{ page.team | join: ", " }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="lab-content">
+    <div class="container">
+      {{ content }}
+    </div>
+  </div>
+
+  {% if page.technologies or page.github_url or page.demo_url %}
+  <footer class="lab-footer">
+    <div class="container">
+      {% if page.technologies %}
+        <div class="lab-technologies">
+          <h3>Technologies Used</h3>
+          <ul class="tech-list">
+            {% for tech in page.technologies %}
+              <li class="tech-item">{{ tech }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      
+      <div class="lab-links">
+        {% if page.github_url %}
+          <a href="{{ page.github_url }}" class="lab-link github-link" target="_blank">
+            View on GitHub
+          </a>
+        {% endif %}
+        {% if page.demo_url %}
+          <a href="{{ page.demo_url }}" class="lab-link demo-link" target="_blank">
+            Live Demo
+          </a>
+        {% endif %}
+      </div>
+      
+      {% if page.related_labs %}
+        <div class="related-labs">
+          <h3>Related Lab Projects</h3>
+          <div class="labs-grid">
+            {% for lab_slug in page.related_labs %}
+              {% assign lab = site.labs | where: "slug", lab_slug | first %}
+              {% if lab %}
+                <div class="lab-card">
+                  <h4><a href="{{ lab.url }}">{{ lab.title }}</a></h4>
+                  <p>{{ lab.excerpt | strip_html | truncate: 100 }}</p>
+                  {% if lab.status %}
+                    <span class="card-status status-{{ lab.status }}">{{ lab.status }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </footer>
+  {% endif %}
+</article>

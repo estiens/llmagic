@@ -1,0 +1,92 @@
+# Site settings
+title: ARTIZAN
+email: contact@artizan.dev
+description: >-
+  Creative consulting for LLM character and game design.
+  Emerging practices, labs, and case studies in AI-driven creativity.
+baseurl: ""
+url: "https://artizan.dev"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: artizan-theme
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  practices:
+    output: true
+    permalink: /:collection/:name/
+  labs:
+    output: true
+    permalink: /:collection/:name/
+  case_studies:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "practices"
+    values:
+      layout: "practice"
+  - scope:
+      path: ""
+      type: "labs"
+    values:
+      layout: "lab"
+  - scope:
+      path: ""
+      type: "case_studies"
+    values:
+      layout: "case_study"
+
+# Site configuration
+author:
+  name: ARTIZAN Team
+  email: contact@artizan.dev
+
+# Social links
+social:
+  github: artizan
+  linkedin: artizan
+  twitter: artizan
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Emerging Practices
+    url: /practices/
+  - title: Labs
+    url: /labs/
+  - title: Case Studies
+    url: /case-studies/
+  - title: About
+    url: /#about
+  - title: Contact
+    url: /#contact
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE.txt

@@ -1,0 +1,67 @@
+<!-- Proof Mode Hero: Swiss Brutalist clarity -->
+<div class="proof-hero">
+  <div class="proof-content">
+    <!-- Series indicator -->
+    {% if page.series %}
+      <div class="proof-series">
+        {{ page.series }}
+        {% if page.series_order %}
+          <span class="series-index">{{ page.series_order | prepend: "0" | slice: -2, 2 }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Main title with Inter precision -->
+    <h1 class="proof-title">{{ page.title | escape }}</h1>
+
+    <!-- Clean subtitle -->
+    {% if page.subtitle %}
+      <div class="proof-subtitle">{{ page.subtitle }}</div>
+    {% elsif page.summary %}
+      <div class="proof-subtitle">{{ page.summary }}</div>
+    {% endif %}
+
+    <!-- Technical specifications grid -->
+    <div class="proof-specs">
+      {% if page.date %}
+        <div class="spec-item">
+          <dt class="spec-label">Date</dt>
+          <dd class="spec-value">{{ page.date | date: "%B %Y" }}</dd>
+        </div>
+      {% endif %}
+
+      {% if page.duration %}
+        <div class="spec-item">
+          <dt class="spec-label">Duration</dt>
+          <dd class="spec-value">{{ page.duration }}</dd>
+        </div>
+      {% endif %}
+
+      {% if page.industry %}
+        <div class="spec-item">
+          <dt class="spec-label">Industry</dt>
+          <dd class="spec-value">{{ page.industry }}</dd>
+        </div>
+      {% endif %}
+
+      {% if page.technologies %}
+        <div class="spec-item tech-spec">
+          <dt class="spec-label">Stack</dt>
+          <dd class="spec-value">
+            <div class="tech-list">
+              {% for tech in page.technologies %}
+                <span class="tech-item">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </dd>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Reading time estimate -->
+    <div class="proof-reading-info">
+      <span class="reading-time">~{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      <span class="word-count">{{ content | strip_html | number_of_words }} words</span>
+    </div>
+  </div>
+</div>

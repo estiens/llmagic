@@ -1,0 +1,510 @@
+<!-- Poster Mode Hero: Baroque maximalism -->
+<div class="poster-hero">
+  <div class="poster-texture-overlay"></div>
+
+  <!-- Wildstyle spray effects -->
+  <div class="spray-effects">
+    <div class="spray-drip spray-drip-1"></div>
+    <div class="spray-drip spray-drip-2"></div>
+    <div class="spray-splatter spray-splatter-1"></div>
+    <div class="spray-splatter spray-splatter-2"></div>
+    <div class="marker-stroke marker-stroke-1"></div>
+    <div class="marker-stroke marker-stroke-2"></div>
+  </div>
+
+  <div class="poster-content">
+    <!-- Series indicator -->
+    {% if page.series %}
+      <div class="series-badge">
+        <span class="series-name">{{ page.series }}</span>
+        {% if page.series_order %}
+          <span class="series-number">{{ page.series_order | prepend: "0" | slice: -2, 2 }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Main title with Fraunces display -->
+    <h1 class="poster-title">{{ page.title | escape }}</h1>
+
+    <!-- Subtitle/Summary with asymmetrical placement -->
+    {% if page.subtitle %}
+      <div class="poster-subtitle">{{ page.subtitle }}</div>
+    {% elsif page.summary %}
+      <div class="poster-subtitle">{{ page.summary }}</div>
+    {% endif %}
+
+    <!-- Meta information as spray-painted annotations -->
+    <div class="poster-meta">
+      {% if page.date %}
+        <div class="meta-item date">
+          <span class="meta-label">Year</span>
+          <span class="meta-value">{{ page.date | date: "%Y" }}</span>
+        </div>
+      {% endif %}
+
+      {% if page.duration %}
+        <div class="meta-item duration">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">{{ page.duration }}</span>
+        </div>
+      {% endif %}
+
+      {% if page.industry %}
+        <div class="meta-item industry">
+          <span class="meta-label">Domain</span>
+          <span class="meta-value">{{ page.industry }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Technology tags as graffiti elements -->
+    {% if page.technologies %}
+      <div class="poster-tech-tags">
+        {% for tech in page.technologies limit: 4 %}
+          <span class="tech-tag" style="--delay: {{ forloop.index | times: 0.1 }}s">{{ tech }}</span>
+        {% endfor %}
+        {% if page.technologies.size > 4 %}
+          <span class="tech-more">+{{ page.technologies.size | minus: 4 }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="poster-decorations">
+    <div class="deco-circle"></div>
+    <div class="deco-line"></div>
+    <div class="deco-triangle"></div>
+  </div>
+</div>
+
+<style>
+.poster-hero {
+  position: relative;
+  min-height: 60vh; /* Reduced from 100vh */
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--paper) 0%, #f0ebe0 100%);
+  overflow: hidden;
+  padding: 1rem 2rem; /* Tightened vertical padding */
+}
+
+.poster-texture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* Analog paper texture */
+    repeating-conic-gradient(from 45deg at 20% 30%, transparent 0deg, rgba(15, 15, 16, 0.02) 1deg, transparent 2deg, transparent 10deg),
+
+    /* Halftone dot pattern */
+    radial-gradient(circle at 25% 25%, transparent 2px, rgba(226, 172, 39, 0.03) 2px, rgba(226, 172, 39, 0.03) 3px, transparent 3px),
+
+    /* Poster fold lines */
+    linear-gradient(90deg, transparent 48%, rgba(15, 15, 16, 0.04) 49%, rgba(15, 15, 16, 0.04) 51%, transparent 52%),
+    linear-gradient(180deg, transparent 48%, rgba(15, 15, 16, 0.04) 49%, rgba(15, 15, 16, 0.04) 51%, transparent 52%),
+
+    /* Color bleeds */
+    radial-gradient(circle at 80% 20%, rgba(53, 208, 226, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(255, 61, 154, 0.06) 0%, transparent 50%),
+
+    /* Scan lines for that xerox/risograph quality */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(15, 15, 16, 0.02) 3px,
+      rgba(15, 15, 16, 0.02) 4px
+    );
+
+  background-size:
+    100% 100%,    /* conic gradient */
+    8px 8px,      /* halftone */
+    100% 100%,    /* fold vertical */
+    100% 100%,    /* fold horizontal */
+    100% 100%,    /* cyan bleed */
+    100% 100%,    /* magenta bleed */
+    100% 4px;     /* scan lines */
+
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+}
+
+.poster-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem; /* Reduced from 4rem */
+  align-items: start;
+}
+
+.series-badge {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem; /* Reduced from 2rem */
+  transform: rotate(-2deg);
+}
+
+.series-name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--spray-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background: rgba(53, 208, 226, 0.1);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--spray-cyan);
+  border-radius: 0;
+}
+
+.series-number {
+  font-family: var(--font-display);
+  font-variation-settings: 'wght' 900;
+  font-size: 3rem;
+  color: var(--radio-mustard);
+  text-shadow: 2px 2px 0px rgba(226, 172, 39, 0.3);
+}
+
+.poster-title {
+  grid-column: 1;
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 144, 'wght' 900;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+  color: var(--ink);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transform: rotate(-1deg);
+  transform-origin: left center;
+  position: relative;
+
+  /* CMYK Misregistration effect */
+  text-shadow:
+    -2px -2px 0px rgba(53, 208, 226, 0.4),  /* cyan */
+    2px 2px 0px rgba(255, 61, 154, 0.3),     /* magenta */
+    -1px 1px 0px rgba(226, 172, 39, 0.3);    /* yellow */
+}
+
+.poster-subtitle {
+  grid-column: 2;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.4rem); /* Reduced size */
+  line-height: 1.3;
+  color: var(--oxide-teal);
+  margin-top: 1rem; /* Reduced from 2rem */
+  padding: 1rem; /* Reduced from 2rem */
+  background: transparent; /* No shimmer background */
+  border-top: 3px solid var(--oxide-teal); /* Print-style borders */
+  border-left: 3px solid var(--oxide-teal);
+  transform: rotate(1deg);
+  position: relative;
+}
+
+/* Removed the ::before pseudo-element with quote mark */
+
+.poster-meta {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Reduced from 2rem */
+  margin-top: 1.5rem; /* Reduced from 3rem */
+}
+
+.meta-item {
+  position: relative;
+  transform: rotate(-1deg);
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--graphite);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  font-family: var(--font-display);
+  font-variation-settings: 'wght' 700;
+  font-size: 1.4rem;
+  color: var(--hot-magenta);
+  display: block;
+  text-shadow: 1px 1px 0px rgba(255, 61, 154, 0.2);
+}
+
+.poster-tech-tags {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* Reduced gap */
+  margin-top: 1rem; /* Reduced from 2rem */
+  justify-content: center;
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--paper);
+  background: var(--spray-cyan);
+  padding: 0.5rem 1rem;
+  border-radius: 3px 3px 12px 3px; /* Peeled corner effect */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(calc(-3deg + var(--delay) * 20deg));
+  animation: tagFloat 3s ease-in-out infinite;
+  animation-delay: var(--delay);
+  position: relative;
+  box-shadow:
+    2px 2px 0px rgba(53, 208, 226, 0.3),
+    4px 4px 8px rgba(15, 15, 16, 0.2);
+}
+
+/* Sticker shine effect */
+.tech-tag::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 20%;
+  height: 40%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+/* Peeled corner shadow */
+.tech-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, rgba(15, 15, 16, 0.1) 0%, transparent 50%);
+  border-radius: 0 0 10px 0;
+}
+
+.tech-more {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--graphite);
+  background: transparent;
+  border: 1px dashed var(--graphite);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.poster-decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.deco-circle {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  border: 3px solid var(--radio-mustard);
+  border-radius: 50%;
+  opacity: 0.3;
+  transform: rotate(45deg);
+}
+
+.deco-line {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  width: 300px;
+  height: 2px;
+  background: var(--hot-magenta);
+  opacity: 0.4;
+  transform: rotate(-15deg);
+}
+
+.deco-triangle {
+  position: absolute;
+  top: 60%;
+  right: 20%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 87px solid var(--spray-cyan);
+  opacity: 0.2;
+  transform: rotate(30deg);
+}
+
+@keyframes tagFloat {
+  0%, 100% { transform: rotate(calc(-3deg + var(--delay) * 20deg)) translateY(0px); }
+  50% { transform: rotate(calc(-3deg + var(--delay) * 20deg)) translateY(-5px); }
+}
+
+/* WILDSTYLE SPRAY EFFECTS */
+.spray-effects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Paint drips */
+.spray-drip {
+  position: absolute;
+  background: linear-gradient(180deg, var(--spray-cyan) 0%, transparent 100%);
+  opacity: 0.15;
+  filter: blur(1px);
+}
+
+.spray-drip-1 {
+  top: 10%;
+  left: 75%;
+  width: 4px;
+  height: 120px;
+  transform: rotate(2deg);
+  animation: drip 8s ease-in-out infinite;
+}
+
+.spray-drip-2 {
+  top: 30%;
+  right: 15%;
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(180deg, var(--hot-magenta) 0%, transparent 100%);
+  transform: rotate(-3deg);
+  animation: drip 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Spray splatters */
+.spray-splatter {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  mix-blend-mode: multiply;
+}
+
+.spray-splatter-1 {
+  top: 25%;
+  left: 20%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(53, 208, 226, 0.2) 0%, transparent 70%);
+  animation: splatter 15s ease-in-out infinite;
+}
+
+.spray-splatter-2 {
+  bottom: 30%;
+  right: 25%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 61, 154, 0.15) 0%, transparent 70%);
+  animation: splatter 20s ease-in-out infinite;
+  animation-delay: 5s;
+}
+
+/* Marker strokes */
+.marker-stroke {
+  position: absolute;
+  opacity: 0.08;
+}
+
+.marker-stroke-1 {
+  top: 40%;
+  left: 10%;
+  width: 300px;
+  height: 60px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--radio-mustard) 10%,
+    var(--radio-mustard) 90%,
+    transparent 100%);
+  transform: rotate(-5deg) skewX(-15deg);
+  filter: blur(2px);
+}
+
+.marker-stroke-2 {
+  bottom: 20%;
+  right: 10%;
+  width: 250px;
+  height: 40px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--spray-cyan) 15%,
+    var(--spray-cyan) 85%,
+    transparent 100%);
+  transform: rotate(8deg) skewX(10deg);
+  filter: blur(1.5px);
+}
+
+/* Animations */
+@keyframes drip {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(20px) scaleY(1.2);
+    opacity: 0.25;
+  }
+}
+
+@keyframes splatter {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.15;
+  }
+  25% {
+    transform: scale(1.1) rotate(90deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(0.95) rotate(180deg);
+    opacity: 0.1;
+  }
+  75% {
+    transform: scale(1.05) rotate(270deg);
+    opacity: 0.18;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .poster-hero {
+    min-height: 80vh;
+    padding: 1rem;
+  }
+
+  .poster-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .poster-subtitle {
+    grid-column: 1;
+    margin-top: 1rem;
+  }
+
+  .poster-meta {
+    grid-column: 1;
+    justify-content: center;
+  }
+}
+</style>

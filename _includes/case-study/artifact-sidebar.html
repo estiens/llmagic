@@ -1,0 +1,456 @@
+<!-- Artifact Sidebar: Technical evidence and proof points -->
+<aside class="artifact-sidebar" id="artifactSidebar">
+  <div class="sidebar-header">
+    <h3 class="sidebar-title">Artifacts</h3>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle artifacts sidebar">
+      <span class="toggle-icon">←</span>
+    </button>
+  </div>
+
+  <div class="sidebar-content">
+    {% for artifact in page.artifacts %}
+      <article class="artifact-item" data-type="{{ artifact.type }}">
+        <div class="artifact-header">
+          <span class="artifact-type">{{ artifact.type | upcase }}</span>
+          {% if artifact.date %}
+            <time class="artifact-date">{{ artifact.date }}</time>
+          {% endif %}
+        </div>
+
+        <div class="artifact-content">
+          {% case artifact.type %}
+            {% when 'screenshot' %}
+              {% if artifact.image %}
+                <img src="{{ artifact.image | relative_url }}"
+                     alt="{{ artifact.caption | default: artifact.title }}"
+                     class="artifact-image"
+                     loading="lazy">
+              {% endif %}
+
+            {% when 'code' %}
+              <div class="artifact-code">
+                {% if artifact.language %}
+                  <div class="code-header">
+                    <span class="code-language">{{ artifact.language }}</span>
+                    {% if artifact.file %}
+                      <span class="code-file">{{ artifact.file }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <pre><code class="language-{{ artifact.language | default: 'text' }}">{{ artifact.content | escape }}</code></pre>
+              </div>
+
+            {% when 'data' %}
+              <div class="artifact-data">
+                {% if artifact.format == 'json' %}
+                  <pre class="data-display"><code>{{ artifact.content | jsonify }}</code></pre>
+                {% elsif artifact.format == 'metric' %}
+                  <div class="metric-display">
+                    <span class="metric-value">{{ artifact.value }}</span>
+                    <span class="metric-unit">{{ artifact.unit }}</span>
+                  </div>
+                {% else %}
+                  <div class="text-data">{{ artifact.content }}</div>
+                {% endif %}
+              </div>
+
+            {% when 'link' %}
+              <div class="artifact-link">
+                <a href="{{ artifact.url }}" target="_blank" rel="noopener" class="external-link">
+                  {{ artifact.title | default: "View Resource" }}
+                  <span class="link-icon">↗</span>
+                </a>
+                {% if artifact.description %}
+                  <p class="link-description">{{ artifact.description }}</p>
+                {% endif %}
+              </div>
+
+            {% when 'quote' %}
+              <blockquote class="artifact-quote">
+                <p>{{ artifact.content }}</p>
+                {% if artifact.author %}
+                  <cite>{{ artifact.author }}</cite>
+                {% endif %}
+              </blockquote>
+
+            {% else %}
+              <div class="artifact-text">{{ artifact.content }}</div>
+          {% endcase %}
+        </div>
+
+        {% if artifact.caption %}
+          <div class="artifact-caption">{{ artifact.caption }}</div>
+        {% endif %}
+
+        {% if artifact.tags %}
+          <div class="artifact-tags">
+            {% for tag in artifact.tags %}
+              <span class="artifact-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </article>
+    {% endfor %}
+
+    <!-- Additional metadata section -->
+    <div class="sidebar-metadata">
+      <div class="artifact-count">{{ page.artifacts.size }} Artifacts</div>
+      <div class="last-updated">
+        Updated: {{ page.date | date: "%b %Y" }}
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+.artifact-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--sidebar-width, 25vw);
+  min-width: 320px;
+  max-width: 500px;
+  height: 100vh;
+  background: var(--paper);
+  border-left: var(--border-weight) solid var(--graphite);
+  z-index: 900;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.artifact-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Mode-aware styling */
+[data-mode="poster"] .artifact-sidebar {
+  backdrop-filter: blur(10px);
+  background: rgba(245, 241, 230, 0.95);
+  border-left-color: var(--spray-cyan);
+}
+
+[data-mode="proof"] .artifact-sidebar {
+  background: var(--paper);
+  border-left-color: var(--graphite);
+}
+
+.sidebar-header {
+  position: sticky;
+  top: 0;
+  background: inherit;
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid var(--graphite);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.sidebar-title {
+  font-family: var(--font-display);
+  font-variation-settings: 'wght' 700;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-toggle {
+  background: transparent;
+  border: 1px solid var(--graphite);
+  color: var(--graphite);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-toggle:hover {
+  border-color: var(--spray-cyan);
+  color: var(--spray-cyan);
+  transform: translateX(-2px);
+}
+
+.sidebar-toggle .toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.artifact-sidebar.open .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.sidebar-content {
+  padding: 0 2rem 2rem;
+}
+
+.artifact-item {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(42, 44, 46, 0.1);
+}
+
+.artifact-item:last-of-type {
+  border-bottom: none;
+}
+
+.artifact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.artifact-type {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--spray-cyan);
+  background: rgba(53, 208, 226, 0.1);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--spray-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.artifact-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--graphite);
+}
+
+.artifact-content {
+  margin-bottom: 1rem;
+}
+
+/* Artifact type-specific styling */
+.artifact-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--graphite);
+  border-radius: 0;
+}
+
+.artifact-code {
+  background: var(--ink);
+  border: 1px solid var(--graphite);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--graphite);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-language {
+  color: var(--radio-mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.code-file {
+  color: var(--spray-cyan);
+  opacity: 0.8;
+}
+
+.artifact-code pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  background: transparent;
+}
+
+.artifact-code code {
+  color: var(--paper);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.artifact-data .metric-display {
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid var(--hot-magenta);
+  background: rgba(255, 61, 154, 0.05);
+}
+
+.metric-value {
+  display: block;
+  font-family: var(--font-display);
+  font-variation-settings: 'wght' 900;
+  font-size: 2.5rem;
+  color: var(--hot-magenta);
+  line-height: 1;
+}
+
+.metric-unit {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--graphite);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+.data-display {
+  background: var(--ink);
+  color: var(--spray-cyan);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--graphite);
+  overflow-x: auto;
+}
+
+.external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--spray-cyan);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-base);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--spray-cyan);
+}
+
+.external-link:hover {
+  color: var(--hot-magenta);
+  border-bottom-color: var(--hot-magenta);
+  transform: translateY(-1px);
+}
+
+.link-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.link-description {
+  font-size: 0.9rem;
+  color: var(--graphite);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.artifact-quote {
+  font-style: italic;
+  border-left: 3px solid var(--oxide-teal);
+  padding-left: 1rem;
+  margin: 0;
+  color: var(--oxide-teal);
+}
+
+.artifact-quote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: normal;
+}
+
+.artifact-caption {
+  font-size: 0.8rem;
+  color: var(--graphite);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.artifact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.artifact-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--graphite);
+  background: transparent;
+  border: 1px dashed var(--graphite);
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-metadata {
+  border-top: 1px solid var(--graphite);
+  padding-top: 2rem;
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--graphite);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .artifact-sidebar {
+    width: 40vw;
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artifact-sidebar {
+    width: 100vw;
+    max-width: none;
+  }
+
+  .sidebar-header {
+    padding: 1rem;
+  }
+
+  .sidebar-content {
+    padding: 0 1rem 1rem;
+  }
+}
+
+/* Sidebar activation trigger */
+.artifact-trigger {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: var(--spray-cyan);
+  color: var(--paper);
+  border: none;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  z-index: 800;
+  transition: var(--transition-base);
+}
+
+.artifact-trigger:hover {
+  background: var(--hot-magenta);
+  transform: translateY(-50%) translateX(-5px);
+}
+
+.artifact-sidebar.open + .artifact-trigger {
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
