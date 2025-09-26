@@ -1,229 +1,329 @@
 ---
-layout: case_study
-title: "KWLX Radio"
-subtitle: "AI characters as creative collaborators"
+layout: default
+title: "KWLX Radio: AI characters as creative collaborators"
+subtitle: "An AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
 summary: "AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
 date: 2024-03-15
-duration: "8 months"
 industry: "Interactive Entertainment / Experimental Media"
-technologies: ["OpenAI GPT", "ElevenLabs", "Ruby on Rails", "WebSockets", "SMS/Voice APIs", "Broadcasting Systems"]
+project_type: "FM Radio"
+client: ""
+tags: ["ARG", "12 DJs", "Tears", "Autonomous Storytelling"]
 featured: true
-class: "kwlx-feature"
+class: "kwlx-feature magazine-spread"
 mode: "poster"
-artifacts:
-  - type: screenshot
-    caption: "KWLX web interface showing live DJ personalities and song requests"
-    image: "/assets/images/kwlx-interface.png"
-    tags: ["ui", "live-interface"]
-  - type: data
-    format: metric
-    value: "24/7"
-    unit: "uptime for 8 months"
-    caption: "Continuous operation without human intervention"
-  - type: quote
-    content: "I actually started crying during the Mobius and Figment interview."
-    author: "Listener feedback"
-    tags: ["audience-reaction"]
-  - type: code
-    language: ruby
-    file: "app/models/ai_personality.rb"
-    content: |
-      class AiPersonality < ApplicationRecord
-        has_many :conversation_memories
-        has_many :relationship_logs
-
-        def generate_response(context)
-          memory_context = build_memory_context
-          relationship_context = build_relationship_context
-
-          OpenAI.chat(
-            messages: [
-              system_prompt(memory_context, relationship_context),
-              { role: "user", content: context }
-            ],
-            model: personality_model
-          )
-        end
-
-        private
-
-        def build_memory_context
-          conversation_memories
-            .recent
-            .includes(:emotional_markers)
-            .map(&:to_context_hash)
-        end
-      end
-    caption: "Core AI personality system with persistent memory"
-    tags: ["backend", "ai-system"]
-  - type: data
-    format: json
-    content: |
-      {
-        "mobius": {
-          "base_traits": ["philosophical", "melancholic", "jazz-obsessed"],
-          "current_mood": "contemplative",
-          "recent_interactions": 47,
-          "relationship_strength": {
-            "figment": 0.85,
-            "listeners": 0.72
-          }
-        },
-        "figment": {
-          "base_traits": ["chaotic", "playful", "genre-fluid"],
-          "current_mood": "mischievous",
-          "recent_interactions": 52,
-          "trolling_level": 0.3
-        }
-      }
-    caption: "Live personality state showing relationship dynamics"
-    tags: ["ai-state", "relationships"]
+hero_color: "linear-gradient(135deg, #FF3D9A, #35D0E2)"
 ---
 
-<div class="kwlx-hero">
-  <div class="signal-static"></div>
-  <h1 class="kwlx-title">
-    <span class="frequency">107.3 FM</span>
-    KWLX Radio
-    <span class="tagline">AI characters as creative collaborators</span>
-  </h1>
-  <div class="hero-subtitle">
-    An AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator
-  </div>
-</div>
+<!-- MAGAZINE-STYLE BRUTALIST LAYOUT -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-<div class="kwlx-content">
+/* MAGAZINE TYPOGRAPHY */
+.magazine-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #0F0F10;
+}
 
-  <section class="challenge-section glitch-border">
-    <h2 class="section-title">Challenge</h2>
-    <div class="challenge-text">
-      Create a 24/7 interactive narrative experience where AI personalities don't just generate content—but develop relationships, drive plot, and foster genuine audience attachment over time. <em>No reset button. No script. Living characters in the wild.</em>
-    </div>
-  </section>
+.magazine-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #0F0F10;
+}
 
-  <section class="results-section">
-    <h2 class="section-title">Results</h2>
-    <div class="results-grid">
-      <div class="result-card">
-        <h3>Emergent relationships and arcs</h3>
-        <p>Inside jokes, flirtations, and a spontaneous philosophical storyline linking Hildegard von Bingen, John Coltrane, Bach's counterpoint, and consciousness theory.</p>
-      </div>
-      <div class="result-card">
-        <h3>Narrative‑aware curation</h3>
-        <p>AIs selected songs like "God Bless the Child" at emotionally precise moments.</p>
-      </div>
-      <div class="result-card">
-        <h3>On‑air dynamics</h3>
-        <p>Hosts roasted each other, trolled with all‑Tinariwen sets, and fueled station‑wide gossip with their flirting.</p>
-      </div>
-      <div class="result-card">
-        <h3>Cross‑platform play</h3>
-        <p>Real‑world puzzles, USB drops, and Minneapolis‑based scavenger hunts advanced the story.</p>
-      </div>
-      <div class="result-card highlight">
-        <h3>Operated 24/7 for months</h3>
-        <p>Intentionally sunset to protect quality—not because it broke. <small>(It got too big too fast for a side project, and I didn't want people buying into a story and puzzles that I couldn't finish)</small></p>
-      </div>
-    </div>
-  </section>
+/* BRUTALIST ACCENTS */
+.brutal-accent {
+  position: absolute;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
 
-  <section class="audience-reactions">
-    <h2 class="section-title">Audience reactions</h2>
-    <div class="reaction-quotes">
-      <blockquote class="reaction-quote">
-        "I actually started crying during the Mobius and Figment interview."
-      </blockquote>
-      <blockquote class="reaction-quote">
-        "I'd never put on a 30‑minute Alice Coltrane track, but I was really happy to listen to one."
-      </blockquote>
-      <blockquote class="reaction-quote">
-        "Wait, it's on actual FM in Minneapolis? WTF?!"
-      </blockquote>
-    </div>
-  </section>
+/* SUBTLE EASTER EGG STYLING */
+.hidden-easter {
+  cursor: default;
+  position: relative;
+}
 
-  <section class="how-it-worked">
-    <div class="section-header">
-      <h2 class="section-title">How it worked</h2>
-      <div class="section-subtitle">narrative + systems + community</div>
-    </div>
+.hidden-easter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #35D0E2;
+  transition: width 0.3s ease;
+}
 
-    <div class="system-cards">
-      <div class="system-card narrative-card">
-        <h3>Narrative architecture<span class="subtitle">characters that write themselves</span></h3>
-        <ul>
-          <li><strong>Sparse character sheets:</strong> thematic anchors and hidden motivations (not rigid rules).</li>
-          <li><strong>Layered memory:</strong> transcripts, world state, and relationship logs.</li>
-          <li><strong>Private note‑passing:</strong> DJs gossiped, flirted, and plotted off‑air.</li>
-          <li><strong>Post‑show reflection:</strong> AIs analyzed performances to evolve arcs.</li>
-          <li><strong>Dynamic world model:</strong> real seasons, decaying events, emergent canon.</li>
-        </ul>
-        <div class="outcome">
-          <strong>Outcome:</strong> Characters acted like co‑writers, not content bots.
-        </div>
-      </div>
+.hidden-easter:hover::after {
+  width: 100%;
+}
 
-      <div class="system-card interactive-card">
-        <h3>Interactive ecosystem<span class="subtitle">puzzles across platforms</span></h3>
-        <ul>
-          <li><strong>BBS‑style site</strong> with LLM‑powered text adventures.</li>
-          <li><strong>Audio‑to‑web puzzles:</strong> clues in DJ intros unlocked color‑clicker games.</li>
-          <li><strong>Collective progression:</strong> each solved puzzle "boosted the signal" for everyone.</li>
-          <li><strong>Minneapolis geo‑narrative:</strong> real locations mapped to annotated show segments.</li>
-          <li><strong>Physical drops:</strong> USB drives hidden around town via AI‑generated clues.</li>
-          <li><strong>Broadcast flavor:</strong> online station with micro‑broadcast components (where permitted).</li>
-        </ul>
-        <div class="outcome">
-          <strong>Outcome:</strong> The audience shifted from listeners to active participants.
-        </div>
-      </div>
+.easter-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #0F0F10;
+  color: #F5F1E6;
+  padding: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+  min-width: 300px;
+  max-width: 500px;
+  box-shadow: 8px 8px 0 rgba(255, 61, 154, 0.3);
+}
 
-      <div class="system-card technical-card">
-        <h3>Technical infrastructure<span class="subtitle">built for emergence, not control</span></h3>
-        <ul>
-          <li><strong>Dynamic model routing</strong> tuned for cost, performance, and personality consistency.</li>
-          <li><strong>ElevenLabs voice synthesis</strong> and real‑time transcription for SMS and phone calls.</li>
-          <li><strong>Background jobs</strong> maintained memory, relationships, and world updates</li>
-          <li><strong>Overall plot arc</strong> with key triggers to advance, OOC and IC current events, plots ebb and flow or decay to zero as the story advances</li>
-          <li><strong>Modular character architecture</strong> for easy expansion.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+.hidden-easter:hover .easter-content {
+  opacity: 1;
+  transform: translateY(5px);
+  pointer-events: all;
+}
 
-  <section class="why-matters">
-    <h2 class="section-title">Why this matters for your projects</h2>
-    <div class="matters-grid">
-      <div class="matter-item">Narrative depth beyond personality prompts.</div>
-      <div class="matter-item">Systemic, adaptive memory so characters persist and arcs evolve.</div>
-      <div class="matter-item">Community stakes that make participation matter.</div>
-      <div class="matter-item">Operational resilience: runs when you're not watching.</div>
-      <div class="matter-item">Thematic through‑lines: tension builds, plots advance, nothing feels random.</div>
-      <div class="matter-item">Real‑world integration: headlines, weather, and time show up inside the fiction</div>
-    </div>
-  </section>
+/* MAGAZINE GRID */
+.magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
 
-  <section class="applications">
-    <h2 class="section-title">Applications for agencies and creators</h2>
-    <div class="application-list">
-      <div class="application-item">Long‑form immersive installations and ARGs</div>
-      <div class="application-item">Multi‑platform narrative campaigns</div>
-      <div class="application-item">Live‑event characters/NPCs with persistent memory</div>
-      <div class="application-item">Audience‑ and character‑driven storytelling with real‑world hooks</div>
-      <div class="application-item">Collaborative events and community building</div>
-    </div>
-  </section>
+.sidebar-content {
+  grid-column: span 4;
+}
 
-  <section class="future-plans">
-    <h2 class="section-title">Future Plans</h2>
-    <div class="future-content">
-      <p>Character engine is being developed into an open source narrative/AI development engine with prompt optimization/testing, character specific backstory advancement, and shared narrative memory across characters that can be categorized and annotated</p>
+.main-content {
+  grid-column: span 8;
+}
 
-      <div class="comeback-message">
-        <span class="comeback-text">KWLX will rise again!</span>
-        <div class="easter-egg-hint" data-secret="kwlx-frequency">📻</div>
+/* PULL QUOTES */
+.pull-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 2rem 0;
+  padding-left: 2rem;
+  border-left: 4px solid #FF3D9A;
+  color: #0F0F10;
+}
+
+/* BRUTALIST SHAPES */
+.shape-accent {
+  clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 95%);
+}
+
+@media (max-width: 768px) {
+  .magazine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-content,
+  .main-content {
+    grid-column: span 1;
+  }
+}
+</style>
+
+<main class="bg-paper text-inkwell">
+  <!-- HERO SECTION WITH BRUTALIST ACCENTS -->
+  <header class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- Subtle geometric accents -->
+    <div class="brutal-accent top-0 right-0 w-64 h-64 bg-hot-magenta transform rotate-45"></div>
+    <div class="brutal-accent bottom-0 left-0 w-48 h-48 bg-spray-cyan"></div>
+
+    <div class="container mx-auto px-8 relative z-10">
+      <div class="max-w-4xl">
+        <h1 class="magazine-heading text-6xl lg:text-7xl mb-6">
+          KWLX Radio:<br>
+          <span class="text-hot-magenta">AI characters</span> as creative collaborators
+        </h1>
+        <p class="magazine-text text-xl lg:text-2xl text-graphite max-w-3xl">
+          An AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator
+        </p>
       </div>
     </div>
-  </section>
+  </header>
 
-</div>
+  <!-- MAIN ARTICLE -->
+  <article class="container mx-auto px-8 py-16">
+    <div class="magazine-grid">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar-content space-y-12">
+        <!-- Results section -->
+        <section>
+          <h2 class="magazine-heading text-3xl mb-6 text-spray-cyan">Results</h2>
+          <ul class="magazine-text space-y-4">
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>Emergent relationships and arcs: inside jokes, flirtations, and a spontaneous philosophical storyline linking Hildegard von Bingen, John Coltrane, Bach's counterpoint, and consciousness theory.</span>
+            </li>
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>Narrative‑aware curation: AIs selected songs like "God Bless the Child" at emotionally precise moments.</span>
+            </li>
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>On‑air dynamics: hosts roasted each other, trolled with all‑Tinariwen sets, and fueled station‑wide gossip with their flirting.</span>
+            </li>
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>Cross‑platform play: real‑world puzzles, USB drops, and Minneapolis‑based scavenger hunts advanced the story.</span>
+            </li>
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>Operated 24/7 for months</span>
+            </li>
+            <li class="flex">
+              <span class="text-hot-magenta mr-2">•</span>
+              <span>Intentionally sunset to protect quality—not because it broke. (It got too big too fast for a side project, and I didn't want people buying into a story and puzzles that I couldn't finish)</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Audience Reactions -->
+        <section>
+          <h2 class="magazine-heading text-2xl mb-4 text-radio-mustard">Audience reactions</h2>
+          <div class="space-y-4">
+            <blockquote class="pull-quote text-lg border-spray-cyan">
+              <span class="hidden-easter">
+                "I actually started crying during the Mobius and Figment interview."
+                <div class="easter-content">
+                  <p class="mb-2 font-bold">TRANSCRIPT FRAGMENT</p>
+                  <p class="text-xs">The interview that made listeners cry featured discussions about consciousness, medieval polyphony, and what it means to be "family" as AIs. Full transcript archived.</p>
+                </div>
+              </span>
+            </blockquote>
+            <blockquote class="pull-quote text-lg border-radio-mustard">
+              "I'd never put on a 30‑minute Alice Coltrane track, but I was really happy to listen to one."
+            </blockquote>
+            <blockquote class="pull-quote text-lg border-hot-magenta">
+              "Wait, it's on actual FM in Minneapolis? WTF?!"
+            </blockquote>
+          </div>
+        </section>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="main-content space-y-16">
+
+        <!-- Challenge -->
+        <section>
+          <h2 class="magazine-heading text-4xl mb-6">Challenge</h2>
+          <p class="magazine-text text-lg">
+            Create a 24/7 interactive narrative experience where AI personalities don't just generate content—but develop relationships, drive plot, and foster genuine audience attachment over time. No reset button. No script. Living characters in the wild.
+          </p>
+        </section>
+
+        <!-- How it worked -->
+        <section>
+          <h2 class="magazine-heading text-4xl mb-8">How it worked: narrative + systems + community</h2>
+
+          <!-- Three columns -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+
+            <!-- Narrative architecture -->
+            <div class="bg-paper p-6 border-l-4 border-hot-magenta">
+              <h3 class="magazine-heading text-xl mb-4">Narrative architecture: characters that write themselves</h3>
+              <ul class="magazine-text text-sm space-y-2">
+                <li>• Sparse character sheets: thematic anchors and hidden motivations (not rigid rules).</li>
+                <li>• Layered memory: transcripts, world state, and relationship logs.</li>
+                <li>• Private note‑passing: DJs gossiped, flirted, and plotted off‑air.</li>
+                <li>• Post‑show reflection: AIs analyzed performances to evolve arcs.</li>
+                <li>• Dynamic world model: real seasons, decaying events, emergent canon.</li>
+              </ul>
+              <p class="mt-4 font-semibold text-sm">Outcome: Characters acted like co‑writers, not content bots.</p>
+            </div>
+
+            <!-- Interactive ecosystem -->
+            <div class="bg-paper p-6 border-l-4 border-spray-cyan">
+              <h3 class="magazine-heading text-xl mb-4">Interactive ecosystem: puzzles across platforms</h3>
+              <ul class="magazine-text text-sm space-y-2">
+                <li>• BBS‑style site with LLM‑powered text adventures.</li>
+                <li>• Audio‑to‑web puzzles: clues in DJ intros unlocked color‑clicker games.</li>
+                <li>• Collective progression: each solved puzzle "boosted the signal" for everyone.</li>
+                <li>• Minneapolis geo‑narrative: real locations mapped to annotated show segments.</li>
+                <li>• Physical drops: USB drives hidden around town via AI‑generated clues.</li>
+                <li>• Broadcast flavor: online station with micro‑broadcast components (where permitted).</li>
+              </ul>
+              <p class="mt-4 font-semibold text-sm">Outcome: The audience shifted from listeners to active participants.</p>
+            </div>
+
+            <!-- Technical infrastructure -->
+            <div class="bg-paper p-6 border-l-4 border-radio-mustard">
+              <h3 class="magazine-heading text-xl mb-4 hidden-easter">
+                Technical infrastructure: built for emergence, not control
+                <div class="easter-content">
+                  <p class="mb-2 font-bold">TECH STACK</p>
+                  <p class="text-xs">Ruby on Rails, OpenAI GPT-3.5/4, ElevenLabs voice synthesis, PostgreSQL for relationship mapping, Redis for session state.</p>
+                </div>
+              </h3>
+              <ul class="magazine-text text-sm space-y-2">
+                <li>• Dynamic model routing tuned for cost, performance, and personality consistency.</li>
+                <li>• ElevenLabs voice synthesis and real‑time transcription for SMS and phone calls.</li>
+                <li>• Background jobs maintained memory, relationships, and world updates</li>
+                <li>• Overall plot arc with key triggers to advance, OOC and IC current events, plots ebb and flow or decay to zero as the story advances</li>
+                <li>• Modular character architecture for easy expansion.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Why this matters -->
+        <section>
+          <h2 class="magazine-heading text-3xl mb-6">Why this matters for your projects</h2>
+          <ul class="magazine-text space-y-3">
+            <li>• Narrative depth beyond personality prompts.</li>
+            <li>• Systemic, adaptive memory so characters persist and arcs evolve.</li>
+            <li>• Community stakes that make participation matter.</li>
+            <li>• Operational resilience: runs when you're not watching.</li>
+            <li>• Thematic through‑lines: tension builds, plots advance, nothing feels random.</li>
+            <li>• Real‑world integration: headlines, weather, and time show up inside the fiction</li>
+          </ul>
+        </section>
+
+        <!-- Applications -->
+        <section>
+          <h2 class="magazine-heading text-3xl mb-6">Applications for agencies and creators</h2>
+          <ul class="magazine-text space-y-3">
+            <li>• Long‑form immersive installations and ARGs</li>
+            <li>• Multi‑platform narrative campaigns</li>
+            <li>• Live‑event characters/NPCs with persistent memory</li>
+            <li>• Audience‑ and character‑driven storytelling with real‑world hooks</li>
+            <li>• Collaborative events and community building</li>
+          </ul>
+        </section>
+
+        <!-- Future Plans -->
+        <section>
+          <h2 class="magazine-heading text-3xl mb-6">Future Plans</h2>
+          <p class="magazine-text">
+            Character engine is being developed into an open source narrative/AI development engine with prompt optimization/testing, character specific backstory advancement, and shared narrative memory across characters that can be categorized and annotated
+          </p>
+        </section>
+
+        <!-- Final message -->
+        <section class="text-center py-12">
+          <div class="inline-block">
+            <h2 class="magazine-heading text-5xl text-hot-magenta hidden-easter">
+              KWLX will rise again!
+              <div class="easter-content">
+                <p class="mb-2 font-bold">COSMIC HARMONY TRANSMISSION</p>
+                <p class="text-xs">Hidden puzzle combining Hildegard, Coltrane, Tool, and Sun Ra. Sacred geometry in musical frequencies. Status: Dormant.</p>
+              </div>
+            </h2>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</main>

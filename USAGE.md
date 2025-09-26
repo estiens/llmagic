@@ -1,6 +1,6 @@
-# ARTIZAN Theme Usage Guide
+# LOW LEVEL MAGIC Theme Usage Guide
 
-This guide will help you get started with the ARTIZAN Jekyll theme and customize it for your consulting website.
+This guide will help you get started with the LOW LEVEL MAGIC Jekyll theme and customize it for your consulting website.
 
 ## Quick Start
 
@@ -12,8 +12,8 @@ Choose one of the following installation methods:
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/yourusername/artizan-jekyll-theme.git
-cd artizan-jekyll-theme
+git clone https://github.com/yourusername/low-level-magic-jekyll-theme.git
+cd low-level-magic-jekyll-theme
 
 # Install dependencies
 bundle install
@@ -26,12 +26,12 @@ bundle exec jekyll serve
 
 Add to your `Gemfile`:
 ```ruby
-gem "artizan-theme"
+gem "low-level-magic-theme"
 ```
 
 Add to your `_config.yml`:
 ```yaml
-theme: artizan-theme
+theme: low-level-magic-theme
 ```
 
 Then run:

@@ -1,16 +1,17 @@
 # Site settings
-title: ARTIZAN
+title: LOW LEVEL MAGIC
 email: contact@artizan.dev
+formspree_id: xpwaeqkb
 description: >-
-  Creative consulting for LLM character and game design.
-  Emerging practices, labs, and case studies in AI-driven creativity.
+  We build AI characters with soul and experiences that survive the real world.
+  Partner with Low Level Magic to create unforgettable, production-ready AI for your next project.
 baseurl: ""
 url: "https://artizan.dev"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: artizan-theme
+theme: low-level-magic-theme
 
 # Plugins
 plugins:
@@ -55,7 +56,7 @@ defaults:
 
 # Site configuration
 author:
-  name: ARTIZAN Team
+  name: LOW LEVEL MAGIC Team
   email: contact@artizan.dev
 
 # Social links
@@ -66,16 +67,16 @@ social:
 
 # Navigation
 navigation:
-  - title: Home
-    url: /
-  - title: Emerging Practices
-    url: /practices/
-  - title: Labs
-    url: /labs/
-  - title: Case Studies
-    url: /case-studies/
   - title: About
     url: /#about
+  - title: Projects
+    url: /case-studies/
+  - title: Experiments
+    url: /labs/
+  - title: Tools
+    url: /practices/
+  - title: Manifestos
+    url: /manifestos/
   - title: Contact
     url: /#contact
 

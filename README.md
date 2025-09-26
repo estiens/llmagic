@@ -1,4 +1,4 @@
-# ARTIZAN Jekyll Theme
+# LOW LEVEL MAGIC Jekyll Theme
 
 A grunge/punk-inspired Jekyll theme designed for creative consulting websites, specifically tailored for AI-driven creativity and character design services.
 
@@ -37,13 +37,13 @@ A grunge/punk-inspired Jekyll theme designed for creative consulting websites, s
 1. Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "artizan-theme"
+gem "low-level-magic-theme"
 ```
 
 2. Add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
-theme: artizan-theme
+theme: low-level-magic-theme
 ```
 
 3. Execute:
@@ -64,8 +64,8 @@ bundle exec jekyll serve
 2. Clone your fork:
 
 ```bash
-git clone https://github.com/yourusername/artizan-jekyll-theme.git
-cd artizan-jekyll-theme
+git clone https://github.com/yourusername/low-level-magic-jekyll-theme.git
+cd low-level-magic-jekyll-theme
 ```
 
 3. Install dependencies:
@@ -305,4 +305,4 @@ For support, please open an issue on the GitHub repository or contact the theme 
 
 ---
 
-**ARTIZAN Theme** - Where creativity meets technology in the digital punk aesthetic.
+**LOW LEVEL MAGIC Theme** - Where creativity meets technology in the digital punk aesthetic.

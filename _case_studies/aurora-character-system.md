@@ -1,10 +1,13 @@
 ---
+layout: case_study_v2
 title: "Aurora: Emotional AI Character System"
+subtitle: "Therapeutic VR with emotionally intelligent AI"
 client: "Empathy Interactive"
 summary: "Developing emotionally intelligent AI characters for a therapeutic virtual reality platform designed to help users develop social and emotional skills"
 date: 2024-03-15
-duration: "6 months"
 industry: "Healthcare Technology"
+project_type: "VR Therapy"
+tags: ["Emotional Intelligence", "VR", "Healthcare", "Therapeutic AI"]
 technologies:
   - "Emotion Recognition AI"
   - "VR Integration"

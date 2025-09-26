@@ -13,8 +13,8 @@ technologies:
   - "React"
   - "Node.js"
   - "MongoDB"
-github_url: "https://github.com/artizan/neural-character-generator"
-demo_url: "https://demo.artizan.dev/character-generator"
+github_url: "https://github.com/low-level-magic/neural-character-generator"
+demo_url: "https://demo.lowlevelmagic.dev/character-generator"
 related_labs:
   - "emotion-mapping-system"
   - "dialogue-consistency-analyzer"

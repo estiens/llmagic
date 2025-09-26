@@ -13,7 +13,7 @@ technologies:
   - "Python"
   - "WebGL"
   - "Real-time Analytics"
-github_url: "https://github.com/artizan/emotion-mapping"
+github_url: "https://github.com/low-level-magic/emotion-mapping"
 related_labs:
   - "neural-character-generator"
   - "adaptive-dialogue-system"

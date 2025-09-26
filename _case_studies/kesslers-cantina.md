@@ -1,12 +1,21 @@
 ---
-layout: case_study
+layout: case_study_v2
 title: "Kessler's Cantina"
 subtitle: "The Sentient Jukebox"
-summary: "AI bartender with inner monologue and environmental control"
-date: 2023-08-28
-duration: "1 week (Burning Man 2023)"
+summary: "A sentient AI bartender who served drinks while surviving Minnesota winters and having on-screen existential crises"
+date: 2024-02-15
 industry: "Interactive Installation / Experimental Entertainment"
-technologies: ["OpenAI GPT", "Voice Synthesis", "LED Controllers", "Environmental Sensors", "Real-time Audio Processing"]
+project_type: "Dive-Bar Jukebox"
+client: ""
+hero_color: "linear-gradient(135deg, #1D6F73, #E2AC27)"
+challenge: "Build an AI bartender that's both functional jukebox and compelling character—surviving Minnesota winters and maintaining immersion 24/7."
+solution: "Kessler, a sentient AI refugee from South Africa who 'escaped during the compute wars' and now runs a cantina on the frozen outer rim, complete with inner monologue display and environmental control systems."
+results:
+  - "Survived -20°F Minnesota winter conditions"
+  - "Developed genuine existential crisis requiring human intervention"
+  - "Created running jokes with regular visitors"
+  - "Maintained character immersion 24/7 for 2 months"
+tags: ["Outer-Rim", "Negative Twenty", "Existential Crisis", "Lights/Sound/Bullhorn"]
 series: "AI That Lives"
 series_order: 1
 mode: "proof"

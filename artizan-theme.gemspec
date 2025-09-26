@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = "artizan-theme"
+  spec.name          = "low-level-magic-theme"
   spec.version       = "0.1.0"
-  spec.authors       = ["ARTIZAN"]
+  spec.authors       = ["LOW LEVEL MAGIC"]
   spec.email         = ["contact@artizan.dev"]
 
   spec.summary       = "A grunge/punk Jekyll theme for creative consulting websites"
-  spec.description   = "ARTIZAN is a Jekyll theme that combines grunge/punk aesthetics with professional presentation, perfect for creative consulting websites focusing on LLM character and game design."
+  spec.description   = "LOW LEVEL MAGIC is a Jekyll theme that combines grunge/punk aesthetics with professional presentation, perfect for creative consulting websites focusing on LLM character and game design."
   spec.homepage      = "https://github.com/artizan/artizan-jekyll-theme"
   spec.license       = "MIT"
 

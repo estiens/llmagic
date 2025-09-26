@@ -1,0 +1,272 @@
+---
+layout: default
+---
+
+<article class="case-study-v2">
+  <!-- Mode toggle removed - functionality available as easter egg -->
+
+  <!-- Hero Section -->
+  <header class="case-study-hero relative overflow-hidden bg-paper">
+    <div class="container-tight py-16 lg:py-24">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8">
+          <!-- Title Block -->
+          <div class="mb-8">
+            {% if page.industry %}
+            <span class="font-mono text-sm uppercase tracking-wider text-graphite">
+              {{ page.industry }}
+            </span>
+            {% endif %}
+
+            <h1 class="mt-2 font-display font-black" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95;">
+              {{ page.title }}
+            </h1>
+
+            {% if page.subtitle %}
+            <p class="mt-4 text-xl font-semibold text-graphite">
+              {{ page.subtitle }}
+            </p>
+            {% endif %}
+          </div>
+
+          <!-- Key Stats Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {% if page.duration %}
+            <div class="stat-block">
+              <span class="block font-mono text-xs uppercase tracking-wider opacity-60">Duration</span>
+              <span class="block text-lg font-bold">{{ page.duration }}</span>
+            </div>
+            {% endif %}
+
+            {% if page.team %}
+            <div class="stat-block">
+              <span class="block font-mono text-xs uppercase tracking-wider opacity-60">Team Size</span>
+              <span class="block text-lg font-bold">{{ page.team | size }} people</span>
+            </div>
+            {% endif %}
+
+            {% if page.tags %}
+            <div class="stat-block">
+              <span class="block font-mono text-xs uppercase tracking-wider opacity-60">Tags</span>
+              <span class="block text-lg font-bold">{{ page.tags | size }} concepts</span>
+            </div>
+            {% endif %}
+
+            {% if page.client %}
+            <div class="stat-block">
+              <span class="block font-mono text-xs uppercase tracking-wider opacity-60">Client</span>
+              <span class="block text-lg font-bold">{{ page.client }}</span>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- Summary -->
+          {% if page.summary %}
+          <div class="prose prose-lg text-inkwell">
+            <p class="lead">{{ page.summary }}</p>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Hero Image/Visual -->
+        <div class="col-span-12 lg:col-span-4">
+          {% if page.hero_image %}
+          <div class="relative aspect-[4/3] overflow-hidden border-4 border-inkwell shadow-brutalist">
+            <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="w-full h-full object-cover">
+          </div>
+          {% elsif page.hero_color %}
+          <div class="relative aspect-[4/3] overflow-hidden border-4 border-inkwell shadow-brutalist"
+               style="background: {{ page.hero_color }}">
+            <div class="flex items-center justify-center h-full">
+              <span class="font-display font-black text-4xl text-paper/20">{{ page.title | slice: 0, 1 }}</span>
+            </div>
+          </div>
+          {% else %}
+          <div class="relative aspect-[4/3] overflow-hidden border-4 border-inkwell shadow-brutalist bg-gradient-to-br from-spray-cyan via-hot-magenta to-radio-mustard">
+            <div class="flex items-center justify-center h-full">
+              <span class="font-display font-black text-4xl text-paper/20">{{ page.title | slice: 0, 1 }}</span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="case-study-content bg-paper-quiet">
+    <div class="container-tight py-12">
+      <div class="grid grid-cols-12 gap-8">
+
+        <!-- Main Content Column -->
+        <div class="col-span-12 lg:col-span-8">
+          <!-- Challenge Section -->
+          {% if page.challenge %}
+          <section class="content-section mb-12">
+            <h2 class="section-title">Challenge</h2>
+            <div class="prose prose-lg">
+              {{ page.challenge | markdownify }}
+            </div>
+          </section>
+          {% endif %}
+
+          <!-- Solution Section -->
+          {% if page.solution %}
+          <section class="content-section mb-12">
+            <h2 class="section-title">Solution</h2>
+            <div class="prose prose-lg">
+              {{ page.solution | markdownify }}
+            </div>
+          </section>
+          {% endif %}
+
+          <!-- Custom Content from Markdown -->
+          <div class="case-study-body prose prose-lg max-w-none">
+            {{ content }}
+          </div>
+
+          <!-- Results Section -->
+          {% if page.results %}
+          <section class="content-section mt-12">
+            <h2 class="section-title">Results & Impact</h2>
+            <div class="results-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+              {% for result in page.results %}
+              <div class="result-card bg-paper p-4 border-2 border-inkwell">
+                <span class="text-2xl font-bold text-spray-cyan">→</span>
+                <p class="mt-1">{{ result }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+        </div>
+
+        <!-- Proof Sidebar (hidden by default - easter egg activation) -->
+        <div class="col-span-12 lg:col-span-4 hidden" id="proof-sidebar">
+          <div class="sticky top-32 space-y-6">
+            <h3 class="font-mono text-sm uppercase tracking-wider text-graphite">Artifacts & Proof</h3>
+
+            {% if page.artifacts %}
+            <div class="space-y-4">
+              {% for artifact in page.artifacts %}
+              <div class="artifact-card bg-paper p-4 border border-graphite/20">
+                <!-- Code Artifact -->
+                {% if artifact.type == "code" %}
+                <div class="artifact-code">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-mono text-xs text-spray-cyan">{{ artifact.language }}</span>
+                    {% if artifact.file %}
+                    <span class="font-mono text-xs text-graphite/60">{{ artifact.file }}</span>
+                    {% endif %}
+                  </div>
+                  <pre class="bg-inkwell text-paper p-3 text-xs overflow-x-auto"><code>{{ artifact.content }}</code></pre>
+                  {% if artifact.caption %}
+                  <p class="mt-2 text-sm text-graphite">{{ artifact.caption }}</p>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Metric Artifact -->
+                {% if artifact.type == "data" %}
+                <div class="artifact-metric">
+                  <div class="text-3xl font-bold text-hot-magenta">{{ artifact.value }}</div>
+                  {% if artifact.unit %}
+                  <div class="font-mono text-sm text-graphite">{{ artifact.unit }}</div>
+                  {% endif %}
+                  {% if artifact.caption %}
+                  <p class="mt-2 text-sm">{{ artifact.caption }}</p>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Quote Artifact -->
+                {% if artifact.type == "quote" %}
+                <div class="artifact-quote">
+                  <blockquote class="text-lg italic text-graphite border-l-4 border-radio-mustard pl-4">
+                    "{{ artifact.content }}"
+                  </blockquote>
+                  {% if artifact.author %}
+                  <cite class="block mt-2 text-sm text-graphite/60 not-italic">— {{ artifact.author }}</cite>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Image Artifact -->
+                {% if artifact.type == "screenshot" or artifact.type == "image" %}
+                <div class="artifact-image">
+                  <img src="{{ artifact.image }}" alt="{{ artifact.caption }}" class="w-full border border-graphite/20">
+                  {% if artifact.caption %}
+                  <p class="mt-2 text-sm text-graphite">{{ artifact.caption }}</p>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Tags -->
+                {% if artifact.tags %}
+                <div class="mt-2 flex flex-wrap gap-1">
+                  {% for tag in artifact.tags %}
+                  <span class="px-2 py-1 bg-graphite/10 text-xs font-mono">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Tech Stack in Proof Mode -->
+            {% if page.technologies %}
+            <div class="artifact-card bg-inkwell text-paper p-4">
+              <h4 class="font-mono text-sm uppercase tracking-wider mb-3 text-spray-cyan">Tech Stack</h4>
+              <div class="flex flex-wrap gap-2">
+                {% for tech in page.technologies %}
+                <span class="px-2 py-1 bg-paper/10 text-sm font-mono">{{ tech }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Team in Proof Mode -->
+            {% if page.team %}
+            <div class="artifact-card bg-paper p-4 border border-graphite/20">
+              <h4 class="font-mono text-sm uppercase tracking-wider mb-3 text-graphite">Team</h4>
+              <ul class="space-y-1 text-sm">
+                {% for member in page.team %}
+                <li>{{ member }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Case Studies -->
+  {% if page.related_case_studies %}
+  <section class="related-cases bg-paper py-12 border-t-2 border-inkwell">
+    <div class="container-tight">
+      <h3 class="font-display font-bold text-2xl mb-8">Related Work</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for case_slug in page.related_case_studies %}
+          {% assign related_case = site.case_studies | where: "slug", case_slug | first %}
+          {% if related_case %}
+          <a href="{{ related_case.url }}" class="block group">
+            <div class="bg-paper-quiet p-6 border-2 border-inkwell group-hover:shadow-brutalist transition-all">
+              <h4 class="font-bold text-lg mb-2 group-hover:text-spray-cyan transition-colors">
+                {{ related_case.title }}
+              </h4>
+              {% if related_case.client %}
+              <p class="font-mono text-sm text-graphite mb-2">{{ related_case.client }}</p>
+              {% endif %}
+              <p class="text-sm text-graphite">{{ related_case.summary | truncate: 100 }}</p>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</article>

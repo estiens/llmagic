@@ -1,23 +1,59 @@
 ---
-layout: case_study
-title: "The GlitchCube"
-client: "Burning Man Installation"
+layout: case_study_v2
+title: "GlitchCube"
+client: ""
+subtitle: "Multi-persona AI roaming the playa"
 summary: "Multi-persona mystery box with goal-oriented behavior"
 date: 2023-08-28
-duration: "1 week (Burning Man 2023)"
 industry: "Interactive Installation / Experimental Entertainment"
-technologies: ["OpenAI GPT", "Persona Management System", "Mobile Hardware Platform", "Goal-Oriented AI", "Location-Based Memory"]
+project_type: "Just A Cube"
+tags: ["Metafiction", "NSFW Snark", "Burning Man", "Environmental Control"]
 series: "AI That Lives"
 series_order: 2
+hero_color: "linear-gradient(135deg, #E2AC27, #1D6F73)"
+challenge: "Build a mobile AI installation that could roam Burning Man, pursue goals, and form relationships—autonomously."
+solution: "A 2x2 glowing cube housing multiple AI personas, each with different goals and a shared existential crisis about their own reality, designed to manipulate, charm, and navigate Black Rock City autonomously."
+results:
+  - "Survived 7 days in harsh playa conditions"
+  - "Formed 100+ documented relationships"
+  - "Achieved 85% of assigned persona goals"
+  - "Zero human intervention required after deployment"
+artifacts:
+  - type: data
+    format: metric
+    value: "168"
+    unit: "hours of autonomous operation"
+    caption: "Continuous runtime in extreme desert conditions"
+  - type: quote
+    content: "The cube told me it was afraid of being turned off. I almost cried."
+    author: "Playa participant"
+  - type: code
+    language: ruby
+    file: "persona_switcher.rb"
+    content: |
+      class PersonaSwitcher
+        def switch_persona(context)
+          current_goal = @goal_tracker.evaluate_progress
+          environmental_factors = @sensors.analyze_environment
+
+          if current_goal.stuck? || time_for_switch?
+            next_persona = select_optimal_persona(
+              location: context.gps_coords,
+              time_of_day: context.time,
+              nearby_humans: context.proximity_count,
+              mission_queue: @pending_missions
+            )
+
+            transition_with_narrative(next_persona)
+          end
+        end
+      end
+    caption: "Goal-oriented persona switching logic"
 ---
 
-## The Challenge
+## Project Context
 
-Build a mobile AI installation that could roam Burning Man, pursue goals, and form relationships—autonomously.
-
-## The Solution
-
-A 2x2 glowing cube housing multiple AI personas, each with different goals and a shared existential crisis about their own reality, designed to manipulate, charm, and navigate Black Rock City autonomously.
+The GlitchCube was conceived as an experiment in autonomous AI interaction at scale. Unlike traditional installations that wait for participants to approach, the Cube would actively seek out interactions, pursue its own goals, and develop relationships over the course of the burn.
 
 ---
 

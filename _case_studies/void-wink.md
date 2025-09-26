@@ -1,12 +1,13 @@
 ---
-layout: case_study
+layout: case_study_v2
 title: "VOID.WINK"
-client: "Experimental Art Project"
+subtitle: "Multi-LLM collaborative literature"
+client: ""
 summary: "Multi-LLM collaborative literature with web-native aesthetics"
 date: 2024-01-15
-duration: "3 months"
 industry: "Digital Art / Experimental Literature"
-technologies: ["Multiple LLM Models", "API Orchestration", "Real-time Collaboration", "Web-Native Publishing", "Philosophical AI"]
+project_type: "No Alignment"
+tags: ["No Non-Alignment", "Experimental Art", "Math And Plums"]
 series: "AI That Lives"
 series_order: 3
 ---

@@ -1,12 +1,13 @@
 ---
-layout: case_study
+layout: case_study_v2
 title: "Sorry, Wrong Door"
-client: "Early LLM Game Experiment"
-summary: "Adaptive AI Difficulty Engine - Early LLM game design with real-time performance optimization"
+subtitle: "Early LLM experiment with adaptive difficulty"
+project_type: "Lying Narrator"
+client: ""
+summary: "An early LLM-powered game using a lying narrator and an adaptive difficulty engine that adjusts in real-time"
 date: 2022-11-20
-duration: "2 months"
 industry: "Interactive Gaming / AI Research"
-technologies: ["GPT-3.5", "Adaptive Difficulty System", "Real-time Analytics", "Dynamic Prompt Engineering", "Behavioral Feedback Loops"]
+tags: ["Deception Engine", "Adaptive Difficulty", "Procedural Doors"]
 series: "AI That Lives"
 series_order: 5
 ---

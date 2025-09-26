@@ -1,11 +1,16 @@
 ---
+layout: case_study_v2
 title: "Nexus: Interactive Narrative Revolution"
 client: "Stellar Games Studio"
+subtitle: "AI-driven narrative for next-gen RPG"
 summary: "Developing an AI-driven narrative system for a next-generation RPG that adapts stories in real-time based on player choices and emotional responses"
 date: 2024-05-20
-duration: "8 months"
 industry: "Gaming"
-hero_image: "/assets/images/case-studies/nexus-hero.jpg"
+project_type: "Gaming"
+tags: ["Narrative DNA", "Real-Time Adaptation", "Emotional AI"]
+hero_image: "/assets/images/case-studies/generic-placeholder.svg"
+challenge: "Create the first truly adaptive narrative RPG where stories evolve organically based on player behavior, choices, and emotional responses—moving beyond traditional branching narratives."
+solution: "Developed a hybrid AI-human narrative architecture combining narrative DNA frameworks, multi-dimensional character modeling, and emotional intelligence integration for real-time story adaptation."
 technologies:
   - "Custom LLM Integration"
   - "Real-time Emotion Analysis"
@@ -23,15 +28,54 @@ results:
   - "50% reduction in narrative development costs"
   - "Industry recognition with 3 major awards"
 related_case_studies:
-  - "aurora-character-system"
-  - "mindbridge-educational-platform"
+  - "kwlx-radio"
+artifacts:
+  - type: data
+    format: metric
+    value: "300%"
+    unit: "increase in player engagement"
+    caption: "Players spent significantly more time with adaptive narratives"
+  - type: code
+    language: python
+    file: "character_model.py"
+    content: |
+      class AdaptiveCharacter:
+          def __init__(self, personality_dna):
+              self.traits = personality_dna['traits']
+              self.emotions = DynamicEmotionModel()
+              self.relationships = RelationshipGraph()
+
+          def generate_dialogue(self, context):
+              emotional_state = self.emotions.evaluate(context)
+              relationship_modifier = self.relationships.get_modifier(
+                  context.player_id
+              )
+
+              return self.llm.generate(
+                  traits=self.traits,
+                  emotion=emotional_state,
+                  relationship=relationship_modifier,
+                  context=context
+              )
+    caption: "Core adaptive character system with emotion and relationship modeling"
+  - type: quote
+    content: "Subsequent playthroughs felt like entirely new experiences."
+    author: "Player feedback from testing"
+  - type: data
+    format: json
+    content: |
+      {
+        "narrative_variations": "∞",
+        "avg_session_length": "4.5 hours",
+        "emotion_recognition_accuracy": "87%",
+        "character_consistency_score": "94%"
+      }
+    caption: "System performance metrics"
 ---
 
-## Project Background
+## Project Overview
 
-Stellar Games Studio approached ARTIZAN with an ambitious vision: to create the first truly adaptive narrative RPG where stories evolve organically based on player behavior, choices, and emotional responses. The project, codenamed "Nexus," aimed to revolutionize interactive storytelling by moving beyond traditional branching narratives toward a system where stories emerge naturally from player interaction.
-
-The challenge was significant. Traditional RPG narratives require extensive pre-authoring of dialogue, plot branches, and character interactions. For a game with the scope that Stellar envisioned, this approach would require thousands of hours of writing and would still result in a finite set of possible story outcomes.
+Stellar Games Studio approached us with an ambitious vision: to create the first truly adaptive narrative RPG where stories evolve organically based on player behavior, choices, and emotional responses. The project aimed to revolutionize interactive storytelling by moving beyond traditional branching narratives toward a system where stories emerge naturally from player interaction.
 
 ## The Challenge
 

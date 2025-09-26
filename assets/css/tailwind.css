@@ -1,0 +1,635 @@
+/* STREET BAROQUE SYSTEMS - Limited Edition Poster Archive meets Radio Ops Room */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BASE LAYER - Aesthetic DNA Synthesis */
+@layer base {
+  :root {
+    /* Grid System - 24px gutters, 8px baseline */
+    --grid-base: 8px;
+    --grid-gutter: 24px;
+  }
+
+  body {
+    @apply bg-paper text-inkwell antialiased;
+    font-size: 16px;
+    line-height: calc(var(--grid-base) * 3); /* 24px baseline */
+    letter-spacing: -0.005em;
+  }
+
+  /* Paper texture - luxury finish */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.015;
+    background:
+      radial-gradient(circle at 25% 25%, rgba(0,0,0,0.01) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(0,0,0,0.01) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  /* Typography Hierarchy - Consistent Scale */
+  h1 {
+    @apply font-display font-bold;
+    font-size: 2.5rem; /* 40px */
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  h2 {
+    @apply font-display font-bold;
+    font-size: 2rem; /* 32px */
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply font-body font-bold;
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.3;
+  }
+
+  h4 {
+    @apply font-body font-semibold;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.4;
+  }
+
+  h5, h6 {
+    @apply font-body font-semibold;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+  }
+
+  p {
+    @apply leading-relaxed;
+    max-width: 65ch;
+  }
+}
+
+/* COMPONENTS - Poster Archive Meets Radio Ops */
+@layer components {
+  /* Container System */
+  .container-tight {
+    @apply max-w-[1400px] mx-auto;
+    padding-left: calc(var(--grid-gutter) * 2);
+    padding-right: calc(var(--grid-gutter) * 2);
+  }
+
+  /* Explicit text colors to ensure they work */
+  .text-paper {
+    color: #F5F1E6 !important;
+  }
+
+  .text-inkwell {
+    color: #0F0F10 !important;
+  }
+
+  /* Brutal shadow system for consistent button styling */
+  .shadow-brutal-hot {
+    box-shadow: 4px 4px 0 #FF0080;
+  }
+
+  .shadow-brutal-cyan {
+    box-shadow: 4px 4px 0 #00FFD4;
+  }
+
+  .shadow-brutal-mustard {
+    box-shadow: 4px 4px 0 #FFD400;
+  }
+
+  .shadow-brutal-teal {
+    box-shadow: 4px 4px 0 #00A896;
+  }
+
+  /* Standardized button classes */
+  .btn-primary {
+    @apply px-6 py-3 bg-hot-magenta text-paper font-bold uppercase tracking-wider hover:bg-spray-cyan hover:text-inkwell transition-all shadow-brutal-hot;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-inkwell text-inkwell font-bold uppercase tracking-wider hover:bg-inkwell hover:text-paper transition-all;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-spray-cyan text-inkwell font-bold uppercase tracking-wider hover:bg-hot-magenta hover:text-paper transition-all shadow-brutal-cyan;
+  }
+
+  /* Case Study Components */
+  .case-study-v2 {
+    @apply relative;
+  }
+
+  .case-study-v2[data-mode="proof"] {
+    @apply bg-graphite;
+  }
+
+  .section-title {
+    @apply font-display font-bold text-2xl mb-6 pl-4;
+    border-left: 3px solid var(--radio-mustard);
+  }
+
+  .content-section {
+    @apply mb-12;
+  }
+
+  .artifact-card {
+    @apply bg-paper p-4 border border-graphite/20 rounded-sm;
+  }
+
+  .artifact-code pre {
+    @apply bg-inkwell text-paper p-3 text-xs overflow-x-auto rounded-sm;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .result-card {
+    @apply relative overflow-hidden;
+  }
+
+  .result-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-spray-cyan;
+  }
+
+  /* KWLX Specific Styles */
+  .kwlx-hero {
+    @apply relative py-16 lg:py-24 overflow-hidden;
+    background: linear-gradient(135deg, rgba(255, 61, 154, 0.1), rgba(53, 208, 226, 0.1));
+  }
+
+  .kwlx-title {
+    @apply font-display font-black text-center;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    text-shadow: 2px 2px 0 var(--hot-magenta), 4px 4px 0 var(--spray-cyan);
+  }
+
+  .kwlx-title .frequency {
+    @apply block text-2xl font-mono text-radio-mustard mb-4;
+    letter-spacing: 0.2em;
+  }
+
+  .kwlx-title .tagline {
+    @apply block text-xl font-body font-semibold mt-4 text-graphite;
+    text-shadow: none;
+  }
+
+  .signal-static {
+    @apply absolute inset-0 opacity-5;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    animation: static-scroll 8s linear infinite;
+  }
+
+  @keyframes static-scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+  }
+
+  .glitch-border {
+    @apply relative border-4 border-inkwell p-6 shadow-brutal-double;
+  }
+
+  .kwlx-content section {
+    @apply mb-16;
+  }
+
+  .results-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .result-card.highlight {
+    @apply md:col-span-2 lg:col-span-3 bg-hot-magenta text-paper;
+  }
+
+  .reaction-quotes {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+  }
+
+  .reaction-quote {
+    @apply text-lg italic pl-4 border-l-4 border-spray-cyan;
+  }
+
+  .system-cards {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  }
+
+  .system-card {
+    @apply bg-paper-quiet p-6 border-2 border-inkwell;
+  }
+
+  .system-card h3 {
+    @apply font-bold text-xl mb-4 text-inkwell;
+  }
+
+  .system-card h3 .subtitle {
+    @apply block text-sm font-normal text-graphite mt-1;
+  }
+
+  .system-card ul {
+    @apply space-y-3 mb-6;
+  }
+
+  .system-card .outcome {
+    @apply pt-4 border-t-2 border-graphite/20 text-sm font-semibold;
+  }
+
+  .narrative-card {
+    @apply lg:col-span-2;
+    background: linear-gradient(to bottom right, rgba(255, 61, 154, 0.02), transparent);
+  }
+
+  .interactive-card {
+    @apply lg:col-span-2;
+    background: linear-gradient(to bottom right, rgba(53, 208, 226, 0.02), transparent);
+  }
+
+  .technical-card {
+    @apply lg:col-span-2;
+    background: linear-gradient(to bottom right, rgba(226, 172, 39, 0.02), transparent);
+  }
+
+  .matters-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  .matter-item {
+    @apply p-4 bg-paper border-l-4 border-radio-mustard;
+  }
+
+  .application-list {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+
+  .application-item {
+    @apply p-4 bg-inkwell text-paper;
+  }
+
+  .comeback-message {
+    @apply relative py-8 text-center;
+  }
+
+  .comeback-text {
+    @apply font-display font-black text-4xl text-hot-magenta;
+    animation: pulse 2s infinite;
+  }
+
+  .easter-egg-hint {
+    @apply inline-block mt-4 text-2xl cursor-pointer;
+    transition: transform 0.3s;
+  }
+
+  .easter-egg-hint:hover {
+    transform: rotate(15deg) scale(1.2);
+  }
+
+  /* REMOVED: Text utilities - use Tailwind classes directly
+     Instead of .text-body, use: text-lg leading-relaxed text-graphite
+     Instead of .text-body-large, use: text-xl leading-relaxed text-graphite font-medium
+     Instead of .text-emphasis, use: text-xl font-semibold text-inkwell leading-relaxed
+     Instead of .text-meta, use: font-mono text-sm uppercase tracking-wider text-graphite/60 */
+
+  /* Grid - Swiss Precision */
+  .grid-swiss {
+    @apply grid grid-cols-12 gap-gutter;
+  }
+
+  @media (max-width: 768px) {
+    .grid-swiss {
+      @apply gap-gutter-sm;
+    }
+  }
+
+  /* Hero Section - MAXIMUM IMPACT */
+  .hero-section {
+    @apply min-h-[90vh] py-24 relative overflow-hidden;
+    background:
+      linear-gradient(135deg, var(--paper) 0%, rgba(53, 208, 226, 0.08) 50%, rgba(255, 61, 154, 0.08) 100%),
+      linear-gradient(45deg, transparent 48%, rgba(226, 172, 39, 0.03) 50%, transparent 52%);
+    box-shadow:
+      inset 0 0 120px rgba(255, 61, 154, 0.08),
+      inset -40px 0 80px rgba(53, 208, 226, 0.05);
+  }
+
+  /* Architectural grid overlay */
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(42,44,46,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,44,46,0.025) 1px, transparent 1px);
+    background-size: var(--grid-gutter) var(--grid-gutter);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Headlines - Display Typography */
+  .headline-primary {
+    @apply relative z-10 mb-4;
+  }
+
+  .headline-primary span {
+    @apply block;
+  }
+
+  /* Accent System - Ink Blocks */
+  .accent-bar {
+    @apply inline-block;
+    height: 4px;
+    width: 48px;
+    background: var(--radio-mustard);
+    margin-bottom: 1rem;
+  }
+
+  /* Status Badge - Radio Ops */
+  .status-live {
+    @apply inline-flex items-center gap-2 px-3 py-1 bg-hot-magenta text-paper;
+    @apply font-mono text-[10px] font-medium uppercase tracking-wider;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .status-live::before {
+    content: '';
+    @apply w-2 h-2 bg-paper rounded-full;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Section System */
+  .section-tight {
+    padding-top: calc(var(--grid-base) * 8);
+    padding-bottom: calc(var(--grid-base) * 8);
+  }
+
+  /* Section Titles - SWISS IMPACT */
+  .section-title {
+    @apply text-4xl lg:text-5xl font-display font-black mb-10;
+    border-left: 12px solid var(--radio-mustard);
+    border-bottom: 4px solid var(--hot-magenta);
+    padding: 1rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, rgba(226, 172, 39, 0.1) 0%, transparent 50%);
+    box-shadow:
+      inset 0 0 0 2px var(--inkwell),
+      8px 8px 0 rgba(53, 208, 226, 0.2);
+    position: relative;
+  }
+
+  /* Card System - Using new brutalist utilities */
+  .card-brutal {
+    @apply bg-paper border-3 border-inkwell p-8 relative shadow-brutal-double transition-all;
+  }
+
+  .card-brutal:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow:
+      10px 10px 0 var(--hot-magenta),
+      20px 20px 0 var(--spray-cyan),
+      30px 30px 60px rgba(0,0,0,0.3);
+  }
+
+
+  /* Button System - Poster CTA */
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-inkwell text-paper;
+    @apply font-body text-sm font-medium uppercase tracking-wide;
+    @apply transition-all duration-200;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+  }
+
+  .btn-secondary {
+    @apply inline-block px-6 py-3 border-2 border-graphite;
+    @apply font-body text-sm font-medium uppercase tracking-wide;
+    @apply transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-graphite text-paper;
+  }
+
+  /* Color Blocks - VIVID BLEEDS */
+  .color-block {
+    @apply absolute pointer-events-none;
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+    filter: blur(40px);
+    z-index: 0;
+  }
+
+  .color-block.cyan {
+    background: var(--spray-cyan);
+  }
+
+  .color-block.magenta {
+    background: var(--hot-magenta);
+  }
+
+  .color-block.mustard {
+    background: var(--radio-mustard);
+  }
+
+  /* Tech Stack - Metadata */
+  .tech-stack {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .tech-tag {
+    @apply px-2 py-1 bg-graphite/10 text-graphite;
+    @apply font-mono text-[10px] uppercase;
+    border: 1px solid var(--graphite);
+  }
+
+  /* Navigation - Interface */
+  .nav-primary {
+    @apply flex items-center gap-8;
+  }
+
+  .nav-link {
+    @apply font-body text-sm font-medium uppercase tracking-wide;
+    @apply text-graphite hover:text-inkwell transition-colors;
+  }
+
+  .nav-link.active {
+    @apply text-inkwell;
+  }
+
+  /* Metrics - Radio Ops Data */
+  .metrics-grid {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-4 my-8;
+  }
+
+  .metric-block {
+    @apply text-center;
+  }
+
+  .metric-number {
+    @apply block text-3xl font-display font-bold;
+    line-height: 1;
+  }
+
+  .metric-label {
+    @apply block text-[10px] font-mono uppercase text-graphite mt-2;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* STREET BAROQUE GRID BREAKS & BRUTALIST ENHANCEMENTS */
+@layer utilities {
+  /* Grid Breaking Elements */
+  .col-break-5 { grid-column: span 5; }
+  .offset-pillar { transform: translateY(-8px); }
+  .bleed-right { margin-right: -24px; }
+
+  /* Brutalist Concrete Textures */
+  .section-divider {
+    position: relative;
+    height: 24px;
+    margin: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(42, 44, 46, 0.05) 0%,
+      transparent 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--graphite) 0px 8px,
+      transparent 8px 16px
+    );
+    opacity: 0.2;
+  }
+
+  /* Street Layer Overlays - BOLD GEOMETRY */
+  .street-layer {
+    position: absolute;
+    opacity: 0.2;
+    mix-blend-mode: screen;
+    clip-path: polygon(0 15%, 100% 0, 85% 100%, 0 85%);
+    filter: blur(1px);
+    z-index: 0;
+  }
+
+  .street-layer.cyan { background: var(--spray-cyan); }
+  .street-layer.magenta { background: var(--hot-magenta); }
+  .street-layer.mustard { background: var(--radio-mustard); }
+
+  /* Typography Weathering */
+  .text-shout {
+    font-family: Inter, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.85em;
+  }
+
+  .text-weathered {
+    filter: contrast(1.05) brightness(0.98);
+  }
+
+  /* Curator Notes */
+  .curator-note {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: rotate(90deg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--graphite);
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  /* Registration Marks */
+  .registration-mark {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 0.1;
+  }
+
+  .registration-mark::before,
+  .registration-mark::after {
+    content: '';
+    position: absolute;
+    background: var(--inkwell);
+  }
+
+  .registration-mark::before {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+  }
+
+  .registration-mark::after {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+  }
+
+/* TWO-MODE SYSTEM ARCHITECTURE */
+  /* Proof Mode - Clinical Reading */
+  .proof-mode body {
+    @apply bg-paper-quiet;
+  }
+
+  .proof-mode body::before {
+    opacity: 0.005;
+  }
+
+  .proof-mode .color-block {
+    opacity: 0.03;
+  }
+
+  .proof-mode .hero-section::after {
+    opacity: 0.5;
+  }
+
+  /* Text Treatment */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--spray-cyan), var(--hot-magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Focus States - Accessibility */
+  :focus-visible {
+    outline: 2px solid var(--hot-magenta);
+    outline-offset: 4px;
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

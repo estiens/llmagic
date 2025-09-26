@@ -1,12 +1,12 @@
 ---
-layout: case_study
+layout: case_study_v2
 title: "Shoddy Body"
-client: "Party Game Development"
+client: ""
 summary: "AI Game Master with Personality - Social chaos engine powered by multimodal AI commentary"
 date: 2024-03-10
-duration: "4 months"
 industry: "Interactive Gaming / Social Entertainment"
-technologies: ["GPT-4 Vision", "Voice Synthesis", "Real-time Image Analysis", "Social Dynamics AI", "Multi-Persona System"]
+project_type: "Party Game"
+tags: ["Web Mobile", "AI Hosts", "AI Roasts", "Betrayal", "Shame", "Fun"]
 series: "AI That Lives"
 series_order: 4
 ---
