@@ -13,7 +13,7 @@ layout: default
 
   <!-- Hero Section - Magazine Style -->
   <header class="cs-hero">
-    <div class="container-tight py-16 lg:py-24" style="position: relative; z-index: 10;">
+    <div class="container-tight py-16 lg:py-24 relative z-10">
       <div class="grid grid-cols-12 gap-8">
         <div class="col-span-12 lg:col-span-7">
           <!-- Category/Industry Tag -->
@@ -29,14 +29,14 @@ layout: default
           </h1>
 
           {% if page.subtitle %}
-          <p style="font-size: clamp(1.125rem, 2vw, 1.5rem); font-weight: 600; color: var(--color-hot-magenta); margin-bottom: 2rem; line-height: 1.3;">
+          <p class="cs-subtitle">
             {{ page.subtitle }}
           </p>
           {% endif %}
 
           <!-- Summary with Drop Cap -->
           {% if page.summary %}
-          <div style="color: rgba(245, 241, 230, 0.9); font-size: 1.125rem; line-height: 1.7; max-width: 65ch;">
+          <div class="cs-summary">
             <p class="cs-drop-cap cs-drop-cap-cyan">
               {{ page.summary }}
             </p>
@@ -59,20 +59,20 @@ layout: default
         <div class="col-span-12 lg:col-span-5">
           {% if page.hero_image %}
           <div class="visual shadow-cyan">
-            <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="w-full h-full object-cover">
+            <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high">
           </div>
           {% elsif page.hero_color %}
-          <div class="visual shadow-magenta" style="background: {{ page.hero_color }};">
+          <div class="visual shadow-magenta" style="--hero-bg: {{ page.hero_color }}; background: var(--hero-bg);">
             <div class="flex items-center justify-center h-full">
-              <span style="font-family: 'Fraunces', serif; font-weight: 900; font-size: 6rem; color: rgba(245, 241, 230, 0.15);">
+              <span class="cs-initial-letter" aria-hidden="true">
                 {{ page.title | slice: 0, 1 }}
               </span>
             </div>
           </div>
           {% else %}
-          <div class="visual shadow-mustard" style="background: linear-gradient(135deg, #35D0E2, #FF3D9A, #E2AC27);">
+          <div class="visual shadow-mustard bg-hero-gradient">
             <div class="flex items-center justify-center h-full">
-              <span style="font-family: 'Fraunces', serif; font-weight: 900; font-size: 6rem; color: rgba(245, 241, 230, 0.15);">
+              <span class="cs-initial-letter" aria-hidden="true">
                 {{ page.title | slice: 0, 1 }}
               </span>
             </div>
@@ -83,20 +83,13 @@ layout: default
     </div>
 
     <!-- Color Accent Blocks -->
-    <div class="cs-accent cyan" style="top: 10%; left: 5%; width: 100px; height: 100px; transform: rotate(15deg);"></div>
-    <div class="cs-accent magenta" style="bottom: 20%; right: 10%; width: 80px; height: 80px; transform: rotate(-20deg);"></div>
+    <div class="cs-accent cyan top-[10%] left-[5%] w-[100px] h-[100px] rotate-[15deg]" aria-hidden="true"></div>
+    <div class="cs-accent magenta bottom-[20%] right-[10%] w-[80px] h-[80px] -rotate-[20deg]" aria-hidden="true"></div>
   </header>
 
   <!-- Main Content Container - Magazine Style -->
-  <div style="background: var(--color-paper-quiet);">
-    <div class="container-tight" style="padding: 3rem 0;">
-
-      <!-- Section Marker -->
-      {% if page.challenge or page.solution %}
-      <div class="cs-section-counter">
-        01
-      </div>
-      {% endif %}
+  <div class="cs-content-bg">
+    <div class="container-tight cs-content-section">
 
       <!-- Challenge & Solution in Two Column -->
       {% if page.challenge or page.solution %}
@@ -106,7 +99,7 @@ layout: default
           <h2 class="cs-section-header">
             Challenge
           </h2>
-          <div style="font-size: 1.125rem; line-height: 1.7; color: var(--color-graphite);">
+          <div class="cs-body-text">
             {{ page.challenge | markdownify }}
           </div>
         </div>
@@ -117,7 +110,7 @@ layout: default
           <h2 class="cs-section-header">
             Solution
           </h2>
-          <div style="font-size: 1.125rem; line-height: 1.7; color: var(--color-graphite);">
+          <div class="cs-body-text">
             {{ page.solution | markdownify }}
           </div>
         </div>
@@ -137,30 +130,21 @@ layout: default
       </div>
       {% endif %}
 
-      <!-- Section Marker for Content -->
-      <div class="cs-section-counter">
-        02
-      </div>
-
       <!-- Main Content -->
-      <div class="case-study-body primary-content prose prose-lg max-w-none" style="margin-bottom: 4rem;">
+      <div class="case-study-body primary-content prose prose-lg max-w-none mb-16">
         {{ content }}
       </div>
 
       <!-- Results Section - Magazine Style -->
       {% if page.results %}
-      <div class="cs-section-counter">
-        03
-      </div>
-
-      <h2 class="cs-title" style="font-size: 2rem; margin-bottom: 2rem;">
+      <h2 class="text-4xl font-black mb-8 text-inkwell font-display uppercase">
         Results & Impact
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for result in page.results %}
         <div class="cs-result-card">
-          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+          <p class="text-sm leading-relaxed m-0 font-mono">
             {{ result }}
           </p>
         </div>
@@ -173,35 +157,35 @@ layout: default
 
   <!-- Artifacts Sidebar (Optional easter egg) -->
   {% if page.artifacts %}
-  <div id="proof-sidebar" style="display: none; background: var(--color-paper); border-top: 4px solid var(--color-spray-cyan); padding: 3rem 0;">
+  <div id="proof-sidebar" class="hidden cs-artifacts-sidebar">
     <div class="container-tight">
-      <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-graphite); border-bottom: 2px solid var(--color-inkwell); padding-bottom: 0.5rem; margin-bottom: 2rem;">
+      <h3 class="cs-artifacts-header">
         Artifacts & Proof
       </h3>
 
-      <div style="display: grid; grid-template-columns: repeat(1, 1fr); @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); } @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); } gap: 1.5rem;">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for artifact in page.artifacts %}
-        <div style="background: var(--color-paper); padding: 1.5rem; border: 2px solid rgba(42, 44, 46, 0.2); box-shadow: 2px 2px 0 var(--color-inkwell);">
+        <div class="cs-artifact-card">
           {% if artifact.type == "data" %}
-          <div style="font-size: 2.5rem; font-weight: 900; color: var(--color-hot-magenta); margin-bottom: 0.5rem;">
+          <div class="cs-artifact-value">
             {{ artifact.value }}
           </div>
           {% if artifact.unit %}
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: var(--color-graphite); margin-bottom: 0.5rem;">
+          <div class="cs-artifact-unit">
             {{ artifact.unit }}
           </div>
           {% endif %}
           {% if artifact.caption %}
-          <p style="font-size: 0.875rem; color: var(--color-graphite);">{{ artifact.caption }}</p>
+          <p class="cs-artifact-caption">{{ artifact.caption }}</p>
           {% endif %}
           {% endif %}
 
           {% if artifact.type == "quote" %}
-          <blockquote style="font-size: 1.125rem; font-style: italic; color: var(--color-graphite); border-left: 4px solid var(--color-radio-mustard); padding-left: 1rem; margin: 0;">
+          <blockquote class="cs-artifact-quote">
             "{{ artifact.content }}"
           </blockquote>
           {% if artifact.author %}
-          <cite style="display: block; margin-top: 0.5rem; font-size: 0.875rem; color: rgba(42, 44, 46, 0.6); font-style: normal;">
+          <cite class="cs-artifact-author">
             — {{ artifact.author }}
           </cite>
           {% endif %}

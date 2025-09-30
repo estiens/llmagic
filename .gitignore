@@ -14,6 +14,9 @@ yarn-error.log*
 assets/css/main.css
 assets/css/main.css.map
 
+# Playwright MCP
+.playwright-mcp/
+
 # OS Files
 .DS_Store
 Thumbs.db

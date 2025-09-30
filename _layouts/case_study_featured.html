@@ -2,8 +2,6 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="/assets/css/kwlx-enhanced.css">
-
 <!-- PAGE FOLIO MARKER -->
 <div class="page-folio">
   <span>{{ page.title | truncate: 20, "" }}</span>
@@ -12,11 +10,11 @@ layout: default
 </div>
 
 <!-- NAVIGATION INDICATORS -->
-<nav class="nav-indicator">
-  <a href="#hero" class="nav-dot active"></a>
-  <a href="#challenge" class="nav-dot"></a>
-  <a href="#content" class="nav-dot"></a>
-  <a href="#results" class="nav-dot"></a>
+<nav class="nav-indicator" aria-label="Section navigation">
+  <a href="#hero" class="nav-dot active" aria-label="Hero section" aria-current="true"></a>
+  <a href="#challenge" class="nav-dot" aria-label="Challenge section"></a>
+  <a href="#content" class="nav-dot" aria-label="Content section"></a>
+  <a href="#results" class="nav-dot" aria-label="Results section"></a>
 </nav>
 
 <!-- HERO COLLAGE SECTION -->
@@ -40,7 +38,7 @@ layout: default
 
     <div class="hero-image-2">
       {% if page.hero_image %}
-      <img src="{{ page.hero_image }}" alt="{{ page.title }}">
+      <img src="{{ page.hero_image }}" alt="{{ page.title }}" loading="eager" decoding="async" fetchpriority="high">
       {% endif %}
     </div>
 
@@ -65,7 +63,7 @@ layout: default
     <!-- Subtitle Statement -->
     <div class="hero-subtitle">
       {% if page.subtitle %}
-      <h2 class="display-medium" style="color: var(--color-hot-magenta);">
+      <h2 class="display-medium text-hot-magenta">
         {{ page.subtitle }}
       </h2>
       {% endif %}
@@ -88,8 +86,8 @@ layout: default
   </div>
 
   <!-- Color Accent Blocks -->
-  <div class="color-accent-block accent-cyan"></div>
-  <div class="color-accent-block accent-magenta"></div>
+  <div class="color-accent-block accent-cyan" aria-hidden="true"></div>
+  <div class="color-accent-block accent-magenta" aria-hidden="true"></div>
 </section>
 
 <!-- MAGAZINE CONTAINER -->
@@ -113,7 +111,7 @@ layout: default
     {% endif %}
 
     {% if page.solution %}
-    <h2 class="statement-text" style="margin-top: 3rem;">
+    <h2 class="statement-text mt-12">
       Solution
     </h2>
 
@@ -158,7 +156,7 @@ layout: default
     </h2>
   </section>
 
-  <div class="results-grid">
+  <div class="cs-results-grid">
     <div class="results-list">
       <ul class="body-standard">
         {% for result in page.results %}
