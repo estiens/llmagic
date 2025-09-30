@@ -1,61 +1,61 @@
-<footer class="bg-graphite text-paper py-8">
+<footer class="bg-graphite text-paper section-tight">
   <div class="container-tight">
-    <!-- Force 4 columns on anything bigger than mobile -->
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+    <!-- Responsive grid: 1 col mobile, auto-fit 2-4 cols on larger screens -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div>
-        <div class="accent-bar mb-3" style="background: var(--spray-cyan); width: 24px; height: 3px;"></div>
-        <h3 class="font-display font-bold text-lg mb-2">LOW LEVEL MAGIC</h3>
-        <p class="text-paper/70 text-sm">
+        <div class="accent-bar spacing-compact bg-spray-cyan w-6 h-[3px]"></div>
+        <h3 class="font-display font-bold text-body-lg spacing-compact">LOW LEVEL MAGIC</h3>
+        <p class="text-paper/70 text-body-sm">
           AI Development Studio
         </p>
       </div>
 
       <div>
-        <h4 class="font-mono text-xs uppercase tracking-wider text-spray-cyan mb-3">Work</h4>
+        <h4 class="font-mono text-technical-base uppercase tracking-wider text-spray-cyan spacing-compact">Work</h4>
         <ul class="space-y-1">
-          <li><a href="{{ '/case-studies/' | relative_url }}" class="text-paper/70 hover:text-paper text-sm transition-colors">Case Studies</a></li>
-          <li><a href="{{ '/practices/' | relative_url }}" class="text-paper/70 hover:text-paper text-sm transition-colors">Practices</a></li>
-          <li><a href="{{ '/labs/' | relative_url }}" class="text-paper/70 hover:text-paper text-sm transition-colors">Labs</a></li>
+          <li><a href="{{ '/case-studies/' | relative_url }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Case Studies</a></li>
+          <li><a href="{{ '/practices/' | relative_url }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Practices</a></li>
+          <li><a href="{{ '/labs/' | relative_url }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Labs</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-mono text-xs uppercase tracking-wider text-hot-magenta mb-3">Connect</h4>
+        <h4 class="font-mono text-technical-base uppercase tracking-wider text-hot-magenta spacing-compact">Connect</h4>
         <ul class="space-y-1">
-          <li><a href="mailto:{{ site.email }}" class="text-paper/70 hover:text-paper text-sm transition-colors">Email</a></li>
+          <li><a href="mailto:{{ site.email }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Email</a></li>
           {% if site.social.github %}
-            <li><a href="https://github.com/{{ site.social.github }}" class="text-paper/70 hover:text-paper text-sm transition-colors">GitHub</a></li>
+            <li><a href="https://github.com/{{ site.social.github }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">GitHub</a></li>
           {% endif %}
           {% if site.social.linkedin %}
-            <li><a href="https://linkedin.com/company/{{ site.social.linkedin }}" class="text-paper/70 hover:text-paper text-sm transition-colors">LinkedIn</a></li>
+            <li><a href="https://linkedin.com/company/{{ site.social.linkedin }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">LinkedIn</a></li>
           {% endif %}
         </ul>
       </div>
 
       <div>
-        <h4 class="font-mono text-xs uppercase tracking-wider text-radio-mustard mb-3">Resources</h4>
+        <h4 class="font-mono text-technical-base uppercase tracking-wider text-radio-mustard spacing-compact">Resources</h4>
         <ul class="space-y-1">
-          <li><a href="{{ '/stylebook' | relative_url }}" class="text-paper/70 hover:text-paper text-sm transition-colors">Stylebook</a></li>
-          <li><a href="#contact" class="text-paper/70 hover:text-paper text-sm transition-colors">Contact</a></li>
-          <li><a href="{{ '/about/' | relative_url }}" class="text-paper/70 hover:text-paper text-sm transition-colors">About</a></li>
+          <li><a href="{{ '/stylebook' | relative_url }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Stylebook</a></li>
+          <li><a href="#contact" class="text-paper/70 hover:text-paper text-body-sm transition-colors">Contact</a></li>
+          <li><a href="{{ '/about/' | relative_url }}" class="text-paper/70 hover:text-paper text-body-sm transition-colors">About</a></li>
         </ul>
       </div>
     </div>
 
     <!-- Color calibration bar -->
     <div class="flex h-2 mt-8 mb-6">
-      <div class="flex-1" style="background: var(--spray-cyan);"></div>
-      <div class="flex-1" style="background: var(--hot-magenta);"></div>
-      <div class="flex-1" style="background: var(--radio-mustard);"></div>
-      <div class="flex-1" style="background: var(--oxide-teal);"></div>
-      <div class="flex-1" style="background: var(--inkwell);"></div>
+      <div class="flex-1 bg-spray-cyan"></div>
+      <div class="flex-1 bg-hot-magenta"></div>
+      <div class="flex-1 bg-radio-mustard"></div>
+      <div class="flex-1 bg-oxide-teal"></div>
+      <div class="flex-1 bg-inkwell"></div>
     </div>
 
     <div class="border-t border-paper/20 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <p class="text-paper/60 text-xs font-mono">
+      <p class="text-paper/60 text-technical-base font-mono">
         &copy; {{ 'now' | date: "%Y" }} LOW LEVEL MAGIC.
       </p>
-      <a href="mailto:{{ site.email }}" class="text-paper/60 hover:text-spray-cyan font-mono text-xs transition-colors">
+      <a href="mailto:{{ site.email }}" class="text-paper/60 hover:text-spray-cyan font-mono text-technical-base transition-colors">
         {{ site.email }}
       </a>
     </div>

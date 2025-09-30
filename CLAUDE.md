@@ -2,38 +2,24 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Common Commands
+## CRITICAL: Development Environment
 
-### Development
+**DO NOT RUN THESE COMMANDS - SITE IS ALWAYS RUNNING:**
+- DO NOT run `bundle exec jekyll serve` - Jekyll is already running
+- DO NOT run `npm run css:watch` - CSS auto-builds on file changes
+- DO NOT run `npm run build` or CSS build commands
+
+**Site is always available at:** http://localhost:4001
+
+Jekyll and Tailwind CSS are configured to auto-rebuild on file changes. Simply edit files and refresh the browser.
+
+### Initial Setup Only (if needed)
 ```bash
-# Install Ruby dependencies
+# Install Ruby dependencies (only if missing)
 bundle install
 
-# Install Node dependencies (required for Tailwind CSS)
+# Install Node dependencies (only if missing)
 npm install
-
-# Development with auto-reload CSS and Jekyll
-npm run start  # Runs both CSS watch and Jekyll serve
-
-# Or run separately:
-npm run css:watch  # Watch and rebuild Tailwind CSS
-bundle exec jekyll serve  # In another terminal
-
-# IMPORTANT: Jekyll ALWAYS runs on port 4001
-# Site is available at http://localhost:4001
-
-# Build for production
-npm run build  # Builds minified CSS
-bundle exec jekyll build  # Builds Jekyll site
-```
-
-### CSS Development
-```bash
-# Watch mode for Tailwind CSS changes
-npm run css:watch
-
-# Build minified CSS for production
-npm run css:build
 ```
 
 ### Testing

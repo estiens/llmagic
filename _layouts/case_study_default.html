@@ -59,7 +59,7 @@ layout: default
         <div class="col-span-12 lg:col-span-5">
           {% if page.hero_image %}
           <div class="visual shadow-cyan">
-            <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high">
+            <img src="{{ page.hero_image | relative_url }}" alt="{{ page.title }}" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high">
           </div>
           {% elsif page.hero_color %}
           <div class="visual shadow-magenta" style="--hero-bg: {{ page.hero_color }}; background: var(--hero-bg);">
@@ -137,14 +137,14 @@ layout: default
 
       <!-- Results Section - Magazine Style -->
       {% if page.results %}
-      <h2 class="text-4xl font-black mb-8 text-inkwell font-display uppercase">
+      <h2 class="cs-section-header">
         Results & Impact
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for result in page.results %}
         <div class="cs-result-card">
-          <p class="text-sm leading-relaxed m-0 font-mono">
+          <p class="body-large">
             {{ result }}
           </p>
         </div>

@@ -3,7 +3,7 @@ layout: default
 ---
 
 <article class="page relative overflow-hidden">
-  <header class="page-header py-16 lg:py-20 relative {% if page.header_style == 'dark' %}bg-inkwell{% else %}bg-paper{% endif %}">
+  <header class="page-header section-comfortable relative {% if page.header_style == 'dark' %}bg-inkwell{% else %}bg-paper{% endif %}">
     {% if page.header_style == 'dark' %}
     <!-- Decorative elements for dark header -->
     <div class="absolute inset-0 opacity-5 bg-diagonal-stripes-cyan"></div>
@@ -12,14 +12,14 @@ layout: default
     {% endif %}
 
     <div class="container-tight relative z-10">
-      <h1 class="page-title font-display font-black text-headline-responsive mb-6 {% if page.header_style == 'dark' %}text-paper{% else %}text-inkwell{% endif %}">{{ page.title | escape }}</h1>
+      <h1 class="page-title font-display font-black text-display-large spacing-standard {% if page.header_style == 'dark' %}text-paper{% else %}text-inkwell{% endif %}">{{ page.title | escape }}</h1>
       {% if page.description %}
-        <p class="page-description text-xl {% if page.header_style == 'dark' %}text-paper/80{% else %}text-graphite{% endif %}">{{ page.description }}</p>
+        <p class="page-description text-body-xl {% if page.header_style == 'dark' %}text-paper/80{% else %}text-graphite{% endif %}">{{ page.description }}</p>
       {% endif %}
     </div>
   </header>
 
-  <div class="page-content bg-paper-quiet py-12">
+  <div class="page-content bg-paper-quiet section-tight">
     <div class="container-tight">
       <div class="primary-content prose prose-lg max-w-none">
         {{ content }}
