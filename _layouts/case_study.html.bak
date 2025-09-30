@@ -1,0 +1,206 @@
+---
+layout: default
+---
+
+<article class="case-study relative overflow-hidden" data-mode="{{ page.mode | default: 'poster' }}">
+  <!-- Decorative Accent Blocks -->
+  {% if page.accent_blocks %}
+    {% for block in page.accent_blocks %}
+      <div class="cs-color-accent-block cs-color-accent-block--{{ block.color }} absolute opacity-10"
+           style="top: {{ block.top }}; left: {{ block.left }};">
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Mode Toggle Controls - Temporarily disabled -->
+  <!-- {% include case-study/mode-toggle.html %} -->
+
+  <!-- Dynamic Hero Section -->
+  <header class="case-study-header">
+    <div class="container">
+      {% if page.mode == 'proof' %}
+        {% include case-study/proof-hero.html %}
+      {% else %}
+        {% include case-study/poster-hero.html %}
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.hero_image %}
+  <div class="case-study-hero">
+    <div class="container">
+      <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="hero-image">
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Main Content with Enhanced Styling -->
+  <div class="case-study-main">
+    <div class="content-blocks container mx-auto px-8" data-mode="{{ page.mode | default: 'poster' }}">
+      <div class="primary-content prose max-w-none">
+        {{ content }}
+      </div>
+    </div>
+
+    <!-- Artifact Sidebar -->
+    {% if page.artifacts and page.artifacts.size > 0 %}
+      {% include case-study/artifact-sidebar.html %}
+    {% endif %}
+  </div>
+
+  <!-- KWLX Easter Egg Script -->
+  {% if page.class contains 'kwlx-feature' %}
+  <script src="{{ '/assets/js/kwlx-easter-egg.js' | relative_url }}"></script>
+  {% endif %}
+
+  <!-- Mode Switching Script - Temporarily disabled -->
+  <!-- <script src="{{ '/assets/js/mode-toggle.js' | relative_url }}"></script> -->
+
+  {% if page.results or page.technologies or page.team %}
+  <footer class="case-study-footer">
+    <div class="container mx-auto px-8">
+      {% if page.results %}
+        <div class="case-study-results my-16">
+          <h2 class="cs-section-header">Results & Impact</h2>
+          <ul class="results-list grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for result in page.results %}
+              <li class="result-item">{{ result }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      
+      <div class="case-study-details">
+        {% if page.technologies %}
+          <div class="case-study-technologies">
+            <h4>Technologies</h4>
+            <ul class="tech-list">
+              {% for tech in page.technologies %}
+                <li class="tech-item">{{ tech }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        
+        {% if page.team %}
+          <div class="case-study-team">
+            <h4>Team</h4>
+            <ul class="team-list">
+              {% for member in page.team %}
+                <li class="team-member">{{ member }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+      
+      {% if page.related_case_studies %}
+        <div class="related-case-studies">
+          <h3>Related Case Studies</h3>
+          <div class="case-studies-grid">
+            {% for case_study_slug in page.related_case_studies %}
+              {% assign case_study = site.case_studies | where: "slug", case_study_slug | first %}
+              {% if case_study %}
+                <div class="case-study-card">
+                  <h4><a href="{{ case_study.url }}">{{ case_study.title }}</a></h4>
+                  {% if case_study.client %}
+                    <p class="card-client">{{ case_study.client }}</p>
+                  {% endif %}
+                  <p>{{ case_study.excerpt | strip_html | truncate: 100 }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </footer>
+  {% endif %}
+
+  <!-- Case Study Enhancement Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.primary-content');
+      if (!content) return;
+
+      // Apply drop caps to first paragraph if enabled
+      {% if page.enable_drop_caps != false %}
+        const firstP = content.querySelector('p:first-of-type');
+        if (firstP && firstP.textContent.length > 50) {
+          firstP.classList.add('cs-drop-cap');
+        }
+      {% endif %}
+
+      // Enhance all h2 headers with magazine-style
+      content.querySelectorAll('h2').forEach(h2 => {
+        if (!h2.classList.contains('cs-section-header')) {
+          h2.classList.add('cs-section-header');
+        }
+      });
+
+      // Transform blockquotes into styled pullquotes
+      {% if page.enhance_quotes != false %}
+        content.querySelectorAll('blockquote').forEach(quote => {
+          if (!quote.classList.contains('cs-pullquote')) {
+            quote.classList.add('cs-pullquote');
+          }
+        });
+      {% endif %}
+
+      // Apply stat card styling to results
+      const resultsList = document.querySelector('.results-list');
+      if (resultsList) {
+        resultsList.querySelectorAll('li').forEach(li => {
+          if (!li.classList.contains('cs-stat-card')) {
+            li.classList.add('cs-stat-card');
+          }
+        });
+      }
+
+      // Handle image captions - look for images followed by emphasized text
+      content.querySelectorAll('p').forEach(p => {
+        const potentialCaption = p.querySelector('em.image-caption');
+
+        // Check if this paragraph contains only the caption
+        if (potentialCaption && p.textContent.trim() === potentialCaption.textContent.trim()) {
+          const imageParagraph = p.previousElementSibling;
+
+          // Check if previous sibling is a paragraph containing only an image
+          if (imageParagraph && imageParagraph.tagName === 'P' &&
+              imageParagraph.children.length === 1 &&
+              imageParagraph.firstElementChild.tagName === 'IMG') {
+
+            const img = imageParagraph.firstElementChild;
+
+            // Create figure element
+            const figure = document.createElement('figure');
+            figure.className = 'cs-image-figure';
+
+            // Create figcaption
+            const figcaption = document.createElement('figcaption');
+            figcaption.className = 'cs-floating-caption';
+            figcaption.textContent = potentialCaption.textContent;
+
+            // Assemble the figure
+            figure.appendChild(img.cloneNode(true));
+            figure.appendChild(figcaption);
+
+            // Replace original image paragraph
+            imageParagraph.parentNode.replaceChild(figure, imageParagraph);
+
+            // Remove the caption paragraph
+            p.remove();
+          }
+        }
+      });
+
+      // Add technical labels to metadata sections
+      const metadataElements = content.querySelectorAll('.metadata, .meta, .info');
+      metadataElements.forEach(el => {
+        if (!el.classList.contains('cs-technical-label')) {
+          el.classList.add('cs-technical-label');
+        }
+      });
+    });
+  </script>
+</article>

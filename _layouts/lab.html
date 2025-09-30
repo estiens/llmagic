@@ -2,74 +2,90 @@
 layout: default
 ---
 
-<article class="lab">
-  <header class="lab-header">
-    <div class="container">
-      <h1 class="lab-title">{{ page.title | escape }}</h1>
-      {% if page.description %}
-        <p class="lab-description">{{ page.description }}</p>
-      {% endif %}
-      <div class="lab-meta">
-        {% if page.date %}
-          <time datetime="{{ page.date | date_to_xmlschema }}">
-            Started {{ page.date | date: "%B %Y" }}
-          </time>
-        {% endif %}
-        {% if page.status %}
-          <span class="lab-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
-        {% endif %}
-        {% if page.team %}
-          <span class="lab-team">Team: {{ page.team | join: ", " }}</span>
-        {% endif %}
+<article class="lab relative overflow-hidden">
+  <header class="lab-header bg-paper py-16 lg:py-20">
+    <div class="container-tight">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8">
+          <h1 class="lab-title font-display font-black text-headline-responsive mb-6 text-inkwell">{{ page.title | escape }}</h1>
+          {% if page.description %}
+            <p class="lab-description text-xl text-graphite mb-8">{{ page.description }}</p>
+          {% endif %}
+          <div class="lab-meta flex flex-wrap gap-4 font-mono text-sm">
+            {% if page.date %}
+              <time datetime="{{ page.date | date_to_xmlschema }}" class="text-graphite">
+                Started {{ page.date | date: "%B %Y" }}
+              </time>
+            {% endif %}
+            {% if page.status %}
+              <span class="lab-status px-3 py-1 bg-spray-cyan text-inkwell font-bold uppercase">{{ page.status | capitalize }}</span>
+            {% endif %}
+            {% if page.team %}
+              <span class="lab-team text-graphite">Team: {{ page.team | join: ", " }}</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Space for optional hero image or graphic -->
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="lab-content">
-    <div class="container">
-      {{ content }}
+  <div class="lab-content bg-paper-quiet py-12">
+    <div class="container-tight">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8">
+          <div class="primary-content prose prose-lg max-w-none">
+            {{ content }}
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Space for sidebar content if needed -->
+        </div>
+      </div>
     </div>
   </div>
 
   {% if page.technologies or page.github_url or page.demo_url %}
-  <footer class="lab-footer">
-    <div class="container">
+  <footer class="lab-footer bg-paper py-12 border-t-2 border-inkwell">
+    <div class="container-tight">
       {% if page.technologies %}
-        <div class="lab-technologies">
-          <h3>Technologies Used</h3>
-          <ul class="tech-list">
+        <div class="lab-technologies mb-8">
+          <h3 class="cs-section-header">Technologies Used</h3>
+          <div class="flex flex-wrap gap-2">
             {% for tech in page.technologies %}
-              <li class="tech-item">{{ tech }}</li>
+              <span class="px-3 py-1 bg-inkwell text-paper font-mono text-sm">{{ tech }}</span>
             {% endfor %}
-          </ul>
+          </div>
         </div>
       {% endif %}
-      
-      <div class="lab-links">
+
+      <div class="lab-links flex gap-4 mb-8">
         {% if page.github_url %}
-          <a href="{{ page.github_url }}" class="lab-link github-link" target="_blank">
+          <a href="{{ page.github_url }}" class="inline-block px-6 py-3 bg-inkwell text-paper font-bold uppercase hover:bg-hot-magenta transition-all" target="_blank">
             View on GitHub
           </a>
         {% endif %}
         {% if page.demo_url %}
-          <a href="{{ page.demo_url }}" class="lab-link demo-link" target="_blank">
+          <a href="{{ page.demo_url }}" class="inline-block px-6 py-3 border-2 border-inkwell text-inkwell font-bold uppercase hover:bg-spray-cyan hover:border-spray-cyan transition-all" target="_blank">
             Live Demo
           </a>
         {% endif %}
       </div>
-      
+
       {% if page.related_labs %}
         <div class="related-labs">
-          <h3>Related Lab Projects</h3>
-          <div class="labs-grid">
+          <h3 class="font-display font-bold text-2xl mb-6">Related Lab Projects</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {% for lab_slug in page.related_labs %}
               {% assign lab = site.labs | where: "slug", lab_slug | first %}
               {% if lab %}
-                <div class="lab-card">
-                  <h4><a href="{{ lab.url }}">{{ lab.title }}</a></h4>
-                  <p>{{ lab.excerpt | strip_html | truncate: 100 }}</p>
+                <div class="bg-paper-quiet p-6 border-2 border-inkwell hover:shadow-brutalist transition-all">
+                  <h4 class="font-bold text-lg mb-2"><a href="{{ lab.url }}" class="text-inkwell hover:text-hot-magenta">{{ lab.title }}</a></h4>
+                  <p class="text-sm text-graphite mb-2">{{ lab.excerpt | strip_html | truncate: 100 }}</p>
                   {% if lab.status %}
-                    <span class="card-status status-{{ lab.status }}">{{ lab.status }}</span>
+                    <span class="inline-block px-2 py-1 bg-spray-cyan text-inkwell font-mono text-xs uppercase">{{ lab.status }}</span>
                   {% endif %}
                 </div>
               {% endif %}
@@ -80,4 +96,5 @@ layout: default
     </div>
   </footer>
   {% endif %}
+
 </article>

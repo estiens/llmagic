@@ -3,16 +3,17 @@ layout: page
 title: "Emerging Practices"
 description: "Exploring the cutting edge of AI-driven creativity and interactive design"
 permalink: /practices/
+header_style: dark
 ---
 
 <div class="practices-listing">
   <div class="practices-intro">
-    <p>Our emerging practices represent the forefront of AI-driven creativity and interactive design. These evolving methodologies combine technical innovation with creative vision to push the boundaries of what's possible in character development, narrative design, and interactive media.</p>
+    <p class="lead">Our emerging practices represent the forefront of AI-driven creativity and interactive design. These evolving methodologies combine technical innovation with creative vision to push the boundaries of what's possible in character development, narrative design, and interactive media.</p>
   </div>
 
-  <div class="practices-grid">
+  <div class="practices-grid space-y-12">
     {% for practice in site.practices %}
-      <article class="practice-card">
+      <article class="practice-card bg-paper p-8 border-2 border-graphite/20">
         <header class="practice-card-header">
           <h2><a href="{{ practice.url }}">{{ practice.title }}</a></h2>
           {% if practice.subtitle %}

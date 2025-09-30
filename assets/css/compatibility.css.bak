@@ -1,0 +1,195 @@
+/* Temporary compatibility layer for old classes during migration */
+/* This maps old custom classes to Tailwind utilities */
+
+/* Hero Section */
+.hero-section {
+  @apply min-h-[35vh] py-1 relative overflow-hidden bg-paper;
+}
+
+.hero-container {
+  @apply max-w-container mx-auto px-6 min-h-[30vh] flex flex-col justify-center items-center text-center;
+}
+
+.hero-headline h1 {
+  @apply text-hero font-extrabold leading-[0.95] -tracking-wider mb-1;
+}
+
+.subtitle {
+  @apply text-base lg:text-lg text-graphite font-normal max-w-[60ch] mx-auto;
+}
+
+.lead {
+  @apply text-lg font-medium leading-relaxed;
+}
+
+/* Buttons */
+.cta-button {
+  @apply inline-block px-6 py-2 font-body text-sm font-semibold uppercase tracking-wider
+         border border-ink bg-radio-mustard text-ink cursor-pointer transition-all duration-150
+         rounded-sm hover:bg-ink hover:text-paper hover:border-ink hover:-translate-y-0.5
+         hover:shadow-lg active:translate-y-0 active:shadow-sm no-underline;
+}
+
+.secondary-button {
+  @apply inline-block px-6 py-2 font-body text-sm font-semibold uppercase tracking-wider
+         border border-graphite bg-transparent text-ink cursor-pointer transition-all duration-150
+         rounded-sm hover:bg-graphite hover:text-paper hover:border-graphite hover:-translate-y-0.5
+         no-underline;
+}
+
+/* Container */
+.container {
+  @apply max-w-container mx-auto px-6;
+}
+
+/* Sections */
+.portfolio-section,
+.about-section,
+.work-section,
+.contact-section {
+  @apply py-4 lg:py-8 bg-paper relative;
+}
+
+.contact-section {
+  @apply bg-ink text-paper;
+}
+
+/* Section Title */
+.section-title {
+  @apply text-section font-bold pl-4 border-l-[3px] border-radio-mustard relative mb-6;
+}
+
+/* Case Studies */
+.case-studies-showcase {
+  @apply grid grid-cols-1 gap-6 my-6;
+}
+
+.case-study-feature {
+  @apply grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-4 p-4 border-2 border-graphite
+         bg-paper shadow-brutalist transition-all duration-300
+         hover:-translate-y-0.5 hover:shadow-brutalist-hover hover:border-spray-cyan;
+}
+
+.case-study-image-large {
+  @apply h-[200px] bg-gradient-to-br from-spray-cyan to-oxide-teal flex items-center justify-center relative overflow-hidden;
+}
+
+.industry-label {
+  @apply text-paper font-mono text-base font-bold uppercase tracking-wider drop-shadow-lg;
+}
+
+.case-study-details {
+  @apply flex flex-col justify-center;
+}
+
+.case-study-details h3 {
+  @apply font-display text-3xl mb-1;
+}
+
+.case-study-details h3 a {
+  @apply text-ink no-underline hover:text-radio-mustard;
+}
+
+.client {
+  @apply font-mono text-sm text-spray-cyan uppercase mb-2;
+}
+
+.summary {
+  @apply text-graphite mb-2 leading-relaxed;
+}
+
+.case-study-metrics {
+  @apply flex gap-1 flex-wrap;
+}
+
+.metric-item,
+.tech-tag {
+  @apply bg-radio-mustard text-ink px-2 py-0.5 font-mono text-xs uppercase tracking-wider;
+}
+
+/* About Section */
+.about-content {
+  @apply max-w-[800px] mx-auto;
+}
+
+.about-label {
+  @apply font-mono font-extrabold uppercase tracking-wider text-sm text-graphite border-l-4 border-radio-mustard pl-2 mb-4;
+}
+
+.about-text {
+  @apply space-y-2;
+}
+
+/* Capability Chips */
+.capability-chips {
+  @apply flex flex-wrap gap-1 my-4;
+}
+
+.chip {
+  @apply border border-dashed border-graphite px-3 py-1 font-mono text-xs uppercase tracking-wider text-ink hover:bg-radio-mustard hover:border-radio-mustard transition-all duration-150;
+}
+
+/* Work Modes */
+.work-modes-list {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 my-4;
+}
+
+.work-mode-item h3 {
+  @apply font-body text-base font-bold uppercase text-ink mb-1 tracking-wide;
+}
+
+.work-mode-item p {
+  @apply text-sm text-graphite leading-relaxed;
+}
+
+/* Footer links */
+.portfolio-footer {
+  @apply flex gap-4 justify-center mt-4 pt-4 border-t border-graphite flex-col md:flex-row;
+}
+
+.tech-link {
+  @apply font-mono text-sm text-ink hover:text-hot-magenta no-underline;
+}
+
+/* Contact */
+.contact-content {
+  @apply max-w-[800px] mx-auto text-center;
+}
+
+.hero-actions {
+  @apply flex gap-2 items-center justify-center mt-4 flex-col md:flex-row;
+}
+
+/* Work Details */
+.work-details {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 pt-4 border-t border-graphite;
+}
+
+.compact-list {
+  @apply list-none p-0 font-mono text-sm space-y-1;
+}
+
+.compact-list li {
+  @apply text-graphite;
+}
+
+.compact-list strong {
+  @apply text-ink;
+}
+
+/* Instructions */
+.contact-instructions {
+  @apply mt-6 pt-6 border-t border-graphite;
+}
+
+.contact-instructions h3 {
+  @apply font-mono text-base uppercase text-spray-cyan mb-2;
+}
+
+.contact-instructions ul {
+  @apply list-none p-0 font-mono text-sm space-y-1 text-left max-w-[500px] mx-auto;
+}
+
+.contact-instructions li {
+  @apply text-paper/80 before:content-['→_'] before:text-spray-cyan;
+}

@@ -1,4 +1,4 @@
-// ARTIZAN - Alpine.js Components
+// lowlevelmagic - Alpine.js Components
 // Street Baroque Systems with Alpine.js
 
 // Initialize Alpine components before Alpine starts
@@ -17,38 +17,22 @@ document.addEventListener('alpine:init', () => {
 
       // Add scroll listener
       window.addEventListener('scroll', () => this.handleScroll());
-
-      // Set active navigation
-      this.setActiveNav();
     },
 
     handleScroll() {
       const currentScroll = window.pageYOffset;
 
-      // Add scrolled class
-      this.scrolled = currentScroll > 100;
+      // Add scrolled class - triggers at 50px to hide top bar sooner
+      this.scrolled = currentScroll > 50;
 
-      // Hide/show header on scroll
-      if (currentScroll > this.lastScroll && currentScroll > 300) {
-        this.hidden = true;
-      } else {
-        this.hidden = false;
-      }
+      // Keep header visible (sticky) - no hiding
+      this.hidden = false;
 
       this.lastScroll = currentScroll;
     },
 
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen;
-    },
-
-    setActiveNav() {
-      const currentPath = window.location.pathname;
-      document.querySelectorAll('.site-nav .page-link').forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-          link.classList.add('active');
-        }
-      });
     }
   }));
 
@@ -116,17 +100,20 @@ document.addEventListener('alpine:init', () => {
       // Handle anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
-          e.preventDefault();
           const targetId = anchor.getAttribute('href');
-          if (targetId === '#') return;
+          if (!targetId || targetId === '#') return;
 
           const target = document.querySelector(targetId);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
+          if (!target) return;
+
+          e.preventDefault();
+          target.setAttribute('tabindex', '-1');
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          target.focus({ preventScroll: true });
+          history.pushState(null, '', targetId);
         });
       });
     }
@@ -203,30 +190,6 @@ document.addEventListener('alpine:init', () => {
 
   // Case Study Mode Component - REMOVED
   // Poster/Proof mode toggle removed - functionality available as easter egg
-
-  // Artifact Sidebar Component (for case studies)
-  Alpine.data('artifactSidebar', () => ({
-    open: false,
-    artifacts: [],
-
-    init() {
-      // Load artifacts from data attributes or API
-      this.loadArtifacts();
-    },
-
-    toggle() {
-      this.open = !this.open;
-    },
-
-    loadArtifacts() {
-      // This would typically load from Jekyll front matter or API
-      this.artifacts = [
-        { type: 'sketch', title: 'Initial Wireframe', date: '2024-01-15' },
-        { type: 'prototype', title: 'Interactive Prototype', date: '2024-01-20' },
-        { type: 'documentation', title: 'Technical Spec', date: '2024-01-25' }
-      ];
-    }
-  }));
 });
 
 // Initialize smooth scroll for all internal links (non-Alpine approach for simplicity)

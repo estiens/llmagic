@@ -3,16 +3,17 @@ layout: page
 title: "Labs"
 description: "Experimental projects and research initiatives pushing the boundaries of AI creativity"
 permalink: /labs/
+header_style: dark
 ---
 
 <div class="labs-listing">
   <div class="labs-intro">
-    <p>Our labs represent experimental projects and research initiatives where we explore new possibilities in AI-driven creativity. These projects range from early-stage prototypes to advanced research systems, each contributing to our understanding of how AI can enhance creative processes.</p>
+    <p class="lead">Our labs represent experimental projects and research initiatives where we explore new possibilities in AI-driven creativity. These projects range from early-stage prototypes to advanced research systems, each contributing to our understanding of how AI can enhance creative processes.</p>
   </div>
 
-  <div class="labs-grid">
+  <div class="labs-grid space-y-12">
     {% for lab in site.labs %}
-      <article class="lab-card">
+      <article class="lab-card bg-paper p-8 border-2 border-graphite/20">
         <header class="lab-card-header">
           <h2><a href="{{ lab.url }}">{{ lab.title }}</a></h2>
           {% if lab.description %}

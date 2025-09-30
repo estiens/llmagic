@@ -101,7 +101,7 @@ Beyond the technical challenges, the project required seamless integration betwe
 
 ### Hybrid AI-Human Narrative Architecture
 
-ARTIZAN developed a hybrid system that combined the strengths of human creativity with AI adaptability. Rather than replacing human writers, the system amplified their capabilities by allowing them to create narrative frameworks that the AI could populate with specific content.
+lowlevelmagic developed a hybrid system that combined the strengths of human creativity with AI adaptability. Rather than replacing human writers, the system amplified their capabilities by allowing them to create narrative frameworks that the AI could populate with specific content.
 
 **Narrative DNA System**: We created a "narrative DNA" framework where human writers defined the essential characteristics, themes, and emotional beats of story elements. The AI system then used this DNA to generate specific dialogue and narrative content that maintained the intended creative vision.
 

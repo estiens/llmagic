@@ -48,9 +48,9 @@ bundle exec htmlproofer ./_site
 ## Architecture Overview
 
 ### Jekyll Theme Structure
-This is a Jekyll theme gem called "artizan-theme" with a grunge/punk aesthetic designed for creative consulting websites. The theme is both:
+This is a Jekyll theme gem called "lowlevelmagic-theme" with a grunge/punk aesthetic designed for creative consulting websites. The theme is both:
 - A standalone Jekyll site (for development/demonstration)
-- A packaged gem theme (defined in `artizan-theme.gemspec`)
+- A packaged gem theme (defined in `lowlevelmagic-theme.gemspec`)
 
 ### Content Collections
 The site uses three Jekyll collections that automatically generate pages:
@@ -105,7 +105,7 @@ The site has been migrated to use Tailwind CSS for styling and Alpine.js for int
 ### Key Configuration
 - **`_config.yml`** - Main Jekyll configuration, navigation menu, and collection settings
 - **`Gemfile`** - Ruby dependencies, includes Jekyll and theme plugins
-- **`artizan-theme.gemspec`** - Gem specification for packaging as a theme
+- **`lowlevelmagic-theme.gemspec`** - Gem specification for packaging as a theme
 
 ### Layout Hierarchy
 ```

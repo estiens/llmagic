@@ -2,19 +2,28 @@
 layout: default
 ---
 
-<article class="page">
-  <header class="page-header">
-    <div class="container">
-      <h1 class="page-title">{{ page.title | escape }}</h1>
+<article class="page relative overflow-hidden">
+  <header class="page-header py-16 lg:py-20 relative {% if page.header_style == 'dark' %}bg-inkwell{% else %}bg-paper{% endif %}">
+    {% if page.header_style == 'dark' %}
+    <!-- Decorative elements for dark header -->
+    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, var(--spray-cyan) 8px, var(--spray-cyan) 9px);"></div>
+    <div class="absolute top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-hot-magenta opacity-40"></div>
+    <div class="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-radio-mustard opacity-40"></div>
+    {% endif %}
+
+    <div class="container-tight relative z-10">
+      <h1 class="page-title font-display font-black text-headline-responsive mb-6 {% if page.header_style == 'dark' %}text-paper{% else %}text-inkwell{% endif %}">{{ page.title | escape }}</h1>
       {% if page.description %}
-        <p class="page-description">{{ page.description }}</p>
+        <p class="page-description text-xl {% if page.header_style == 'dark' %}text-paper/80{% else %}text-graphite{% endif %}">{{ page.description }}</p>
       {% endif %}
     </div>
   </header>
 
-  <div class="page-content">
-    <div class="container">
-      {{ content }}
+  <div class="page-content bg-paper-quiet py-12">
+    <div class="container-tight">
+      <div class="primary-content prose prose-lg max-w-none">
+        {{ content }}
+      </div>
     </div>
   </div>
 </article>

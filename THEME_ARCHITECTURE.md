@@ -1,7 +1,7 @@
-# ARTIZAN Theme Architecture Guide
+# lowlevelmagic Theme Architecture Guide
 
 ## Overview
-ARTIZAN is a custom Jekyll theme with a "Street Baroque" aesthetic - combining Swiss Brutalism, grunge/punk elements, and technical precision. The theme is built entirely from scratch without any CSS frameworks.
+lowlevelmagic is a custom Jekyll theme with a "Street Baroque" aesthetic - combining Swiss Brutalism, grunge/punk elements, and technical precision. The theme is built entirely from scratch without any CSS frameworks.
 
 ## Core Design System
 
@@ -12,7 +12,7 @@ ARTIZAN is a custom Jekyll theme with a "Street Baroque" aesthetic - combining S
 - **BEM-inspired naming** - Component-based class naming
 
 ### Key SCSS Files
-1. **`_sass/artizan.scss`** - Core theme variables, layout system, and base components
+1. **`_sass/lowlevelmagic.scss`** - Core theme variables, layout system, and base components
    - Spacing system (recently tightened for density)
    - Typography scale with Fraunces (display) and Inter (body)
    - Color palette (spray-cyan, hot-magenta, radio-mustard, oxide-teal)
@@ -28,7 +28,7 @@ ARTIZAN is a custom Jekyll theme with a "Street Baroque" aesthetic - combining S
 3. **`_sass/components.scss`** - Reusable UI components
 4. **`_sass/case-study-modes.scss`** - Case study specific mode toggle system
 5. **`_sass/utilities.scss`** - Helper classes and utilities
-6. **`_sass/artizan-old.scss`** - **DEPRECATED** - Old theme file, can be removed
+6. **`_sass/lowlevelmagic-old.scss`** - **DEPRECATED** - Old theme file, can be removed
 
 ## JavaScript Architecture
 
@@ -66,7 +66,7 @@ ARTIZAN is a custom Jekyll theme with a "Street Baroque" aesthetic - combining S
 1. **GSAP & ScrollTrigger scripts** in `_includes/head.html` (lines 26-27)
 2. **particles.js script** in `_includes/head.html` (line 30)
 3. **`animations.js`** file entirely - it's disabled and non-functional
-4. **`_sass/artizan-old.scss`** - deprecated theme file
+4. **`_sass/lowlevelmagic-old.scss`** - deprecated theme file
 5. **Mouse follower code** in main.js (lines 67-130) - references non-existent CSS variables
 
 ### To Fix
@@ -112,7 +112,7 @@ Each has dedicated layouts and styling.
 ### Immediate Cleanup
 ```bash
 # Remove deprecated files
-rm _sass/artizan-old.scss
+rm _sass/lowlevelmagic-old.scss
 rm assets/js/animations.js
 
 # Remove unused script tags from _includes/head.html

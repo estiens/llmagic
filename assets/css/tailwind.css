@@ -4,12 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BASE LAYER - Aesthetic DNA Synthesis */
+/* ============================================================================
+   BASE LAYER - Aesthetic DNA Synthesis
+   ============================================================================ */
 @layer base {
+  /* Scroll padding for anchor links to account for sticky header */
+  html {
+    scroll-padding-top: 120px;
+  }
+
   :root {
     /* Grid System - 24px gutters, 8px baseline */
     --grid-base: 8px;
     --grid-gutter: 24px;
+
+    /* Theme colors as CSS variables for consistency */
+    --paper: theme('colors.paper');
+    --paper-quiet: theme('colors.paper-quiet');
+    --inkwell: theme('colors.inkwell');
+    --graphite: theme('colors.graphite');
+    --spray-cyan: theme('colors.spray-cyan');
+    --hot-magenta: theme('colors.hot-magenta');
+    --radio-mustard: theme('colors.radio-mustard');
+    --oxide-teal: theme('colors.oxide-teal');
   }
 
   body {
@@ -71,66 +88,195 @@
   }
 }
 
-/* COMPONENTS - Poster Archive Meets Radio Ops */
+/* ============================================================================
+   COMPONENTS LAYER - Poster Archive Meets Radio Ops
+   ============================================================================ */
 @layer components {
-  /* Container System */
+
+  /* ---------------------------------------------------------------------------
+     CONTAINER SYSTEM
+     --------------------------------------------------------------------------- */
   .container-tight {
-    @apply max-w-[1400px] mx-auto;
-    padding-left: calc(var(--grid-gutter) * 2);
-    padding-right: calc(var(--grid-gutter) * 2);
+    @apply max-w-5xl mx-auto px-8;
   }
 
-  /* Explicit text colors to ensure they work */
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY UTILITIES
+     --------------------------------------------------------------------------- */
+  .text-headline-responsive {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 0.95;
+  }
+
+  /* Explicit text colors for reliability */
   .text-paper {
-    color: #F5F1E6 !important;
+    color: theme('colors.paper') !important;
   }
 
   .text-inkwell {
-    color: #0F0F10 !important;
+    color: theme('colors.inkwell') !important;
   }
 
-  /* Brutal shadow system for consistent button styling */
-  .shadow-brutal-hot {
-    box-shadow: 4px 4px 0 #FF0080;
-  }
+  /* ---------------------------------------------------------------------------
+     BUTTON SYSTEM - Consolidated & Optimized
+     Uses @apply for consistency with Tailwind patterns
+     --------------------------------------------------------------------------- */
 
-  .shadow-brutal-cyan {
-    box-shadow: 4px 4px 0 #00FFD4;
-  }
-
-  .shadow-brutal-mustard {
-    box-shadow: 4px 4px 0 #FFD400;
-  }
-
-  .shadow-brutal-teal {
-    box-shadow: 4px 4px 0 #00A896;
-  }
-
-  /* Standardized button classes */
+  /* Primary Button - Brutalist with color shift on hover
+     KEPT: Enhanced version with brutal shadow (lines 119-121)
+     REMOVED: Simpler version without shadow (lines 412-422) */
   .btn-primary {
-    @apply px-6 py-3 bg-hot-magenta text-paper font-bold uppercase tracking-wider hover:bg-spray-cyan hover:text-inkwell transition-all shadow-brutal-hot;
+    @apply inline-block px-6 py-3;
+    @apply bg-hot-magenta text-paper;
+    @apply font-body text-sm font-bold uppercase tracking-wider;
+    @apply transition-all duration-200;
+    box-shadow: 4px 4px 0 theme('colors.hot-magenta');
   }
 
+  .btn-primary:hover {
+    @apply bg-spray-cyan text-inkwell;
+    box-shadow: 6px 6px 0 theme('colors.spray-cyan');
+  }
+
+  /* Secondary Button - Outline style with fill on hover
+     KEPT: Version with @apply utilities (lines 123-125)
+     REMOVED: Redundant version (lines 424-432) */
   .btn-secondary {
-    @apply px-6 py-3 border-2 border-inkwell text-inkwell font-bold uppercase tracking-wider hover:bg-inkwell hover:text-paper transition-all;
+    @apply inline-block px-6 py-3;
+    @apply border-2 border-inkwell text-inkwell;
+    @apply font-body text-sm font-medium uppercase tracking-wide;
+    @apply transition-all duration-200;
   }
 
+  .btn-secondary:hover {
+    @apply bg-inkwell text-paper;
+  }
+
+  /* Accent Button - Cyan variant */
   .btn-accent {
-    @apply px-6 py-3 bg-spray-cyan text-inkwell font-bold uppercase tracking-wider hover:bg-hot-magenta hover:text-paper transition-all shadow-brutal-cyan;
+    @apply inline-block px-6 py-3;
+    @apply bg-spray-cyan text-inkwell;
+    @apply font-body text-sm font-bold uppercase tracking-wider;
+    @apply transition-all duration-200;
+    box-shadow: 4px 4px 0 theme('colors.spray-cyan');
   }
 
-  /* Case Study Components */
+  .btn-accent:hover {
+    @apply bg-hot-magenta text-paper;
+    box-shadow: 6px 6px 0 theme('colors.hot-magenta');
+  }
+
+  /* ---------------------------------------------------------------------------
+     HERO SECTION - Maximum Impact
+     --------------------------------------------------------------------------- */
+  .hero-section {
+    @apply min-h-[90vh] py-24 relative overflow-hidden;
+    background:
+      linear-gradient(135deg, theme('colors.paper') 0%, rgba(53, 208, 226, 0.08) 50%, rgba(255, 61, 154, 0.08) 100%),
+      linear-gradient(45deg, transparent 48%, rgba(226, 172, 39, 0.03) 50%, transparent 52%);
+    box-shadow:
+      inset 0 0 120px rgba(255, 61, 154, 0.08),
+      inset -40px 0 80px rgba(53, 208, 226, 0.05);
+  }
+
+  /* Architectural grid overlay */
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(42,44,46,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,44,46,0.025) 1px, transparent 1px);
+    background-size: var(--grid-gutter) var(--grid-gutter);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .headline-primary {
+    @apply relative z-10 mb-4;
+  }
+
+  .headline-primary span {
+    @apply block;
+  }
+
+  /* ---------------------------------------------------------------------------
+     SECTION SYSTEM
+     --------------------------------------------------------------------------- */
+  .section-tight {
+    padding-top: calc(var(--grid-base) * 8);
+    padding-bottom: calc(var(--grid-base) * 8);
+  }
+
+  /* Section Titles - Swiss Impact
+     KEPT: Enhanced version with brutal borders and shadows (lines 383-395)
+     REMOVED: Simpler version (lines 140-143) */
+  .section-title {
+    @apply font-display font-bold text-4xl lg:text-5xl mb-10 pl-6 py-4;
+    border-left: 12px solid theme('colors.radio-mustard');
+    border-bottom: 4px solid theme('colors.hot-magenta');
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, rgba(226, 172, 39, 0.1) 0%, transparent 50%);
+    box-shadow:
+      inset 0 0 0 2px theme('colors.inkwell'),
+      8px 8px 0 rgba(53, 208, 226, 0.2);
+    position: relative;
+  }
+
+  /* ---------------------------------------------------------------------------
+     ACCENT SYSTEM
+     --------------------------------------------------------------------------- */
+  .accent-bar {
+    @apply inline-block;
+    height: 4px;
+    width: 48px;
+    background: theme('colors.radio-mustard');
+    margin-bottom: 1rem;
+  }
+
+  /* ---------------------------------------------------------------------------
+     STATUS BADGE - Radio Ops
+     --------------------------------------------------------------------------- */
+  .status-live {
+    @apply inline-flex items-center gap-2 px-3 py-1;
+    @apply bg-hot-magenta text-paper;
+    @apply font-mono text-[10px] font-medium uppercase tracking-wider;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .status-live::before {
+    content: '';
+    @apply w-2 h-2 bg-paper rounded-full;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ---------------------------------------------------------------------------
+     CARD SYSTEM - Brutalist
+     --------------------------------------------------------------------------- */
+  .card-brutal {
+    @apply bg-paper border-3 border-inkwell p-8 relative;
+    @apply transition-all;
+    box-shadow: 8px 8px 0 theme('colors.hot-magenta'), 16px 16px 0 theme('colors.spray-cyan');
+  }
+
+  .card-brutal:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow:
+      10px 10px 0 theme('colors.hot-magenta'),
+      20px 20px 0 theme('colors.spray-cyan'),
+      30px 30px 60px rgba(0,0,0,0.3);
+  }
+
+  /* ---------------------------------------------------------------------------
+     CASE STUDY COMPONENTS
+     --------------------------------------------------------------------------- */
   .case-study-v2 {
     @apply relative;
   }
 
   .case-study-v2[data-mode="proof"] {
     @apply bg-graphite;
-  }
-
-  .section-title {
-    @apply font-display font-bold text-2xl mb-6 pl-4;
-    border-left: 3px solid var(--radio-mustard);
   }
 
   .content-section {
@@ -142,8 +288,7 @@
   }
 
   .artifact-code pre {
-    @apply bg-inkwell text-paper p-3 text-xs overflow-x-auto rounded-sm;
-    font-family: 'IBM Plex Mono', monospace;
+    @apply bg-inkwell text-paper p-3 text-xs overflow-x-auto rounded-sm font-mono;
   }
 
   .result-card {
@@ -155,7 +300,9 @@
     @apply absolute top-0 left-0 w-1 h-full bg-spray-cyan;
   }
 
-  /* KWLX Specific Styles */
+  /* ---------------------------------------------------------------------------
+     KWLX SPECIFIC STYLES
+     --------------------------------------------------------------------------- */
   .kwlx-hero {
     @apply relative py-16 lg:py-24 overflow-hidden;
     background: linear-gradient(135deg, rgba(255, 61, 154, 0.1), rgba(53, 208, 226, 0.1));
@@ -165,7 +312,7 @@
     @apply font-display font-black text-center;
     font-size: clamp(3rem, 8vw, 6rem);
     line-height: 0.9;
-    text-shadow: 2px 2px 0 var(--hot-magenta), 4px 4px 0 var(--spray-cyan);
+    text-shadow: 2px 2px 0 theme('colors.hot-magenta'), 4px 4px 0 theme('colors.spray-cyan');
   }
 
   .kwlx-title .frequency {
@@ -196,13 +343,17 @@
   }
 
   .glitch-border {
-    @apply relative border-4 border-inkwell p-6 shadow-brutal-double;
+    @apply relative border-4 border-inkwell p-6;
+    box-shadow: 8px 8px 0 theme('colors.hot-magenta'), 16px 16px 0 theme('colors.spray-cyan');
   }
 
   .kwlx-content section {
     @apply mb-16;
   }
 
+  /* ---------------------------------------------------------------------------
+     KWLX LAYOUT GRIDS
+     --------------------------------------------------------------------------- */
   .results-grid {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
   }
@@ -216,7 +367,8 @@
   }
 
   .reaction-quote {
-    @apply text-lg italic pl-4 border-l-4 border-spray-cyan;
+    @apply text-lg italic pl-4;
+    border-left: 4px solid theme('colors.spray-cyan');
   }
 
   .system-cards {
@@ -263,7 +415,8 @@
   }
 
   .matter-item {
-    @apply p-4 bg-paper border-l-4 border-radio-mustard;
+    @apply p-4 bg-paper;
+    border-left: 4px solid theme('colors.radio-mustard');
   }
 
   .application-list {
@@ -292,13 +445,9 @@
     transform: rotate(15deg) scale(1.2);
   }
 
-  /* REMOVED: Text utilities - use Tailwind classes directly
-     Instead of .text-body, use: text-lg leading-relaxed text-graphite
-     Instead of .text-body-large, use: text-xl leading-relaxed text-graphite font-medium
-     Instead of .text-emphasis, use: text-xl font-semibold text-inkwell leading-relaxed
-     Instead of .text-meta, use: font-mono text-sm uppercase tracking-wider text-graphite/60 */
-
-  /* Grid - Swiss Precision */
+  /* ---------------------------------------------------------------------------
+     GRID SYSTEM - Swiss Precision
+     --------------------------------------------------------------------------- */
   .grid-swiss {
     @apply grid grid-cols-12 gap-gutter;
   }
@@ -309,120 +458,9 @@
     }
   }
 
-  /* Hero Section - MAXIMUM IMPACT */
-  .hero-section {
-    @apply min-h-[90vh] py-24 relative overflow-hidden;
-    background:
-      linear-gradient(135deg, var(--paper) 0%, rgba(53, 208, 226, 0.08) 50%, rgba(255, 61, 154, 0.08) 100%),
-      linear-gradient(45deg, transparent 48%, rgba(226, 172, 39, 0.03) 50%, transparent 52%);
-    box-shadow:
-      inset 0 0 120px rgba(255, 61, 154, 0.08),
-      inset -40px 0 80px rgba(53, 208, 226, 0.05);
-  }
-
-  /* Architectural grid overlay */
-  .hero-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(42,44,46,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(42,44,46,0.025) 1px, transparent 1px);
-    background-size: var(--grid-gutter) var(--grid-gutter);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Headlines - Display Typography */
-  .headline-primary {
-    @apply relative z-10 mb-4;
-  }
-
-  .headline-primary span {
-    @apply block;
-  }
-
-  /* Accent System - Ink Blocks */
-  .accent-bar {
-    @apply inline-block;
-    height: 4px;
-    width: 48px;
-    background: var(--radio-mustard);
-    margin-bottom: 1rem;
-  }
-
-  /* Status Badge - Radio Ops */
-  .status-live {
-    @apply inline-flex items-center gap-2 px-3 py-1 bg-hot-magenta text-paper;
-    @apply font-mono text-[10px] font-medium uppercase tracking-wider;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  }
-
-  .status-live::before {
-    content: '';
-    @apply w-2 h-2 bg-paper rounded-full;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  /* Section System */
-  .section-tight {
-    padding-top: calc(var(--grid-base) * 8);
-    padding-bottom: calc(var(--grid-base) * 8);
-  }
-
-  /* Section Titles - SWISS IMPACT */
-  .section-title {
-    @apply text-4xl lg:text-5xl font-display font-black mb-10;
-    border-left: 12px solid var(--radio-mustard);
-    border-bottom: 4px solid var(--hot-magenta);
-    padding: 1rem;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    background: linear-gradient(90deg, rgba(226, 172, 39, 0.1) 0%, transparent 50%);
-    box-shadow:
-      inset 0 0 0 2px var(--inkwell),
-      8px 8px 0 rgba(53, 208, 226, 0.2);
-    position: relative;
-  }
-
-  /* Card System - Using new brutalist utilities */
-  .card-brutal {
-    @apply bg-paper border-3 border-inkwell p-8 relative shadow-brutal-double transition-all;
-  }
-
-  .card-brutal:hover {
-    @apply -translate-x-1 -translate-y-1;
-    box-shadow:
-      10px 10px 0 var(--hot-magenta),
-      20px 20px 0 var(--spray-cyan),
-      30px 30px 60px rgba(0,0,0,0.3);
-  }
-
-
-  /* Button System - Poster CTA */
-  .btn-primary {
-    @apply inline-block px-6 py-3 bg-inkwell text-paper;
-    @apply font-body text-sm font-medium uppercase tracking-wide;
-    @apply transition-all duration-200;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
-  }
-
-  .btn-secondary {
-    @apply inline-block px-6 py-3 border-2 border-graphite;
-    @apply font-body text-sm font-medium uppercase tracking-wide;
-    @apply transition-all duration-200;
-  }
-
-  .btn-secondary:hover {
-    @apply bg-graphite text-paper;
-  }
-
-  /* Color Blocks - VIVID BLEEDS */
+  /* ---------------------------------------------------------------------------
+     COLOR BLOCKS - Vivid Bleeds
+     --------------------------------------------------------------------------- */
   .color-block {
     @apply absolute pointer-events-none;
     opacity: 0.15;
@@ -432,18 +470,20 @@
   }
 
   .color-block.cyan {
-    background: var(--spray-cyan);
+    background: theme('colors.spray-cyan');
   }
 
   .color-block.magenta {
-    background: var(--hot-magenta);
+    background: theme('colors.hot-magenta');
   }
 
   .color-block.mustard {
-    background: var(--radio-mustard);
+    background: theme('colors.radio-mustard');
   }
 
-  /* Tech Stack - Metadata */
+  /* ---------------------------------------------------------------------------
+     TECH STACK - Metadata
+     --------------------------------------------------------------------------- */
   .tech-stack {
     @apply flex flex-wrap gap-2;
   }
@@ -451,10 +491,12 @@
   .tech-tag {
     @apply px-2 py-1 bg-graphite/10 text-graphite;
     @apply font-mono text-[10px] uppercase;
-    border: 1px solid var(--graphite);
+    border: 1px solid theme('colors.graphite');
   }
 
-  /* Navigation - Interface */
+  /* ---------------------------------------------------------------------------
+     NAVIGATION - Interface
+     --------------------------------------------------------------------------- */
   .nav-primary {
     @apply flex items-center gap-8;
   }
@@ -465,10 +507,16 @@
   }
 
   .nav-link.active {
-    @apply text-inkwell;
+    @apply text-hot-magenta font-bold;
   }
 
-  /* Metrics - Radio Ops Data */
+  .page-link.active {
+    @apply text-hot-magenta;
+  }
+
+  /* ---------------------------------------------------------------------------
+     METRICS - Radio Ops Data
+     --------------------------------------------------------------------------- */
   .metrics-grid {
     @apply grid grid-cols-2 lg:grid-cols-4 gap-4 my-8;
   }
@@ -486,16 +534,268 @@
     @apply block text-[10px] font-mono uppercase text-graphite mt-2;
     letter-spacing: 0.05em;
   }
+
+  /* ---------------------------------------------------------------------------
+     CASE STUDY EDITORIAL COMPONENTS
+     Magazine-style typography and layout
+     --------------------------------------------------------------------------- */
+
+  /* Drop Cap - Consolidated
+     KEPT: Version with proper theme() function (lines 607-613)
+     REMOVED: Duplicate (lines 681-687) */
+  .cs-drop-cap::first-letter {
+    @apply font-display text-5xl font-black float-left;
+    line-height: 0.8;
+    margin: 0.05em 0.1em -0.1em 0;
+    color: theme('colors.hot-magenta');
+    text-shadow: 3px 3px 0 theme('colors.inkwell');
+  }
+
+  .cs-drop-cap-cyan::first-letter {
+    color: theme('colors.spray-cyan');
+    text-shadow: 3px 3px 0 theme('colors.inkwell');
+  }
+
+  .cs-drop-cap-mustard::first-letter {
+    color: theme('colors.radio-mustard');
+    text-shadow: 3px 3px 0 theme('colors.inkwell');
+  }
+
+  /* Section Headers */
+  .cs-section-header {
+    @apply font-display text-3xl lg:text-4xl font-bold mt-16 mb-8 pl-6 py-4;
+    border-left: 6px solid theme('colors.radio-mustard');
+    border-bottom: 3px solid theme('colors.hot-magenta');
+    background: linear-gradient(90deg, rgba(226, 172, 39, 0.05) 0%, transparent 50%);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Prose element styling for automatic application */
+  .prose h2,
+  .primary-content h2 {
+    @apply font-display text-3xl lg:text-4xl font-bold mt-16 mb-8 pl-6 py-4;
+    border-left: 6px solid theme('colors.radio-mustard');
+    border-bottom: 3px solid theme('colors.hot-magenta');
+    background: linear-gradient(90deg, rgba(226, 172, 39, 0.05) 0%, transparent 50%);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .prose h2:first-child,
+  .primary-content h2:first-child,
+  .prose > h2:first-of-type,
+  .primary-content > h2:first-of-type {
+    @apply mt-0;
+  }
+
+  .prose blockquote,
+  .primary-content blockquote {
+    @apply text-xl italic text-graphite my-12 pl-8 py-4;
+    border-left: 4px solid theme('colors.radio-mustard');
+    position: relative;
+    background: linear-gradient(90deg, rgba(226, 172, 39, 0.03) 0%, transparent 40%);
+  }
+
+  .prose blockquote::before,
+  .primary-content blockquote::before {
+    content: '"';
+    @apply absolute text-6xl font-display font-black;
+    color: theme('colors.hot-magenta');
+    opacity: 0.2;
+    top: -10px;
+    left: -10px;
+  }
+
+  /* Lead/intro paragraph styling */
+  .lead,
+  .intro-text,
+  .primary-content > p:first-of-type {
+    @apply text-xl lg:text-2xl font-medium text-graphite mb-12 leading-relaxed;
+    border-left: 4px solid theme('colors.spray-cyan');
+    padding-left: 1.5rem;
+  }
+
+  /* Pull Quote */
+  .cs-pullquote {
+    @apply text-2xl lg:text-3xl font-display font-bold my-12 pl-8 py-4;
+    border-left: 4px solid theme('colors.spray-cyan');
+    color: theme('colors.inkwell');
+    position: relative;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .cs-pullquote::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2rem;
+    width: 1.5rem;
+    height: 3px;
+    background: theme('colors.hot-magenta');
+    transform: translateY(-50%);
+  }
+
+  /* Technical Label */
+  .cs-technical-label {
+    @apply font-mono text-xs uppercase tracking-wider;
+    color: theme('colors.oxide-teal');
+    letter-spacing: 0.15em;
+  }
+
+  /* ---------------------------------------------------------------------------
+     CASE STUDY LAYOUT COMPONENTS
+     --------------------------------------------------------------------------- */
+  .cs-spread-section {
+    @apply grid gap-8 my-16;
+    grid-template-columns: repeat(24, 1fr);
+    grid-auto-rows: minmax(60px, auto);
+  }
+
+  .cs-body-column-left {
+    grid-column: 2 / span 10;
+  }
+
+  .cs-body-column-right {
+    grid-column: 14 / span 8;
+    padding-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .cs-spread-section {
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .cs-body-column-left {
+      grid-column: 1 / span 12;
+    }
+    .cs-body-column-right {
+      grid-column: 1 / span 12;
+      padding-top: 1rem;
+    }
+  }
+
+  /* ---------------------------------------------------------------------------
+     CASE STUDY VISUAL COMPONENTS
+     --------------------------------------------------------------------------- */
+  .cs-stat-card {
+    @apply p-6 bg-paper border-2 border-inkwell relative;
+    transform: rotate(-0.5deg);
+    box-shadow: 4px 4px 0 theme('colors.hot-magenta');
+    transition: all 0.3s ease;
+  }
+
+  .cs-stat-card:nth-child(even) {
+    transform: rotate(0.5deg) translateY(-5px);
+    box-shadow: 4px 4px 0 theme('colors.spray-cyan');
+  }
+
+  .cs-stat-card:hover {
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 6px 6px 0 theme('colors.radio-mustard');
+  }
+
+  .cs-stat-value {
+    @apply font-display text-4xl font-black;
+    color: theme('colors.hot-magenta');
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---------------------------------------------------------------------------
+     IMAGE AND CAPTION COMPONENTS
+     --------------------------------------------------------------------------- */
+  .cs-image-figure {
+    @apply relative my-12;
+  }
+
+  .cs-floating-caption {
+    @apply absolute bottom-4 right-4 bg-paper border-2 border-inkwell p-4 max-w-xs;
+    transform: rotate(-1deg);
+    box-shadow: 3px 3px 0 theme('colors.graphite');
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .cs-floating-caption {
+      position: static;
+      transform: none;
+      margin-top: 1rem;
+      max-width: 100%;
+    }
+  }
+
+  /* ---------------------------------------------------------------------------
+     ACCENT BLOCK COMPONENTS
+     --------------------------------------------------------------------------- */
+  .cs-color-accent-block {
+    @apply w-64 h-64;
+    filter: blur(60px);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .cs-color-accent-block--cyan {
+    background-color: theme('colors.spray-cyan');
+  }
+
+  .cs-color-accent-block--magenta {
+    background-color: theme('colors.hot-magenta');
+  }
+
+  .cs-color-accent-block--mustard {
+    background-color: theme('colors.radio-mustard');
+  }
+
+  .cs-color-accent-block--teal {
+    background-color: theme('colors.oxide-teal');
+  }
+
+  /* ---------------------------------------------------------------------------
+     TWO-MODE SYSTEM ARCHITECTURE
+     --------------------------------------------------------------------------- */
+  .proof-mode body {
+    @apply bg-paper-quiet;
+  }
+
+  .proof-mode body::before {
+    opacity: 0.005;
+  }
+
+  .proof-mode .color-block {
+    opacity: 0.03;
+  }
+
+  .proof-mode .hero-section::after {
+    opacity: 0.5;
+  }
 }
 
-/* STREET BAROQUE GRID BREAKS & BRUTALIST ENHANCEMENTS */
+/* ============================================================================
+   UTILITIES LAYER - Street Baroque Grid Breaks & Brutalist Enhancements
+   ============================================================================ */
 @layer utilities {
-  /* Grid Breaking Elements */
-  .col-break-5 { grid-column: span 5; }
-  .offset-pillar { transform: translateY(-8px); }
-  .bleed-right { margin-right: -24px; }
 
-  /* Brutalist Concrete Textures */
+  /* ---------------------------------------------------------------------------
+     GRID BREAKING ELEMENTS
+     --------------------------------------------------------------------------- */
+  .col-break-5 {
+    grid-column: span 5;
+  }
+
+  .offset-pillar {
+    transform: translateY(-8px);
+  }
+
+  .bleed-right {
+    margin-right: -24px;
+  }
+
+  /* ---------------------------------------------------------------------------
+     BRUTALIST DIVIDERS
+     --------------------------------------------------------------------------- */
   .section-divider {
     position: relative;
     height: 24px;
@@ -517,13 +817,15 @@
     height: 1px;
     background: repeating-linear-gradient(
       90deg,
-      var(--graphite) 0px 8px,
+      theme('colors.graphite') 0px 8px,
       transparent 8px 16px
     );
     opacity: 0.2;
   }
 
-  /* Street Layer Overlays - BOLD GEOMETRY */
+  /* ---------------------------------------------------------------------------
+     STREET LAYER OVERLAYS - Bold Geometry
+     --------------------------------------------------------------------------- */
   .street-layer {
     position: absolute;
     opacity: 0.2;
@@ -533,11 +835,21 @@
     z-index: 0;
   }
 
-  .street-layer.cyan { background: var(--spray-cyan); }
-  .street-layer.magenta { background: var(--hot-magenta); }
-  .street-layer.mustard { background: var(--radio-mustard); }
+  .street-layer.cyan {
+    background: theme('colors.spray-cyan');
+  }
 
-  /* Typography Weathering */
+  .street-layer.magenta {
+    background: theme('colors.hot-magenta');
+  }
+
+  .street-layer.mustard {
+    background: theme('colors.radio-mustard');
+  }
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY UTILITIES
+     --------------------------------------------------------------------------- */
   .text-shout {
     font-family: Inter, sans-serif;
     font-weight: 800;
@@ -550,7 +862,16 @@
     filter: contrast(1.05) brightness(0.98);
   }
 
-  /* Curator Notes */
+  .text-gradient {
+    background: linear-gradient(135deg, theme('colors.spray-cyan'), theme('colors.hot-magenta'));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ---------------------------------------------------------------------------
+     CURATOR NOTES - Editorial Marks
+     --------------------------------------------------------------------------- */
   .curator-note {
     position: absolute;
     right: -40px;
@@ -558,12 +879,14 @@
     transform: rotate(90deg);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
-    color: var(--graphite);
+    color: theme('colors.graphite');
     letter-spacing: 0.1em;
     opacity: 0.6;
   }
 
-  /* Registration Marks */
+  /* ---------------------------------------------------------------------------
+     REGISTRATION MARKS - Print Precision
+     --------------------------------------------------------------------------- */
   .registration-mark {
     position: absolute;
     width: 12px;
@@ -575,7 +898,7 @@
   .registration-mark::after {
     content: '';
     position: absolute;
-    background: var(--inkwell);
+    background: theme('colors.inkwell');
   }
 
   .registration-mark::before {
@@ -592,39 +915,23 @@
     top: 0;
   }
 
-/* TWO-MODE SYSTEM ARCHITECTURE */
-  /* Proof Mode - Clinical Reading */
-  .proof-mode body {
-    @apply bg-paper-quiet;
-  }
-
-  .proof-mode body::before {
-    opacity: 0.005;
-  }
-
-  .proof-mode .color-block {
-    opacity: 0.03;
-  }
-
-  .proof-mode .hero-section::after {
-    opacity: 0.5;
-  }
-
-  /* Text Treatment */
-  .text-gradient {
-    background: linear-gradient(135deg, var(--spray-cyan), var(--hot-magenta));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Focus States - Accessibility */
+  /* ---------------------------------------------------------------------------
+     ACCESSIBILITY - Focus States
+     --------------------------------------------------------------------------- */
   :focus-visible {
-    outline: 2px solid var(--hot-magenta);
+    outline: 2px solid theme('colors.hot-magenta');
     outline-offset: 4px;
   }
 
-  /* Reduced Motion */
+  .btn-primary:focus-visible,
+  .bg-hot-magenta:focus-visible,
+  [class*="hot-magenta"]:focus-visible {
+    outline-color: theme('colors.paper');
+  }
+
+  /* ---------------------------------------------------------------------------
+     REDUCED MOTION
+     --------------------------------------------------------------------------- */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;

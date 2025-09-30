@@ -2,7 +2,14 @@
 layout: default
 ---
 
-<article class="case-study-v2">
+<article class="case-study-v2 relative overflow-hidden">
+  <!-- Decorative Accent Blocks -->
+  {% if page.accent_blocks %}
+    {% for block in page.accent_blocks %}
+      <div class="cs-color-accent-block cs-color-accent-block--{{ block.color }} absolute opacity-10"
+           style="top: {{ block.top }}; left: {{ block.left }};"></div>
+    {% endfor %}
+  {% endif %}
   <!-- Mode toggle removed - functionality available as easter egg -->
 
   <!-- Hero Section -->
@@ -18,7 +25,7 @@ layout: default
             </span>
             {% endif %}
 
-            <h1 class="mt-2 font-display font-black" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95;">
+            <h1 class="mt-2 font-display font-black text-headline-responsive">
               {{ page.title }}
             </h1>
 
@@ -103,7 +110,7 @@ layout: default
           <!-- Challenge Section -->
           {% if page.challenge %}
           <section class="content-section mb-12">
-            <h2 class="section-title">Challenge</h2>
+            <h2 class="cs-section-header">Challenge</h2>
             <div class="prose prose-lg">
               {{ page.challenge | markdownify }}
             </div>
@@ -113,27 +120,26 @@ layout: default
           <!-- Solution Section -->
           {% if page.solution %}
           <section class="content-section mb-12">
-            <h2 class="section-title">Solution</h2>
+            <h2 class="cs-section-header">Solution</h2>
             <div class="prose prose-lg">
               {{ page.solution | markdownify }}
             </div>
           </section>
           {% endif %}
 
-          <!-- Custom Content from Markdown -->
-          <div class="case-study-body prose prose-lg max-w-none">
+          <!-- Custom Content from Markdown with Enhanced Styling -->
+          <div class="case-study-body primary-content prose prose-lg max-w-none">
             {{ content }}
           </div>
 
           <!-- Results Section -->
           {% if page.results %}
           <section class="content-section mt-12">
-            <h2 class="section-title">Results & Impact</h2>
+            <h2 class="cs-section-header">Results & Impact</h2>
             <div class="results-grid grid grid-cols-1 md:grid-cols-2 gap-4">
               {% for result in page.results %}
-              <div class="result-card bg-paper p-4 border-2 border-inkwell">
-                <span class="text-2xl font-bold text-spray-cyan">→</span>
-                <p class="mt-1">{{ result }}</p>
+              <div class="cs-stat-card">
+                <p>{{ result }}</p>
               </div>
               {% endfor %}
             </div>
@@ -159,7 +165,9 @@ layout: default
                     <span class="font-mono text-xs text-graphite/60">{{ artifact.file }}</span>
                     {% endif %}
                   </div>
-                  <pre class="bg-inkwell text-paper p-3 text-xs overflow-x-auto"><code>{{ artifact.content }}</code></pre>
+                  <div class="bg-graphite/5 p-4 rounded border border-graphite/20 overflow-x-auto">
+                    <pre class="font-mono text-sm leading-relaxed m-0"><code>{{ artifact.content | rstrip }}</code></pre>
+                  </div>
                   {% if artifact.caption %}
                   <p class="mt-2 text-sm text-graphite">{{ artifact.caption }}</p>
                   {% endif %}
@@ -269,4 +277,5 @@ layout: default
     </div>
   </section>
   {% endif %}
+
 </article>

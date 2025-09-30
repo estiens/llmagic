@@ -4,11 +4,11 @@ Gem::Specification.new do |spec|
   spec.name          = "low-level-magic-theme"
   spec.version       = "0.1.0"
   spec.authors       = ["LOW LEVEL MAGIC"]
-  spec.email         = ["contact@artizan.dev"]
+  spec.email         = ["contact@lowlevelmagic.dev"]
 
   spec.summary       = "A grunge/punk Jekyll theme for creative consulting websites"
   spec.description   = "LOW LEVEL MAGIC is a Jekyll theme that combines grunge/punk aesthetics with professional presentation, perfect for creative consulting websites focusing on LLM character and game design."
-  spec.homepage      = "https://github.com/artizan/artizan-jekyll-theme"
+  spec.homepage      = "https://github.com/lowlevelmagic/lowlevelmagic-jekyll-theme"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }

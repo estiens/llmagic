@@ -209,7 +209,7 @@ Your content here...
 
 ### Colors
 
-To customize the color scheme, edit the CSS variables in `_sass/artizan.scss`:
+To customize the color scheme, edit the CSS variables in `_sass/lowlevelmagic.scss`:
 
 ```scss
 :root {
@@ -223,7 +223,7 @@ To customize the color scheme, edit the CSS variables in `_sass/artizan.scss`:
 
 ### Fonts
 
-To change fonts, update the Google Fonts import and variables in `_sass/artizan.scss`:
+To change fonts, update the Google Fonts import and variables in `_sass/lowlevelmagic.scss`:
 
 ```scss
 @import url('https://fonts.googleapis.com/css2?family=Your+Font&display=swap');
@@ -241,7 +241,7 @@ Replace the grunge texture images in `assets/images/` with your own textures, or
 ## File Structure
 
 ```
-artizan-jekyll-theme/
+lowlevelmagic-jekyll-theme/
 ├── _includes/
 │   ├── head.html
 │   ├── header.html
@@ -254,7 +254,7 @@ artizan-jekyll-theme/
 │   ├── lab.html
 │   └── case_study.html
 ├── _sass/
-│   ├── artizan.scss
+│   ├── lowlevelmagic.scss
 │   └── content.scss
 ├── assets/
 │   ├── css/

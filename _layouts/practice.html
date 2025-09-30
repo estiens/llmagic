@@ -2,59 +2,75 @@
 layout: default
 ---
 
-<article class="practice">
-  <header class="practice-header">
-    <div class="container">
-      <h1 class="practice-title">{{ page.title | escape }}</h1>
-      {% if page.subtitle %}
-        <p class="practice-subtitle">{{ page.subtitle }}</p>
-      {% endif %}
-      <div class="practice-meta">
-        {% if page.date %}
-          <time datetime="{{ page.date | date_to_xmlschema }}">
-            {{ page.date | date: "%B %d, %Y" }}
-          </time>
-        {% endif %}
-        {% if page.category %}
-          <span class="practice-category">{{ page.category }}</span>
-        {% endif %}
-        {% if page.status %}
-          <span class="practice-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
-        {% endif %}
+<article class="practice relative overflow-hidden">
+  <header class="practice-header bg-paper py-16 lg:py-20">
+    <div class="container-tight">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8">
+          <h1 class="practice-title font-display font-black text-headline-responsive mb-6 text-inkwell">{{ page.title | escape }}</h1>
+          {% if page.subtitle %}
+            <p class="practice-subtitle text-xl text-graphite mb-8">{{ page.subtitle }}</p>
+          {% endif %}
+          <div class="practice-meta flex flex-wrap gap-4 font-mono text-sm">
+            {% if page.date %}
+              <time datetime="{{ page.date | date_to_xmlschema }}" class="text-graphite">
+                {{ page.date | date: "%B %d, %Y" }}
+              </time>
+            {% endif %}
+            {% if page.category %}
+              <span class="practice-category px-3 py-1 bg-radio-mustard text-inkwell font-bold uppercase">{{ page.category }}</span>
+            {% endif %}
+            {% if page.status %}
+              <span class="practice-status px-3 py-1 bg-hot-magenta text-paper font-bold uppercase">{{ page.status | capitalize }}</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Space for optional hero image or graphic -->
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="practice-content">
-    <div class="container">
-      {{ content }}
+  <div class="practice-content bg-paper-quiet py-12">
+    <div class="container-tight">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8">
+          <div class="primary-content prose prose-lg max-w-none">
+            {{ content }}
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Space for sidebar content if needed -->
+        </div>
+      </div>
     </div>
   </div>
 
   {% if page.tools or page.technologies %}
-  <footer class="practice-footer">
-    <div class="container">
+  <footer class="practice-footer bg-paper py-12 border-t-2 border-inkwell">
+    <div class="container-tight">
       {% if page.tools %}
-        <div class="practice-tools">
-          <h3>Tools & Technologies</h3>
-          <ul class="tools-list">
+        <div class="practice-tools mb-8">
+          <h3 class="cs-section-header">Tools & Technologies</h3>
+          <div class="flex flex-wrap gap-2">
             {% for tool in page.tools %}
-              <li class="tool-item">{{ tool }}</li>
+              <span class="px-3 py-1 bg-inkwell text-paper font-mono text-sm">{{ tool }}</span>
             {% endfor %}
-          </ul>
+          </div>
         </div>
       {% endif %}
-      
+
       {% if page.related_practices %}
         <div class="related-practices">
-          <h3>Related Practices</h3>
-          <div class="practices-grid">
+          <h3 class="font-display font-bold text-2xl mb-6">Related Practices</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {% for practice_slug in page.related_practices %}
               {% assign practice = site.practices | where: "slug", practice_slug | first %}
               {% if practice %}
-                <div class="practice-card">
-                  <h4><a href="{{ practice.url }}">{{ practice.title }}</a></h4>
-                  <p>{{ practice.excerpt | strip_html | truncate: 100 }}</p>
+                <div class="bg-paper-quiet p-6 border-2 border-inkwell hover:shadow-brutalist transition-all">
+                  <h4 class="font-bold text-lg mb-2"><a href="{{ practice.url }}" class="text-inkwell hover:text-hot-magenta">{{ practice.title }}</a></h4>
+                  <p class="text-sm text-graphite">{{ practice.excerpt | strip_html | truncate: 100 }}</p>
                 </div>
               {% endif %}
             {% endfor %}
@@ -64,4 +80,5 @@ layout: default
     </div>
   </footer>
   {% endif %}
+
 </article>

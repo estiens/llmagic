@@ -1,17 +1,17 @@
 # Site settings
 title: LOW LEVEL MAGIC
-email: contact@artizan.dev
-formspree_id: xpwaeqkb
+email: contact@lowlevelmagic.dev
+formspree_id: <%= ENV['FORMSPREE_ID'] || 'xpwaeqkb' %>
 description: >-
   We build AI characters with soul and experiences that survive the real world.
   Partner with Low Level Magic to create unforgettable, production-ready AI for your next project.
 baseurl: ""
-url: "https://artizan.dev"
+url: "https://lowlevelmagic.dev"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: low-level-magic-theme
+# theme: low-level-magic-theme
 
 # Plugins
 plugins:
@@ -57,20 +57,18 @@ defaults:
 # Site configuration
 author:
   name: LOW LEVEL MAGIC Team
-  email: contact@artizan.dev
+  email: contact@lowlevelmagic.dev
 
 # Social links
 social:
-  github: artizan
-  linkedin: artizan
-  twitter: artizan
+  github: lowlevelmagic
+  linkedin: lowlevelmagic
+  twitter: lowlevelmagic
 
 # Navigation
 navigation:
-  - title: About
-    url: /#about
   - title: Projects
-    url: /case-studies/
+    url: /#work
   - title: Experiments
     url: /labs/
   - title: Tools
@@ -79,6 +77,8 @@ navigation:
     url: /manifestos/
   - title: Contact
     url: /#contact
+  - title: Links
+    url: /links/
 
 # Exclude from processing
 exclude:

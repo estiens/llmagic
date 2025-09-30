@@ -173,7 +173,7 @@ Share the outcomes...
 
 ### Color Scheme
 
-To change the color scheme, edit `_sass/artizan.scss`:
+To change the color scheme, edit `_sass/lowlevelmagic.scss`:
 
 ```scss
 :root {
@@ -238,7 +238,7 @@ navigation:
 To add new sections to the homepage:
 
 1. Edit `index.html`
-2. Add corresponding CSS in `_sass/artizan.scss`
+2. Add corresponding CSS in `_sass/lowlevelmagic.scss`
 3. Follow the existing pattern for consistency
 
 ### SEO Optimization
@@ -326,4 +326,4 @@ For questions or issues:
 
 ---
 
-Happy building with the ARTIZAN theme!
+Happy building with the lowlevelmagic theme!

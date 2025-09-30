@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const terminal = document.createElement('div');
     terminal.className = 'konami-terminal';
     terminal.innerHTML = `
-      <div class="terminal-header">ARTIZAN SYSTEMS - KWLX DEVELOPMENT CONSOLE</div>
+      <div class="terminal-header">lowlevelmagic SYSTEMS - KWLX DEVELOPMENT CONSOLE</div>
       <div class="terminal-content">
         <div class="terminal-line">$ accessing kwlx development branch...</div>
         <div class="terminal-line">$ character_engine_v2 STATUS: IN_DEVELOPMENT</div>
