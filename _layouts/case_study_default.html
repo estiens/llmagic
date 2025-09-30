@@ -1,0 +1,216 @@
+---
+layout: default
+---
+
+<!-- PAGE FOLIO MARKER -->
+<div class="cs-folio">
+  <span>{{ page.title | truncate: 20, "" }}</span>
+  <span class="divider"></span>
+  <span>{{ page.date | date: "%Y" }}</span>
+</div>
+
+<article class="case-study-default relative overflow-hidden">
+
+  <!-- Hero Section - Magazine Style -->
+  <header class="cs-hero">
+    <div class="container-tight py-16 lg:py-24" style="position: relative; z-index: 10;">
+      <div class="grid grid-cols-12 gap-8">
+        <div class="col-span-12 lg:col-span-7">
+          <!-- Category/Industry Tag -->
+          {% if page.industry %}
+          <div class="cs-badge mb-6">
+            {{ page.industry }}
+          </div>
+          {% endif %}
+
+          <!-- Fragmented Title -->
+          <h1 class="cs-title">
+            {{ page.title }}
+          </h1>
+
+          {% if page.subtitle %}
+          <p style="font-size: clamp(1.125rem, 2vw, 1.5rem); font-weight: 600; color: var(--color-hot-magenta); margin-bottom: 2rem; line-height: 1.3;">
+            {{ page.subtitle }}
+          </p>
+          {% endif %}
+
+          <!-- Summary with Drop Cap -->
+          {% if page.summary %}
+          <div style="color: rgba(245, 241, 230, 0.9); font-size: 1.125rem; line-height: 1.7; max-width: 65ch;">
+            <p class="cs-drop-cap cs-drop-cap-cyan">
+              {{ page.summary }}
+            </p>
+          </div>
+          {% endif %}
+
+          <!-- Tags as visual elements -->
+          {% if page.tags %}
+          <div class="mt-8 flex flex-wrap gap-2">
+            {% for tag in page.tags %}
+            <span class="cs-pill">
+              {{ tag }}
+            </span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Hero Visual with Brutalist Shadow -->
+        <div class="col-span-12 lg:col-span-5">
+          {% if page.hero_image %}
+          <div class="visual shadow-cyan">
+            <img src="{{ page.hero_image }}" alt="{{ page.title }}" class="w-full h-full object-cover">
+          </div>
+          {% elsif page.hero_color %}
+          <div class="visual shadow-magenta" style="background: {{ page.hero_color }};">
+            <div class="flex items-center justify-center h-full">
+              <span style="font-family: 'Fraunces', serif; font-weight: 900; font-size: 6rem; color: rgba(245, 241, 230, 0.15);">
+                {{ page.title | slice: 0, 1 }}
+              </span>
+            </div>
+          </div>
+          {% else %}
+          <div class="visual shadow-mustard" style="background: linear-gradient(135deg, #35D0E2, #FF3D9A, #E2AC27);">
+            <div class="flex items-center justify-center h-full">
+              <span style="font-family: 'Fraunces', serif; font-weight: 900; font-size: 6rem; color: rgba(245, 241, 230, 0.15);">
+                {{ page.title | slice: 0, 1 }}
+              </span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Accent Blocks -->
+    <div class="cs-accent cyan" style="top: 10%; left: 5%; width: 100px; height: 100px; transform: rotate(15deg);"></div>
+    <div class="cs-accent magenta" style="bottom: 20%; right: 10%; width: 80px; height: 80px; transform: rotate(-20deg);"></div>
+  </header>
+
+  <!-- Main Content Container - Magazine Style -->
+  <div style="background: var(--color-paper-quiet);">
+    <div class="container-tight" style="padding: 3rem 0;">
+
+      <!-- Section Marker -->
+      {% if page.challenge or page.solution %}
+      <div class="cs-section-counter">
+        01
+      </div>
+      {% endif %}
+
+      <!-- Challenge & Solution in Two Column -->
+      {% if page.challenge or page.solution %}
+      <div class="grid grid-cols-12 gap-8 mb-16">
+        {% if page.challenge %}
+        <div class="col-span-12 lg:col-span-6">
+          <h2 class="cs-section-header">
+            Challenge
+          </h2>
+          <div style="font-size: 1.125rem; line-height: 1.7; color: var(--color-graphite);">
+            {{ page.challenge | markdownify }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if page.solution %}
+        <div class="col-span-12 lg:col-span-6">
+          <h2 class="cs-section-header">
+            Solution
+          </h2>
+          <div style="font-size: 1.125rem; line-height: 1.7; color: var(--color-graphite);">
+            {{ page.solution | markdownify }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Stats Cluster (if provided) -->
+      {% if page.stats %}
+      <div class="cs-stats-cluster">
+        {% for stat in page.stats %}
+        <div class="cs-stat-card">
+          <div class="cs-stat-huge">{{ stat.value }}</div>
+          <div class="cs-stat-label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Section Marker for Content -->
+      <div class="cs-section-counter">
+        02
+      </div>
+
+      <!-- Main Content -->
+      <div class="case-study-body primary-content prose prose-lg max-w-none" style="margin-bottom: 4rem;">
+        {{ content }}
+      </div>
+
+      <!-- Results Section - Magazine Style -->
+      {% if page.results %}
+      <div class="cs-section-counter">
+        03
+      </div>
+
+      <h2 class="cs-title" style="font-size: 2rem; margin-bottom: 2rem;">
+        Results & Impact
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for result in page.results %}
+        <div class="cs-result-card">
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            {{ result }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <!-- Artifacts Sidebar (Optional easter egg) -->
+  {% if page.artifacts %}
+  <div id="proof-sidebar" style="display: none; background: var(--color-paper); border-top: 4px solid var(--color-spray-cyan); padding: 3rem 0;">
+    <div class="container-tight">
+      <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-graphite); border-bottom: 2px solid var(--color-inkwell); padding-bottom: 0.5rem; margin-bottom: 2rem;">
+        Artifacts & Proof
+      </h3>
+
+      <div style="display: grid; grid-template-columns: repeat(1, 1fr); @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); } @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); } gap: 1.5rem;">
+        {% for artifact in page.artifacts %}
+        <div style="background: var(--color-paper); padding: 1.5rem; border: 2px solid rgba(42, 44, 46, 0.2); box-shadow: 2px 2px 0 var(--color-inkwell);">
+          {% if artifact.type == "data" %}
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--color-hot-magenta); margin-bottom: 0.5rem;">
+            {{ artifact.value }}
+          </div>
+          {% if artifact.unit %}
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: var(--color-graphite); margin-bottom: 0.5rem;">
+            {{ artifact.unit }}
+          </div>
+          {% endif %}
+          {% if artifact.caption %}
+          <p style="font-size: 0.875rem; color: var(--color-graphite);">{{ artifact.caption }}</p>
+          {% endif %}
+          {% endif %}
+
+          {% if artifact.type == "quote" %}
+          <blockquote style="font-size: 1.125rem; font-style: italic; color: var(--color-graphite); border-left: 4px solid var(--color-radio-mustard); padding-left: 1rem; margin: 0;">
+            "{{ artifact.content }}"
+          </blockquote>
+          {% if artifact.author %}
+          <cite style="display: block; margin-top: 0.5rem; font-size: 0.875rem; color: rgba(42, 44, 46, 0.6); font-style: normal;">
+            — {{ artifact.author }}
+          </cite>
+          {% endif %}
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</article>

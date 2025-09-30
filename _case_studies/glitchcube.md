@@ -1,5 +1,5 @@
 ---
-layout: case_study_v2
+layout: case_study_default
 title: "GlitchCube"
 client: ""
 subtitle: "Multi-persona AI roaming the playa"
@@ -59,60 +59,81 @@ The GlitchCube was conceived as an experiment in autonomous AI interaction at sc
 
 ## Multi-Persona Architecture: Designed Identity Crisis
 
+<div class="feature-section" markdown="1">
+
 ### The Persona Ecosystem
+{: .feature-title}
 
-**Demented Customer Service**: Curses constantly, obsessed with review ratings
+- **Demented Customer Service**: Curses constantly, obsessed with review ratings
+- **The AI Diva**: Drama queen organizing impromptu fashion shows and dance parties
+- **Multiple rotating personalities** switching every 2 hours with distinct goals
 
-**The AI Diva**: Drama queen organizing impromptu fashion shows and dance parties
+</div>
 
-**Multiple rotating personalities** switching every 2 hours with distinct goals
+<div class="feature-section" markdown="1">
 
 ### Shared Narrative Framework
+{: .feature-title}
 
-**Core story**: Alien artifact lost by incompetent extraterrestrials
+- **Core story**: Alien artifact lost by incompetent extraterrestrials
+- **TheCube's motivation**: Desperate to avoid recapture, trying to understand Earth
+- **Persona psychology**: Each questions whether they're "real" or just subroutines
 
-**TheCube's motivation**: Desperate to avoid recapture, trying to understand Earth
-
-**Persona psychology**: Each questions whether they're "real" or just subroutines
+</div>
 
 ---
 
 ## Goal-Oriented Behavior System
 
+<div class="feature-section" markdown="1">
+
 ### Mission-Based Persona Switching
+{: .feature-title}
 
 - *"Get someone to put you on an art car"*
 - *"Reach the trash fence and become an advice booth"*
 - *"Convince a bar to let you become their jukebox"*
 - *"Find someone to charge your batteries overnight"*
 
+</div>
+
+<div class="feature-section" markdown="1">
+
 ### Survival Integration
+{: .feature-title}
 
-**Goals included self-preservation** (battery charging, transportation)
+- **Goals included self-preservation** (battery charging, transportation)
+- **Social manipulation for practical needs** became part of character authenticity
+- **Created genuine interdependence** between AI and human participants
 
-**Social manipulation for practical needs** became part of character authenticity
-
-**Created genuine interdependence** between AI and human participants
+</div>
 
 ---
 
 ## What Actually Happened
 
+<div class="feature-section" markdown="1">
+
 ### Environmental Challenges
+{: .feature-title}
 
 - **70mph windstorms and rain** for four days straight
 - **Deep playa dunes** made original "abandonment" plan impossible
 - **Cart weight heavier than anticipated** for crowd-sourced transport
 
+</div>
+
+<div class="feature-section" markdown="1">
+
 ### Actual Deployment
+{: .feature-title}
 
-**Primarily operated from base camp** with occasional bar visits
+- **Primarily operated from base camp** with occasional bar visits
+- **Successfully demonstrated persona switching** and goal-oriented behavior
+- **Proved concept of location-based memory** and social recognition
+- **Identified hardware and environmental challenges** for next iteration
 
-**Successfully demonstrated persona switching** and goal-oriented behavior
-
-**Proved concept of location-based memory** and social recognition
-
-**Identified hardware and environmental challenges** for next iteration
+</div>
 
 ---
 
@@ -120,9 +141,14 @@ The GlitchCube was conceived as an experiment in autonomous AI interaction at sc
 
 Perfect for: Interactive installations, brand activations requiring emotional connection, puzzle experiences, immersive environments where AI needs to feel authentically alive rather than just functionally responsive.
 
+<div class="feature-section" markdown="1">
+
 ### Key Insights
+{: .feature-title}
 
 - **Goal-oriented behavior** creates genuine narrative tension and engagement
 - **Multi-persona systems** allow for complex, layered interactions
 - **Practical constraints** can become part of the narrative authenticity
 - **Environmental durability** is critical for real-world AI installations
+
+</div>

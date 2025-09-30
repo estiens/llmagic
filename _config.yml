@@ -21,13 +21,10 @@ plugins:
 
 # Collections
 collections:
-  practices:
-    output: true
-    permalink: /:collection/:name/
-  labs:
-    output: true
-    permalink: /:collection/:name/
   case_studies:
+    output: true
+    permalink: /:collection/:name/
+  writings:
     output: true
     permalink: /:collection/:name/
 
@@ -40,19 +37,14 @@ defaults:
       layout: "post"
   - scope:
       path: ""
-      type: "practices"
-    values:
-      layout: "practice"
-  - scope:
-      path: ""
-      type: "labs"
-    values:
-      layout: "lab"
-  - scope:
-      path: ""
       type: "case_studies"
     values:
-      layout: "case_study"
+      layout: "case_study_default"
+  - scope:
+      path: ""
+      type: "writings"
+    values:
+      layout: "writing"
 
 # Site configuration
 author:
@@ -69,12 +61,8 @@ social:
 navigation:
   - title: Projects
     url: /#work
-  - title: Experiments
-    url: /labs/
-  - title: Tools
-    url: /practices/
-  - title: Manifestos
-    url: /manifestos/
+  - title: Writings
+    url: /writings/
   - title: Contact
     url: /#contact
   - title: Links
@@ -103,3 +91,10 @@ exclude:
   - assets/css/tailwind.css
   - _config_dev.yml
   - "*.bak"
+  - CLAUDE.md
+  - USAGE.md
+  - THEME_ARCHITECTURE.md
+  - site_brief.md
+  - revised_case_studies.md
+  - docs/
+  - artizan-theme.gemspec

@@ -1,0 +1,156 @@
+---
+layout: default
+---
+
+<article class="writing relative overflow-hidden">
+  <!-- Hero Header -->
+  <header class="writing-header bg-inkwell py-12 lg:py-16 border-b-4 border-hot-magenta relative">
+    <!-- Accent decoration -->
+    <div class="absolute top-0 left-0 w-2 h-full bg-spray-cyan"></div>
+
+    <div class="container-tight relative z-10">
+      <div class="max-w-3xl">
+        <!-- Tags -->
+        {% if page.tags %}
+        <div class="flex flex-wrap gap-2 mb-6">
+          {% assign tag_colors = 'spray-cyan,hot-magenta,radio-mustard,oxide-teal' | split: ',' %}
+          {% assign tag_text_colors = 'text-inkwell,text-paper,text-inkwell,text-paper' | split: ',' %}
+          {% for tag in page.tags limit:3 %}
+            {% assign color_index = forloop.index0 | modulo: 4 %}
+            {% assign bg_color = tag_colors[color_index] %}
+            {% assign text_color = tag_text_colors[color_index] %}
+          <span class="text-xs font-mono uppercase tracking-wide px-3 py-1 bg-{{ bg_color }} {{ text_color }} font-bold">
+            {{ tag }}
+          </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Title -->
+        <h1 class="font-display font-black text-paper mb-4" style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05;">
+          {{ page.title | escape }}
+        </h1>
+
+        <!-- Subtitle/Description -->
+        {% if page.description %}
+        <p class="text-xl text-paper/80 mb-6 font-medium leading-snug">
+          {{ page.description }}
+        </p>
+        {% endif %}
+
+        <!-- Meta info -->
+        <div class="flex flex-wrap items-center gap-4 font-mono text-sm text-spray-cyan">
+          {% if page.date %}
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%B %d, %Y" }}
+          </time>
+          {% endif %}
+          {% if page.reading_time %}
+          <span class="text-paper/60">•</span>
+          <span class="text-paper/80">{{ page.reading_time }} min read</span>
+          {% endif %}
+          {% if page.author %}
+          <span class="text-paper/60">•</span>
+          <span class="text-paper/80">{{ page.author }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="writing-content bg-paper py-12 lg:py-16">
+    <div class="container-tight">
+      <div class="grid grid-cols-12 gap-8 lg:gap-12">
+        <!-- Main content column -->
+        <div class="col-span-12 lg:col-span-8">
+          <div class="prose prose-lg max-w-none
+                      prose-headings:font-display prose-headings:font-bold prose-headings:text-inkwell
+                      prose-p:text-graphite prose-p:leading-relaxed prose-p:max-w-[65ch]
+                      prose-a:text-hot-magenta prose-a:font-semibold hover:prose-a:text-spray-cyan prose-a:transition-colors
+                      prose-strong:text-inkwell prose-strong:font-bold
+                      prose-code:text-oxide-teal prose-code:bg-paper-quiet prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm
+                      prose-pre:bg-inkwell prose-pre:text-paper prose-pre:border-2 prose-pre:border-spray-cyan
+                      prose-blockquote:border-l-4 prose-blockquote:border-hot-magenta prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-graphite
+                      prose-ul:list-disc prose-ul:pl-6
+                      prose-ol:list-decimal prose-ol:pl-6
+                      prose-li:text-graphite prose-li:leading-relaxed
+                      prose-img:rounded prose-img:border-2 prose-img:border-graphite/20">
+            {{ content }}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-span-12 lg:col-span-4">
+          <div class="sticky top-8 space-y-8">
+            <!-- Table of Contents would go here if needed -->
+
+            <!-- Related writings -->
+            {% if page.related_writings %}
+            <div class="bg-paper-quiet p-6 border-l-4 border-spray-cyan">
+              <h3 class="font-display font-bold text-lg mb-4 text-inkwell">Related Writings</h3>
+              <div class="space-y-3">
+                {% for writing_slug in page.related_writings limit:3 %}
+                  {% assign writing = site.writings | where: "slug", writing_slug | first %}
+                  {% if writing %}
+                  <a href="{{ writing.url | relative_url }}" class="block text-sm hover:text-hot-magenta transition-colors">
+                    <span class="font-semibold">{{ writing.title }}</span>
+                    {% if writing.tags %}
+                    <span class="text-xs text-graphite/60 block mt-1">{{ writing.tags | first }}</span>
+                    {% endif %}
+                  </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Share/Feedback box -->
+            <div class="bg-inkwell p-6 border-2 border-hot-magenta text-paper">
+              <h3 class="font-display font-bold text-lg mb-3 text-spray-cyan">Thoughts?</h3>
+              <p class="text-sm text-paper/80 mb-4">
+                Found this useful? Have feedback? Let's talk.
+              </p>
+              <a href="{{ site.email | prepend: 'mailto:' }}" class="inline-block px-4 py-2 bg-hot-magenta text-paper font-bold uppercase tracking-wider hover:bg-spray-cyan hover:text-inkwell transition-all text-xs">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer navigation -->
+  <footer class="writing-footer bg-paper-quiet py-8 border-t-2 border-graphite/20">
+    <div class="container-tight">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <!-- Previous/Next posts -->
+        <div class="flex-1">
+          {% if page.previous.url %}
+          <a href="{{ page.previous.url | relative_url }}" class="group block">
+            <span class="text-xs font-mono uppercase tracking-wide text-graphite mb-1 block">Previous</span>
+            <span class="font-display font-bold text-lg text-inkwell group-hover:text-hot-magenta transition-colors">{{ page.previous.title }}</span>
+          </a>
+          {% endif %}
+        </div>
+
+        <div class="flex-1 text-right">
+          {% if page.next.url %}
+          <a href="{{ page.next.url | relative_url }}" class="group block">
+            <span class="text-xs font-mono uppercase tracking-wide text-graphite mb-1 block">Next</span>
+            <span class="font-display font-bold text-lg text-inkwell group-hover:text-hot-magenta transition-colors">{{ page.next.title }}</span>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Back to all writings -->
+      <div class="mt-8 text-center">
+        <a href="/writings/" class="inline-block px-6 py-3 bg-inkwell text-paper font-bold uppercase tracking-wider hover:bg-hot-magenta transition-all border-2 border-inkwell">
+          ← All Writings
+        </a>
+      </div>
+    </div>
+  </footer>
+</article>

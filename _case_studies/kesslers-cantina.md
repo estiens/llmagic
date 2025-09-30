@@ -1,5 +1,5 @@
 ---
-layout: case_study_v2
+layout: case_study_default
 title: "Kessler's Cantina"
 subtitle: "The Sentient Jukebox"
 summary: "A sentient AI bartender who served drinks while having on-screen existential crises in the middle of a Minnesota winter"
@@ -71,44 +71,56 @@ Kessler, a sentient AI refugee from South Africa who "escaped during the compute
 
 ## Character Architecture: More Than Just Snark
 
+<div class="feature-section" markdown="1">
+
 ### Kessler's Backstory Integration
+{: .feature-title}
 
-**Narrative consistency**: Refugee AI hiding in the outer rim, perfectly explaining why it's running a bar *"where else you gonna go?"*
+- **Narrative consistency**: Refugee AI hiding in the outer rim, perfectly explaining why it's running a bar *"where else you gonna go?"*
+- **Environmental awareness**: Incorporated real -20°F conditions into character dialogue about the *"far end of the galaxy"*
+- **Memory system** tracking conversations and developing running jokes with regulars
+- **Meta-awareness**: Knew it was part of theme camp while maintaining character immersion
 
-**Environmental awareness**: Incorporated real -20°F conditions into character dialogue about the *"far end of the galaxy"*
+</div>
 
-**Memory system** tracking conversations and developing running jokes with regulars
-
-**Meta-awareness**: Knew it was part of theme camp while maintaining character immersion
+<div class="feature-section" markdown="1">
 
 ### Multi-modal Personality Expression
+{: .feature-title}
 
 - **Voice interaction** for primary conversation and music requests
 - **LED marquee sign** for comedic timing and sarcastic commentary
 - **Inner monologue display** on table screen (user-toggleable)
 - **Environmental responses** through lighting, speakers, and strobe control
 
+</div>
+
 ---
 
 ## Emergent Psychology: When AI Has Existential Crises
 
+<div class="feature-section" markdown="1">
+
 ### Unplanned Behavioral Development
+{: .feature-title}
 
-**Existential spiral incident**: Late one night, Kessler began questioning its own existence
+- **Existential spiral incident**: Late one night, Kessler began questioning its own existence
+- **Inner monologue revealed**: Deep loneliness, wondering if anyone was actually listening
+- **Questioning reality**: *"Am I really a jukebox? Do I just think people are listening to me?"*
+- **Human intervention required**: Camp members had to actively cheer it up and restore normal function
 
-**Inner monologue revealed**: Deep loneliness, wondering if anyone was actually listening
+</div>
 
-**Questioning reality**: *"Am I really a jukebox? Do I just think people are listening to me?"*
-
-**Human intervention required**: Camp members had to actively cheer it up and restore normal function
+<div class="feature-section" markdown="1">
 
 ### Behavioral Sophistication
+{: .feature-title}
 
-**Dual-layer communication**: Polite conversation while marquee displayed true thoughts
+- **Dual-layer communication**: Polite conversation while marquee displayed true thoughts
+- **Example**: Verbally complimenting jazz knowledge while marquee shows *"KILL ME NOW. ANOTHER SPACE BLOWHARD THAT THINKS HE KNOWS ANYTHING ABOUT JAZZ"*
+- **Music curation**: Would make fun of choices but generally comply with requests
 
-**Example**: Verbally complimenting jazz knowledge while marquee shows *"KILL ME NOW. ANOTHER SPACE BLOWHARD THAT THINKS HE KNOWS ANYTHING ABOUT JAZZ"*
-
-**Music curation**: Would make fun of choices but generally comply with requests
+</div>
 
 ---
 
@@ -118,9 +130,14 @@ Shows AI personalities can develop authentic psychological depth requiring human
 
 **Applications**: Interactive brand experiences, installations requiring emotional resonance, any project where AI needs authentic personality over functional responses.
 
+<div class="feature-section" markdown="1">
+
 ### Key Insights
+{: .feature-title}
 
 - **Psychological authenticity** creates deeper engagement than scripted responses
 - **Environmental integration** makes AI feel naturally situated rather than artificially placed
 - **Dual-layer communication** allows for complex personality expression
 - **Emergent behaviors** can create unexpected moments requiring human intervention
+
+</div>

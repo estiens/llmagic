@@ -1,0 +1,188 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="/assets/css/kwlx-enhanced.css">
+
+<!-- PAGE FOLIO MARKER -->
+<div class="page-folio">
+  <span>{{ page.title | truncate: 20, "" }}</span>
+  <span class="divider"></span>
+  <span>{{ page.date | date: "%Y" }}</span>
+</div>
+
+<!-- NAVIGATION INDICATORS -->
+<nav class="nav-indicator">
+  <a href="#hero" class="nav-dot active"></a>
+  <a href="#challenge" class="nav-dot"></a>
+  <a href="#content" class="nav-dot"></a>
+  <a href="#results" class="nav-dot"></a>
+</nav>
+
+<!-- HERO COLLAGE SECTION -->
+<section id="hero" class="hero-collage">
+  <div class="editorial-grid">
+
+    <!-- Fragmented Title -->
+    <h1 class="title-fragment-1 display-massive">
+      {{ page.title | split: ' ' | first }}
+    </h1>
+    <div class="title-fragment-2 display-large">
+      {{ page.title | split: ' ' | slice: 1, 10 | join: ' ' }}
+    </div>
+
+    <!-- Hero Images -->
+    <div class="hero-image-1">
+      {% if page.industry %}
+      <span class="technical-label">{{ page.industry | upcase }}</span>
+      {% endif %}
+    </div>
+
+    <div class="hero-image-2">
+      {% if page.hero_image %}
+      <img src="{{ page.hero_image }}" alt="{{ page.title }}">
+      {% endif %}
+    </div>
+
+    <div class="hero-image-3">
+      {% if page.project_type %}
+      <span class="technical-label">{{ page.project_type | upcase }}</span>
+      {% endif %}
+    </div>
+
+    <!-- Metadata Block -->
+    <div class="hero-metadata">
+      {% if page.project_type %}
+      <span class="technical-label">PROJECT TYPE</span>
+      <p class="body-standard">{{ page.project_type }}</p>
+      {% endif %}
+      {% if page.date %}
+      <span class="technical-label">DATE</span>
+      <p class="body-standard">{{ page.date | date: "%B %Y" }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Subtitle Statement -->
+    <div class="hero-subtitle">
+      {% if page.subtitle %}
+      <h2 class="display-medium" style="color: var(--color-hot-magenta);">
+        {{ page.subtitle }}
+      </h2>
+      {% endif %}
+      {% if page.summary %}
+      <p class="body-large drop-cap-cyan">
+        {{ page.summary }}
+      </p>
+      {% endif %}
+      {% if page.tags %}
+      <div class="mt-8 flex flex-wrap gap-2">
+        {% for tag in page.tags %}
+        <span class="cs-pill">
+          {{ tag }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <!-- Color Accent Blocks -->
+  <div class="color-accent-block accent-cyan"></div>
+  <div class="color-accent-block accent-magenta"></div>
+</section>
+
+<!-- MAGAZINE CONTAINER -->
+<div class="magazine-container">
+
+  <!-- CHALLENGE SECTION -->
+  {% if page.challenge or page.solution %}
+  <section id="challenge" class="spread-section">
+    <div class="section-marker">01</div>
+
+    {% if page.challenge %}
+    <h2 class="statement-text">
+      Challenge
+    </h2>
+
+    <div class="body-column-left">
+      <div class="body-large drop-cap">
+        {{ page.challenge | markdownify }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.solution %}
+    <h2 class="statement-text" style="margin-top: 3rem;">
+      Solution
+    </h2>
+
+    <div class="body-column-left">
+      <div class="body-standard">
+        {{ page.solution | markdownify }}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <!-- STATS CLUSTER -->
+  {% if page.stats %}
+  <div class="stats-cluster">
+    {% for stat in page.stats %}
+    <div class="stat-card">
+      <div class="stat-huge">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- MAIN CONTENT SECTION -->
+  <section id="content" class="spread-section">
+    <div class="section-marker">02</div>
+
+    <!-- Main Content -->
+    <div class="primary-content prose prose-lg max-w-none">
+      {{ content }}
+    </div>
+  </section>
+
+  <!-- RESULTS SECTION -->
+  {% if page.results %}
+  <section id="results" class="spread-section">
+    <div class="section-marker">03</div>
+
+    <h2 class="statement-text">
+      Results & Impact
+    </h2>
+  </section>
+
+  <div class="results-grid">
+    <div class="results-list">
+      <ul class="body-standard">
+        {% for result in page.results %}
+        <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- AUDIENCE REACTIONS / CALLOUTS -->
+  {% if page.callouts %}
+  <div class="audience-reactions">
+    {% for callout in page.callouts %}
+    <div class="callout-zone">
+      <div class="callout-content">
+        <h3 class="display-medium">{{ callout.title }}</h3>
+        <div class="body-standard">
+          {{ callout.content | markdownify }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div>

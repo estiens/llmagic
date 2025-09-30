@@ -94,10 +94,35 @@ module.exports = {
       backgroundSize: {
         'paper-texture': '100px 100px, 100px 100px, 8px 8px',
         'grid-pattern': '24px 8px'
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h3: {
+              marginTop: '1.5rem',
+              marginBottom: '1rem',
+              fontWeight: '700',
+            },
+            'h3 + ul': {
+              marginTop: '0.75rem',
+            },
+            'h3 + ol': {
+              marginTop: '0.75rem',
+            },
+            'ul > li': {
+              paddingLeft: '0.5rem',
+            },
+            ul: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+            },
+          },
+        },
+      }),
     }
   },
   plugins: [
+    require('@tailwindcss/typography'),
     plugin(function({ addUtilities, theme }) {
       // Brutalist shadow utilities
       addUtilities({

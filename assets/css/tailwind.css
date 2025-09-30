@@ -6,6 +6,7 @@
 
 /* Import KWLX Magazine Layout Styles */
 @import url('kwlx-enhanced.css');
+@import url('case-study-magazine.css');
 
 /* ============================================================================
    BASE LAYER - Aesthetic DNA Synthesis
@@ -30,6 +31,16 @@
     --hot-magenta: theme('colors.hot-magenta');
     --radio-mustard: theme('colors.radio-mustard');
     --oxide-teal: theme('colors.oxide-teal');
+
+    /* Back-compat color variable aliases */
+    --color-paper: var(--paper);
+    --color-paper-quiet: var(--paper-quiet);
+    --color-inkwell: var(--inkwell);
+    --color-graphite: var(--graphite);
+    --color-spray-cyan: var(--spray-cyan);
+    --color-hot-magenta: var(--hot-magenta);
+    --color-radio-mustard: var(--radio-mustard);
+    --color-oxide-teal: var(--oxide-teal);
   }
 
   body {
@@ -590,6 +601,26 @@
   .prose > h2:first-of-type,
   .primary-content > h2:first-of-type {
     @apply mt-0;
+  }
+
+  /* Feature sections with proper spacing */
+  .feature-section {
+    @apply mb-8;
+  }
+
+  .feature-title {
+    @apply font-body text-xl font-bold text-inkwell mb-4;
+  }
+
+  .feature-section ul {
+    @apply space-y-2;
+  }
+
+  /* H3 styling for subsections */
+  .prose h3,
+  .primary-content h3,
+  .case-study-body h3 {
+    @apply font-body text-xl font-bold text-inkwell;
   }
 
   .prose blockquote,

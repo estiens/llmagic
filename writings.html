@@ -1,0 +1,144 @@
+---
+layout: page
+title: "Writings"
+description: "Thinking out loud about AI that lives in the real world"
+permalink: /writings/
+header_style: dark
+---
+
+<div class="writings-listing">
+  <!-- Intro -->
+  <div class="mb-12 bg-paper-quiet p-8 border-l-4 border-hot-magenta">
+    <p class="text-xl leading-relaxed max-w-3xl text-graphite">
+      Notes, essays, and field reports from building AI characters and experiences that survive contact with reality. From quick thoughts to deep dives on narrative systems, operations, and the messy intersection of creativity and code.
+    </p>
+  </div>
+
+  <!-- Filter by tag (future enhancement) -->
+  <div class="mb-8 flex flex-wrap gap-3 items-center">
+    <span class="font-mono text-sm uppercase tracking-wide text-graphite">Filter:</span>
+    <button class="tag-filter active px-3 py-1 bg-inkwell text-paper font-mono text-xs uppercase tracking-wide hover:bg-hot-magenta transition-colors" data-tag="all">
+      All
+    </button>
+    <button class="tag-filter px-3 py-1 bg-paper-quiet text-inkwell font-mono text-xs uppercase tracking-wide hover:bg-hot-magenta hover:text-paper transition-colors border border-graphite/20" data-tag="note">
+      Notes
+    </button>
+    <button class="tag-filter px-3 py-1 bg-paper-quiet text-inkwell font-mono text-xs uppercase tracking-wide hover:bg-hot-magenta hover:text-paper transition-colors border border-graphite/20" data-tag="essay">
+      Essays
+    </button>
+    <button class="tag-filter px-3 py-1 bg-paper-quiet text-inkwell font-mono text-xs uppercase tracking-wide hover:bg-hot-magenta hover:text-paper transition-colors border border-graphite/20" data-tag="field-report">
+      Field Reports
+    </button>
+    <button class="tag-filter px-3 py-1 bg-paper-quiet text-inkwell font-mono text-xs uppercase tracking-wide hover:bg-hot-magenta hover:text-paper transition-colors border border-graphite/20" data-tag="technical">
+      Technical
+    </button>
+  </div>
+
+  <!-- Writings Grid -->
+  <div class="writings-grid space-y-8">
+    {% if site.writings %}
+    {% assign sorted_writings = site.writings | sort: 'date' | reverse %}
+    {% for writing in sorted_writings %}
+      <article class="writing-card bg-paper border-l-4 {% cycle 'border-spray-cyan', 'border-hot-magenta', 'border-radio-mustard', 'border-oxide-teal' %} p-8 hover:shadow-brutal transition-all" data-tags="{{ writing.tags | join: ',' }}">
+        <header class="writing-card-header mb-4">
+          <!-- Tags -->
+          {% if writing.tags %}
+          <div class="flex flex-wrap gap-2 mb-3">
+            {% assign tag_colors = 'spray-cyan,hot-magenta,radio-mustard,oxide-teal' | split: ',' %}
+            {% assign tag_text_colors = 'text-inkwell,text-paper,text-inkwell,text-paper' | split: ',' %}
+            {% for tag in writing.tags limit:3 %}
+              {% assign color_index = forloop.index0 | modulo: 4 %}
+              {% assign bg_color = tag_colors[color_index] %}
+              {% assign text_color = tag_text_colors[color_index] %}
+            <span class="text-xs font-mono uppercase tracking-wide px-2 py-1 bg-{{ bg_color }} {{ text_color }} font-bold">
+              {{ tag }}
+            </span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Title -->
+          <h2 class="font-display font-black text-3xl mb-3 leading-tight">
+            <a href="{{ writing.url | relative_url }}" class="text-inkwell hover:text-hot-magenta transition-colors">
+              {{ writing.title }}
+            </a>
+          </h2>
+
+          <!-- Description -->
+          {% if writing.description %}
+          <p class="text-lg text-graphite leading-snug mb-3 font-medium max-w-[65ch]">
+            {{ writing.description }}
+          </p>
+          {% endif %}
+
+          <!-- Meta -->
+          <div class="flex flex-wrap items-center gap-3 font-mono text-xs text-graphite/70">
+            {% if writing.date %}
+            <time datetime="{{ writing.date | date_to_xmlschema }}">
+              {{ writing.date | date: "%B %d, %Y" }}
+            </time>
+            {% endif %}
+            {% if writing.reading_time %}
+            <span>•</span>
+            <span>{{ writing.reading_time }} min</span>
+            {% endif %}
+          </div>
+        </header>
+
+        <!-- Excerpt -->
+        <div class="writing-excerpt text-base text-graphite leading-relaxed mb-4 max-w-[65ch]">
+          {{ writing.excerpt | strip_html | truncate: 200 }}
+        </div>
+
+        <!-- Read more -->
+        <footer class="writing-card-footer">
+          <a href="{{ writing.url | relative_url }}" class="inline-flex items-center gap-2 font-bold uppercase tracking-wide text-sm text-inkwell hover:text-hot-magenta transition-colors">
+            <span>Read</span>
+            <span class="text-hot-magenta">→</span>
+          </a>
+        </footer>
+      </article>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Empty state if no writings -->
+  {% if site.writings == nil or site.writings.size == 0 %}
+  <div class="text-center py-16">
+    <p class="text-xl text-graphite italic">No writings yet. Check back soon.</p>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Simple tag filtering with Alpine.js -->
+<script>
+  // Simple tag filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.tag-filter');
+    const writingCards = document.querySelectorAll('.writing-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const selectedTag = this.dataset.tag;
+
+        // Update active state
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-inkwell', 'text-paper');
+          btn.classList.add('bg-paper-quiet', 'text-inkwell', 'border', 'border-graphite/20');
+        });
+        this.classList.add('active', 'bg-inkwell', 'text-paper');
+        this.classList.remove('bg-paper-quiet', 'border', 'border-graphite/20');
+
+        // Filter cards
+        writingCards.forEach(card => {
+          const cardTags = card.dataset.tags.split(',');
+          if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
