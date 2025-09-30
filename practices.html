@@ -15,7 +15,7 @@ header_style: dark
     {% for practice in site.practices %}
       <article class="practice-card bg-paper p-8 border-2 border-graphite/20">
         <header class="practice-card-header">
-          <h2><a href="{{ practice.url }}">{{ practice.title }}</a></h2>
+          <h2><a href="{{ practice.url | relative_url }}">{{ practice.title }}</a></h2>
           {% if practice.subtitle %}
             <p class="practice-subtitle">{{ practice.subtitle }}</p>
           {% endif %}
@@ -53,7 +53,7 @@ header_style: dark
         {% endif %}
         
         <footer class="practice-card-footer">
-          <a href="{{ practice.url }}" class="read-more">Read More →</a>
+          <a href="{{ practice.url | relative_url }}" class="read-more">Read More →</a>
         </footer>
       </article>
     {% endfor %}

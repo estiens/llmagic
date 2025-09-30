@@ -15,7 +15,7 @@ header_style: dark
     {% for lab in site.labs %}
       <article class="lab-card bg-paper p-8 border-2 border-graphite/20">
         <header class="lab-card-header">
-          <h2><a href="{{ lab.url }}">{{ lab.title }}</a></h2>
+          <h2><a href="{{ lab.url | relative_url }}">{{ lab.title }}</a></h2>
           {% if lab.description %}
             <p class="lab-description">{{ lab.description }}</p>
           {% endif %}
@@ -51,7 +51,7 @@ header_style: dark
         
         <footer class="lab-card-footer">
           <div class="lab-links">
-            <a href="{{ lab.url }}" class="read-more">Learn More →</a>
+            <a href="{{ lab.url | relative_url }}" class="read-more">Learn More →</a>
             {% if lab.github_url %}
               <a href="{{ lab.github_url }}" class="external-link" target="_blank">GitHub</a>
             {% endif %}

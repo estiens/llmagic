@@ -260,7 +260,7 @@ layout: default
         {% for case_slug in page.related_case_studies %}
           {% assign related_case = site.case_studies | where: "slug", case_slug | first %}
           {% if related_case %}
-          <a href="{{ related_case.url }}" class="block group">
+          <a href="{{ related_case.url | relative_url }}" class="block group">
             <div class="bg-paper-quiet p-6 border-2 border-inkwell group-hover:shadow-brutalist transition-all">
               <h4 class="font-bold text-lg mb-2 group-hover:text-spray-cyan transition-colors">
                 {{ related_case.title }}

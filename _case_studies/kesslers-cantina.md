@@ -2,7 +2,7 @@
 layout: case_study_v2
 title: "Kessler's Cantina"
 subtitle: "The Sentient Jukebox"
-summary: "A sentient AI bartender who served drinks while surviving Minnesota winters and having on-screen existential crises"
+summary: "A sentient AI bartender who served drinks while having on-screen existential crises in the middle of a Minnesota winter"
 date: 2024-02-15
 industry: "Interactive Installation / Experimental Entertainment"
 project_type: "Dive-Bar Jukebox"

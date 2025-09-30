@@ -2,6 +2,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% if page.url == "/" %}
+  <title>LOW LEVEL MAGIC | Building AI Characters That Live</title>
+  <meta property="og:title" content="LOW LEVEL MAGIC | Building AI Characters That Live">
+  <meta name="twitter:title" content="LOW LEVEL MAGIC | Building AI Characters That Live">
+  {% endif %}
+
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   {%- feed_meta -%}
@@ -14,22 +21,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{{ "/assets/images/favicon.ico" | relative_url }}">
-  
   <!-- Theme color for mobile browsers -->
   <meta name="theme-color" content="#0A0A0A">
   <meta name="msapplication-navbutton-color" content="#0A0A0A">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  {% if jekyll.environment == 'production' %}
-  <!-- Bundled Alpine.js for production -->
-  <script src="{{ "/assets/js/bundle.js" | relative_url }}" defer></script>
-  {% else %}
-  <!-- Development mode: Load components and Alpine separately -->
+  <!-- Alpine.js components and framework -->
   <script src="{{ "/assets/js/alpine-components.js" | relative_url }}" defer></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
-  {% endif %}
 
   <!-- KWLX Easter Egg (standalone feature) -->
   {% if page.url contains 'kwlx' %}

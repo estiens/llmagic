@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import KWLX Magazine Layout Styles */
+@import url('kwlx-enhanced.css');
+
 /* ============================================================================
    BASE LAYER - Aesthetic DNA Synthesis
    ============================================================================ */
