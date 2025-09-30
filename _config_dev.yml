@@ -1,0 +1,5 @@
+# Development overrides for _config.yml
+# This file overrides settings for local development
+
+baseurl: ""
+url: "http://localhost:4001"

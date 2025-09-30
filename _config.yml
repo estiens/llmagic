@@ -5,8 +5,8 @@ formspree_id: <%= ENV['FORMSPREE_ID'] || 'xpwaeqkb' %>
 description: >-
   We build AI characters with soul and experiences that survive the real world.
   Partner with Low Level Magic to create unforgettable, production-ready AI for your next project.
-baseurl: ""
-url: "https://lowlevelmagic.dev"
+baseurl: "/llmagic"
+url: "https://estiens.github.io"
 
 # Build settings
 markdown: kramdown
@@ -101,4 +101,5 @@ exclude:
   - tailwind.config.js
   - postcss.config.js
   - assets/css/tailwind.css
+  - _config_dev.yml
   - "*.bak"
