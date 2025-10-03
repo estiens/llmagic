@@ -6,6 +6,7 @@ project_type: "Lying Narrator"
 client: ""
 summary: "An early LLM-powered game using a lying narrator and an adaptive difficulty engine that adjusts in real-time"
 date: 2022-11-20
+order: 6
 industry: "Interactive Gaming / AI Research"
 tags: ["Deception Engine", "Adaptive Difficulty", "Procedural Doors"]
 series: "AI That Lives"

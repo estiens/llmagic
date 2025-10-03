@@ -4,6 +4,7 @@ title: "Shoddy Body"
 client: ""
 summary: "AI Game Master with Personality - Social chaos engine powered by multimodal AI commentary"
 date: 2024-03-10
+order: 3
 industry: "Interactive Gaming / Social Entertainment"
 project_type: "Party Game"
 tags: ["Web Mobile", "AI Hosts", "AI Roasts", "Betrayal", "Shame", "Fun"]

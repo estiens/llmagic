@@ -4,6 +4,7 @@ title: "KWLX Radio"
 subtitle: "An AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
 summary: "AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
 date: 2024-03-15
+order: 1
 industry: "Interactive Entertainment / Experimental Media"
 project_type: "FM Radio"
 tags: ["ARG", "12 DJs", "Tears", "Autonomous Storytelling"]

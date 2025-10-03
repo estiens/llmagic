@@ -4,6 +4,7 @@ title: "Kessler's Cantina"
 subtitle: "The Sentient Jukebox"
 summary: "A sentient AI bartender who served drinks while having on-screen existential crises in the middle of a Minnesota winter"
 date: 2024-02-15
+order: 2
 industry: "Interactive Installation / Experimental Entertainment"
 project_type: "Dive-Bar Jukebox"
 client: ""

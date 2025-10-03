@@ -269,7 +269,7 @@ title: "LOW LEVEL MAGIC | Building AI Characters That Live. Creative AI consulti
     </h2>
 
     <div class="grid grid-cols-12 gap-8">
-      {% assign filtered_case_studies = site.case_studies | where_exp: "item", "item.title != 'Aurora: Emotional AI Character System'" %}
+      {% assign filtered_case_studies = site.case_studies | where_exp: "item", "item.title != 'Aurora: Emotional AI Character System'" | sort: "order" %}
       {% for case_study in filtered_case_studies limit:6 %}
       <div class="col-span-12 md:col-span-6 lg:col-span-4 group">
         <!-- High-fashion case study card -->

@@ -5,6 +5,7 @@ client: ""
 subtitle: "Multi-persona AI roaming the playa"
 summary: "Multi-persona mystery box with goal-oriented behavior"
 date: 2023-08-28
+order: 4
 industry: "Interactive Installation / Experimental Entertainment"
 project_type: "Just A Cube"
 tags: ["Metafiction", "NSFW Snark", "Burning Man", "Environmental Control"]

@@ -5,6 +5,7 @@ subtitle: "Multi-LLM collaborative literature"
 client: ""
 summary: "Multi-LLM collaborative literature with web-native aesthetics"
 date: 2024-01-15
+order: 5
 industry: "Digital Art / Experimental Literature"
 project_type: "No Alignment"
 tags: ["No Non-Alignment", "Experimental Art", "Math And Plums"]
