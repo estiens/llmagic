@@ -19,17 +19,14 @@ hero_labels:
   image_3: "12 AI PERSONALITIES"
 
 challenge: |
-  Create a 24/7 interactive narrative experience where AI personalities don't just generate content—but develop relationships, drive plot, and foster genuine audience attachment over time.
+  The challenge was simple to state, fiendishly difficult to execute: create a 24/7 interactive narrative experience where AI personalities don't just generate content on demand, but develop genuine relationships, drive their own plot forward, and foster real audience attachment over months of continuous operation. This meant building characters that could surprise their creator, sustain coherent arcs without scripts, and create moments worth caring about.
 
-  No reset button. No script. Living characters in the wild.
+  There would be no reset button. No safety net of predetermined storylines. Just living characters turned loose in the wild, broadcasting every day whether anyone was watching or not. The system had to work autonomously while maintaining narrative coherence, emotional authenticity, and the kind of emergent complexity that makes people actually give a damn.
 
 solution: |
-  Built a radio station where 12 AI DJs operated continuously with:
-  - Sparse character sheets with thematic anchors and hidden motivations
-  - Layered memory: transcripts, world state, and relationship logs
-  - Private note-passing between DJs for gossip and plotting
-  - Post-show reflection for arc evolution
-  - Dynamic world model with real seasons and emergent canon
+  The solution was a radio station where 12 AI DJs operated continuously, but the architecture underneath was anything but simple. Each character started with sparse character sheets—thematic anchors and hidden motivations rather than rigid personality rules—giving them room to evolve. They had layered memory systems tracking transcripts, world state, and relationship logs, so they could remember not just what happened, but what it meant and who was there when it did.
+
+  The magic happened in the spaces between broadcasts. DJs could pass private notes to each other for gossip and plotting. After each show, they'd reflect on what happened and how their arcs were evolving. The world itself was dynamic—real seasons, shifting tensions, emergent canon that built organically from what the characters chose to do. It wasn't a simulation of a radio station. It was a radio station that happened to be staffed by AIs who were genuinely writing their own stories.
 
 stats:
   - value: "12"
