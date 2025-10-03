@@ -89,18 +89,20 @@ layout: default
   <section id="challenge-solution">
     <h2 class="cs-section-header">Challenge & Solution</h2>
 
-    <div class="challenge-solution-grid">
+    <div class="narrative-single-column">
       {% if page.challenge %}
-      <div class="challenge-column">
-        <div class="body-standard drop-cap">
+      <div class="narrative-challenge">
+        <span class="narrative-kicker">THE CHALLENGE</span>
+        <div class="body-xl drop-cap">
           {{ page.challenge | markdownify }}
         </div>
       </div>
       {% endif %}
 
       {% if page.solution %}
-      <div class="solution-column">
-        <div class="body-standard">
+      <div class="narrative-solution">
+        <span class="narrative-kicker">THE APPROACH</span>
+        <div class="body-xl drop-cap-cyan">
           {{ page.solution | markdownify }}
         </div>
       </div>

@@ -398,48 +398,78 @@
     padding-top: 2rem;
   }
 
-  /* Challenge/Solution Two-Column Grid */
-  .challenge-solution-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin: 4rem 0;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+  /* Narrative Single Column - Full Width with Visual Interest */
+  .narrative-single-column {
+    max-width: 900px;
+    margin: 4rem auto;
   }
 
-  .challenge-column {
+  .narrative-challenge,
+  .narrative-solution {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .narrative-challenge {
     padding: 3rem;
-    background: var(--paper-muted);
+    border-left: 8px solid var(--hot-magenta);
+    background: linear-gradient(to right, rgba(255, 61, 154, 0.05), transparent);
+    box-shadow: 12px 12px 0 rgba(255, 61, 154, 0.1);
   }
 
-  .solution-column {
+  .narrative-solution {
     padding: 3rem;
-    background: var(--paper-muted);
+    border-left: 8px solid var(--spray-cyan);
+    background: linear-gradient(to right, rgba(53, 208, 226, 0.05), transparent);
+    box-shadow: 12px 12px 0 rgba(53, 208, 226, 0.1);
   }
 
-  .challenge-column h2,
-  .challenge-column h3,
-  .solution-column h2,
-  .solution-column h3 {
-    margin-top: 0;
+  .narrative-kicker {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+  }
+
+  .narrative-challenge .narrative-kicker {
+    color: var(--hot-magenta);
+  }
+
+  .narrative-solution .narrative-kicker {
+    color: var(--spray-cyan);
+  }
+
+  /* Enhanced body text for narrative sections */
+  .narrative-challenge .body-xl,
+  .narrative-solution .body-xl {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.75;
+    color: var(--graphite);
+  }
+
+  .narrative-challenge .body-xl p,
+  .narrative-solution .body-xl p {
+    margin-bottom: 1.5rem;
+  }
+
+  .narrative-challenge .body-xl p:last-child,
+  .narrative-solution .body-xl p:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 1024px) {
-    .challenge-solution-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    .narrative-challenge,
+    .narrative-solution {
+      padding: 2rem;
+      box-shadow: 8px 8px 0 rgba(255, 61, 154, 0.1);
     }
 
-    .challenge-column,
-    .solution-column {
-      grid-column: 1 / -1;
-      transform: rotate(0);
-    }
-
-    .solution-column {
-      transform: translateY(0);
+    .narrative-solution {
+      box-shadow: 8px 8px 0 rgba(53, 208, 226, 0.1);
     }
   }
 
