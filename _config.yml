@@ -61,6 +61,8 @@ social:
 navigation:
   - title: Projects
     url: /#work
+  - title: Work With Me
+    url: /work-with-me/
   - title: Writings
     url: /writings/
   - title: Contact
