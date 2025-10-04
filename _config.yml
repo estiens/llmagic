@@ -1,12 +1,12 @@
 # Site settings
 title: LOW LEVEL MAGIC
-email: contact@lowlevelmagic.dev
+email: hello@lowlevelmagic.io
 formspree_id: <%= ENV['FORMSPREE_ID'] || 'xpwaeqkb' %>
 description: >-
   We build AI characters with soul and experiences that survive the real world.
   Partner with Low Level Magic to create unforgettable, production-ready AI for your next project.
-baseurl: "/llmagic"
-url: "https://estiens.github.io"
+baseurl: ""
+url: "https://lowlevelmagic.io"
 
 # Build settings
 markdown: kramdown
@@ -60,14 +60,14 @@ social:
 navigation:
   - title: Projects
     url: /#work
+  - title: Work With Me
+    url: /work-with-me/
   - title: Writings
     url: /writings/
   - title: Contact
     url: /#contact
   - title: Links
     url: /links/
-  - title: Work With Me
-    url: /work-with-me/
 
 # Keep generated files during build
 keep_files:

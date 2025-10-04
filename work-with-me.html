@@ -288,6 +288,49 @@ permalink: /work-with-me/
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section-tight bg-paper-quiet relative">
+  <div class="absolute top-0 left-0 right-0 h-2 bg-spray-cyan opacity-60"></div>
+
+  <div class="container-tight">
+    <h2 class="font-display text-display-medium font-black spacing-standard">Common Questions</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 spacing-generous">
+      <!-- Question 1 -->
+      <div class="bg-paper p-6 border-l-4 border-hot-magenta">
+        <h3 class="font-display font-bold text-section-md mb-3">How quickly can you start?</h3>
+        <p class="text-body-base text-graphite leading-relaxed">
+          I typically have availability within 2-4 weeks for new projects. Rush projects may be possible—let's talk about your timeline and I'll let you know what's realistic.
+        </p>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="bg-paper p-6 border-l-4 border-spray-cyan">
+        <h3 class="font-display font-bold text-section-md mb-3">Do you work remotely or on-site?</h3>
+        <p class="text-body-base text-graphite leading-relaxed">
+          Both. I'm based in Minneapolis and available for remote collaboration nationwide. For installations and events, on-site work is absolutely possible—let's discuss logistics.
+        </p>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="bg-paper p-6 border-l-4 border-radio-mustard">
+        <h3 class="font-display font-bold text-section-md mb-3">What if our project needs expertise you don't have?</h3>
+        <p class="text-body-base text-graphite leading-relaxed">
+          I have a network of collaborators (hardware engineers, 3D artists, sound designers) I can bring in for specialized needs. You get one point of contact; I handle coordination.
+        </p>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="bg-paper p-6 border-l-4 border-oxide-teal">
+        <h3 class="font-display font-bold text-section-md mb-3">Can you help us figure out if our idea is even possible?</h3>
+        <p class="text-body-base text-graphite leading-relaxed">
+          Yes—that's exactly what the consulting engagement is for. We can do a 2-4 hour feasibility assessment before committing to a full project. Better to find out early than waste time on the impossible.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="section-tight bg-paper relative">
   <div class="container-tight text-center">
@@ -297,10 +340,10 @@ permalink: /work-with-me/
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a href="/#contact" class="inline-block px-8 py-4 bg-hot-magenta text-paper font-bold uppercase tracking-wider hover:bg-spray-cyan hover:text-inkwell transition-all shadow-brutal-hot">
+      <a href="{{ '/#contact' | relative_url }}" class="inline-block px-8 py-4 bg-hot-magenta text-paper font-bold uppercase tracking-wider hover:bg-spray-cyan hover:text-inkwell transition-all shadow-brutal-hot">
         Start a Conversation
       </a>
-      <a href="mailto:jobs@ericstiens.dev" class="inline-block px-8 py-4 border-2 border-inkwell text-inkwell font-bold uppercase tracking-wider hover:bg-inkwell hover:text-paper transition-all">
+      <a href="mailto:{{ site.email }}" class="inline-block px-8 py-4 border-2 border-inkwell text-inkwell font-bold uppercase tracking-wider hover:bg-inkwell hover:text-paper transition-all">
         Email Directly
       </a>
     </div>
