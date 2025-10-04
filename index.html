@@ -273,7 +273,18 @@ title: "LOW LEVEL MAGIC | Building AI Characters That Live. Creative AI consulti
       {% for case_study in filtered_case_studies limit:6 %}
       <div class="col-span-12 md:col-span-6 lg:col-span-4 group">
         <!-- High-fashion case study card -->
-        <div class="bg-paper border-2 border-inkwell overflow-hidden flex flex-col clip-angular-tr">
+        <div class="bg-paper border-2 border-inkwell overflow-hidden flex flex-col clip-angular-tr h-full">
+
+          <!-- Hero Image -->
+          <div class="relative h-48 overflow-hidden bg-graphite/5">
+            {% if case_study.hero_image %}
+            <img src="{{ case_study.hero_image | relative_url }}" alt="{{ case_study.title }}" class="w-full h-full object-cover">
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-graphite/10 to-graphite/5">
+              <span class="font-mono text-technical-lg uppercase text-graphite/30 tracking-wider">{{ case_study.project_type }}</span>
+            </div>
+            {% endif %}
+          </div>
 
           <!-- Title header -->
           <div class="{% cycle 'bg-inkwell', 'bg-hot-magenta', 'bg-spray-cyan', 'bg-radio-mustard', 'bg-oxide-teal', 'bg-inkwell' %} text-paper padding-comfortable">

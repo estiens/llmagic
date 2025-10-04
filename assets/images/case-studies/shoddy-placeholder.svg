@@ -1,0 +1,17 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hot magenta background -->
+  <rect width="800" height="400" fill="#FF3D9A"/>
+
+  <!-- Chaotic sketch lines -->
+  <g stroke="#35D0E2" stroke-width="3" fill="none" opacity="0.3">
+    <path d="M 50,50 Q 200,100 350,80 T 650,120"/>
+    <path d="M 100,200 Q 300,150 500,180 T 750,200"/>
+    <path d="M 80,300 Q 250,350 400,320 T 720,340"/>
+    <circle cx="150" cy="150" r="50"/>
+    <circle cx="600" cy="280" r="70"/>
+  </g>
+
+  <!-- Text -->
+  <text x="400" y="200" font-family="monospace" font-size="64" font-weight="bold" fill="#fff" text-anchor="middle">SHODDY</text>
+  <text x="400" y="260" font-family="monospace" font-size="64" font-weight="bold" fill="#fff" text-anchor="middle">BODY</text>
+</svg>

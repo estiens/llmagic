@@ -17,6 +17,7 @@ results:
   - "Created running jokes with regular visitors"
   - "Maintained character immersion 24/7 for 2 months"
 tags: ["Outer-Rim", "Negative Twenty", "Existential Crisis", "Lights/Sound/Bullhorn"]
+hero_image: "/assets/images/case-studies/kesslers-placeholder.svg"
 series: "AI That Lives"
 series_order: 1
 mode: "proof"

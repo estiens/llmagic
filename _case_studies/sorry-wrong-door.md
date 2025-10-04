@@ -9,6 +9,7 @@ date: 2022-11-20
 order: 6
 industry: "Interactive Gaming / AI Research"
 tags: ["Deception Engine", "Adaptive Difficulty", "Procedural Doors"]
+hero_image: "/assets/images/case-studies/sorry-placeholder.svg"
 series: "AI That Lives"
 series_order: 5
 ---

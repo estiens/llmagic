@@ -9,6 +9,7 @@ order: 5
 industry: "Digital Art / Experimental Literature"
 project_type: "No Alignment"
 tags: ["No Non-Alignment", "Experimental Art", "Math And Plums"]
+hero_image: "/assets/images/case-studies/void-placeholder.svg"
 series: "AI That Lives"
 series_order: 3
 ---

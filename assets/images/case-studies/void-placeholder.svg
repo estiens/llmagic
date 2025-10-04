@@ -1,0 +1,19 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="400" fill="#2A2A2A"/>
+
+  <!-- Abstract geometric shapes -->
+  <g opacity="0.3">
+    <circle cx="150" cy="100" r="80" fill="none" stroke="#35D0E2" stroke-width="2"/>
+    <rect x="500" y="250" width="120" height="120" fill="none" stroke="#FF3D9A" stroke-width="2" transform="rotate(45 560 310)"/>
+    <polygon points="300,350 350,250 400,350" fill="none" stroke="#E2AC27" stroke-width="2"/>
+  </g>
+
+  <!-- Void circle -->
+  <circle cx="400" cy="200" r="100" fill="none" stroke="#35D0E2" stroke-width="3" opacity="0.6"/>
+  <circle cx="400" cy="200" r="70" fill="none" stroke="#35D0E2" stroke-width="2" opacity="0.4"/>
+  <circle cx="400" cy="200" r="40" fill="none" stroke="#35D0E2" stroke-width="1" opacity="0.2"/>
+
+  <!-- Text -->
+  <text x="400" y="340" font-family="monospace" font-size="56" font-weight="bold" fill="#35D0E2" text-anchor="middle">VOID.WINK</text>
+</svg>

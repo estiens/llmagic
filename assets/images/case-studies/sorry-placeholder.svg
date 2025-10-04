@@ -1,0 +1,26 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark teal background -->
+  <rect width="800" height="400" fill="#1D6F73"/>
+
+  <!-- Three doors -->
+  <g>
+    <!-- Door 1 -->
+    <rect x="80" y="100" width="140" height="220" fill="#2A2A2A" stroke="#35D0E2" stroke-width="3" opacity="0.6"/>
+    <circle cx="200" cy="210" r="6" fill="#35D0E2"/>
+
+    <!-- Door 2 (highlighted) -->
+    <rect x="330" y="100" width="140" height="220" fill="#2A2A2A" stroke="#FF3D9A" stroke-width="4"/>
+    <circle cx="450" cy="210" r="6" fill="#FF3D9A"/>
+
+    <!-- Door 3 -->
+    <rect x="580" y="100" width="140" height="220" fill="#2A2A2A" stroke="#35D0E2" stroke-width="3" opacity="0.6"/>
+    <circle cx="700" cy="210" r="6" fill="#35D0E2"/>
+  </g>
+
+  <!-- Question marks -->
+  <text x="150" y="80" font-family="monospace" font-size="32" fill="#35D0E2" opacity="0.5">?</text>
+  <text x="670" y="80" font-family="monospace" font-size="32" fill="#35D0E2" opacity="0.5">?</text>
+
+  <!-- Text -->
+  <text x="400" y="370" font-family="monospace" font-size="40" font-weight="bold" fill="#fff" text-anchor="middle">SORRY, WRONG DOOR</text>
+</svg>
