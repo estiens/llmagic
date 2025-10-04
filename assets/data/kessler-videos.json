@@ -1,0 +1,10 @@
+---
+---
+{
+  "videos": [
+    {% assign videos = site.static_files | where_exp: "file", "file.path contains 'kessler/videos'" | where_exp: "file", "file.extname == '.mp4'" %}
+    {% for file in videos %}
+    "{{ file.path | relative_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

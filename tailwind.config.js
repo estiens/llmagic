@@ -321,15 +321,15 @@ module.exports = {
     })
   ],
   safelist: [
-    // Pattern-based safelist for Jekyll cycle classes used in index.html
+    // Pattern-based safelist for Jekyll cycle classes with opacity support
     {
-      pattern: /bg-(inkwell|hot-magenta|spray-cyan|radio-mustard|oxide-teal|safety-orange)/,
+      pattern: /bg-(inkwell|hot-magenta|spray-cyan|radio-mustard|oxide-teal|safety-orange)(\/(?:5|10|20|30|40|50|60|70|80|90))?/,
     },
     {
-      pattern: /text-(paper|inkwell|spray-cyan|hot-magenta|radio-mustard|oxide-teal)/,
+      pattern: /(hover:)?bg-(hot-magenta|spray-cyan|radio-mustard|oxide-teal)(\/(?:5|10|20|30|40|50|60|70|80|90))?/,
     },
     {
-      pattern: /border-(inkwell|hot-magenta|spray-cyan|radio-mustard|oxide-teal|safety-orange)/,
+      pattern: /(text|border)-(paper|inkwell|spray-cyan|hot-magenta|radio-mustard|oxide-teal)(\/(?:5|10|20|30|40|50|60|70|80|90))?/,
     }
   ]
 }

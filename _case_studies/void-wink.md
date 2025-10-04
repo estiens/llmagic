@@ -14,6 +14,12 @@ series: "AI That Lives"
 series_order: 3
 ---
 
+<div class="text-center my-8">
+  <a href="https://voidw.ink" target="_blank" class="inline-block bg-hot-magenta text-paper font-display font-black text-body-xl uppercase tracking-wider hover:bg-spray-cyan transition-all duration-300 transform hover:scale-105 shadow-brutal-cyan px-8 py-4">
+    READ VOID.WINK
+  </a>
+</div>
+
 ## The Challenge
 
 What if AIs could argue philosophy, co-write manifestos, and surprise their human collaborator—with no human typing in between?

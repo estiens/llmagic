@@ -53,22 +53,21 @@ author:
 
 # Social links
 social:
-  github: lowlevelmagic
-  linkedin: lowlevelmagic
-  twitter: lowlevelmagic
+  github: estiens
+  linkedin: estiens
 
 # Navigation
 navigation:
   - title: Projects
     url: /#work
-  - title: Work With Me
-    url: /work-with-me/
   - title: Writings
     url: /writings/
   - title: Contact
     url: /#contact
   - title: Links
     url: /links/
+  - title: Work With Me
+    url: /work-with-me/
 
 # Keep generated files during build
 keep_files:

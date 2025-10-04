@@ -391,6 +391,15 @@
     text-shadow: 2px 2px 0 theme('colors.hot-magenta'), 4px 4px 0 theme('colors.spray-cyan');
   }
 
+  /* KWLX Easter Egg Letters */
+  .kwlx-letter {
+    @apply inline-block transition-all duration-200;
+  }
+
+  .kwlx-letter:hover {
+    @apply scale-105;
+  }
+
   .kwlx-title .frequency {
     @apply block text-2xl font-mono text-radio-mustard mb-4;
     letter-spacing: 0.2em;
@@ -982,6 +991,163 @@
   .bg-hot-magenta:focus-visible,
   [class*="hot-magenta"]:focus-visible {
     outline-color: theme('colors.paper');
+  }
+
+  /* ---------------------------------------------------------------------------
+     KWLX EASTER EGG STYLES
+     --------------------------------------------------------------------------- */
+  .kwlx-secret-modal {
+    @apply fixed inset-0 z-[10000] opacity-0 transition-opacity duration-300;
+  }
+
+  .kwlx-secret-overlay {
+    @apply absolute inset-0 bg-black/90 backdrop-blur-sm;
+  }
+
+  .kwlx-secret-content {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]
+           border-2 border-[#00ff41] p-8 min-w-[600px] max-w-[80vw]
+           transition-transform duration-300;
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
+  }
+
+  .radio-display {
+    @apply flex items-center justify-between p-4 bg-black border border-[#333] mb-8;
+  }
+
+  .frequency-display {
+    @apply font-mono text-[#00ff41] text-4xl font-bold;
+    text-shadow: 0 0 10px #00ff41;
+  }
+
+  .frequency-band {
+    @apply text-base ml-2 text-[#888];
+  }
+
+  .signal-strength {
+    @apply flex gap-1 items-end;
+  }
+
+  .signal-bar {
+    @apply w-2 bg-[#333] transition-all duration-200;
+    height: 10px;
+  }
+  .signal-bar:nth-child(2) { height: 15px; }
+  .signal-bar:nth-child(3) { height: 20px; }
+  .signal-bar:nth-child(4) { height: 25px; }
+  .signal-bar:nth-child(5) { height: 30px; }
+
+  .tuning-dial {
+    @apply w-10 h-10 border-2 border-[#666] rounded-full bg-[#222] relative;
+    animation: spin 4s linear infinite;
+  }
+
+  .tuning-dial::after {
+    @apply absolute top-0.5 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-[#ff0080];
+    content: '';
+  }
+
+  .transmission-log {
+    @apply bg-black border border-[#333] p-4 mb-8 h-[200px] overflow-y-auto font-mono;
+  }
+
+  .log-header {
+    @apply text-[#e2ac27] text-sm mb-4 text-center border-b border-[#333] pb-2;
+  }
+
+  .log-entry {
+    @apply mb-2 text-sm;
+  }
+
+  .timestamp {
+    @apply text-[#888] mr-2;
+  }
+
+  .message {
+    @apply text-white;
+  }
+
+  .typing .message {
+    @apply text-[#00ff41];
+  }
+
+  .cursor {
+    @apply text-[#00ff41];
+    animation: blink 1s infinite;
+  }
+
+  .secret-controls {
+    @apply flex gap-4 justify-center;
+  }
+
+  .play-archive-btn,
+  .close-modal-btn {
+    @apply px-6 py-3 bg-[#00ff41] text-black border-0 font-mono font-bold
+           cursor-pointer transition-all duration-200 uppercase tracking-wider;
+  }
+
+  .close-modal-btn {
+    @apply bg-[#ff0080] text-white;
+  }
+
+  .play-archive-btn:hover,
+  .close-modal-btn:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .kwlx-static-overlay {
+    @apply fixed inset-0 pointer-events-none opacity-50 z-[9999];
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      transparent 3px
+    );
+    animation: static-noise 0.1s infinite linear;
+  }
+
+  .konami-activated {
+    filter: hue-rotate(90deg) contrast(1.2);
+  }
+
+  .konami-terminal {
+    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           bg-black border-2 border-[#00ff41] p-8 font-mono text-[#00ff41]
+           min-w-[500px] opacity-0 transition-opacity duration-500 z-[10001];
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.5);
+  }
+
+  .terminal-header {
+    @apply text-center mb-4 text-[#e2ac27] font-bold border-b border-[#333] pb-2;
+  }
+
+  .terminal-line {
+    @apply mb-2 text-sm;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .kwlx-secret-content {
+      @apply min-w-[90vw] p-4;
+    }
+    .radio-display {
+      @apply flex-col gap-4 text-center;
+    }
+    .konami-terminal {
+      @apply min-w-[90vw] p-4;
+    }
   }
 
   /* ---------------------------------------------------------------------------

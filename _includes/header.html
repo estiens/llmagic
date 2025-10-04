@@ -9,7 +9,7 @@
     <p class="text-base font-mono uppercase tracking-wider" x-data="{ words: ['flips', 'quips', 'rips', 'trips', 'ships'], current: 0, stopped: false }" x-init="const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; if (reduce) { stopped = true; return; } let interval = setInterval(() => { if (current === 4) { stopped = true; clearInterval(interval); } else { current = (current + 1) % words.length } }, 2000)">
       AI THAT <span aria-live="polite" class="font-bold" :class="current === 4 ? 'text-spray-cyan' : 'text-hot-magenta'" x-text="words[current].toUpperCase()"></span>
     </p>
-    <p class="text-sm font-mono text-paper/60">
+    <p class="font-mono text-technical-base text-paper/60">
       Currently: <span class="text-hot-magenta font-bold">ACCEPTING PROJECTS</span>
     </p>
   </div>
@@ -34,43 +34,26 @@
     <div class="corner-accent-tr top-4 right-1/4 w-10 h-10 border-hot-magenta opacity-20"></div>
     <div class="absolute bottom-8 right-32 w-20 h-6 border-b-2 border-radio-mustard opacity-25"></div>
 
-    <div class="container-tight">
-      <div class="flex justify-between items-center py-6">
-        <!-- Logo with four elements alchemy symbol -->
-        <div class="relative">
-          <div class="flex items-center gap-4">
-            <a href="{{ "/" | relative_url }}" class="flex items-center gap-4 text-inkwell no-underline hover:text-hot-magenta transition-all duration-300 group">
-              <!-- Four Elements Alchemy Symbol -->
-              <svg viewBox="0 0 48 48" class="w-12 h-12 group-hover:text-hot-magenta transition-colors" aria-hidden="true" focusable="false">
-                <!-- Fire (upward triangle) - top -->
-                <path d="M24 8 L32 20 L16 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    <div class="relative">
+      <!-- Logo - positioned at left edge -->
+      <div class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20">
+        <a href="{{ "/" | relative_url }}" class="flex items-center gap-4 text-inkwell no-underline hover:opacity-90 transition-all duration-300 group">
+          <!-- Logo Image -->
+          <img src="{{ "/assets/images/logo-transparent-128.png" | relative_url }}" alt="Low Level Magic Logo" class="w-20 h-20 md:w-24 md:h-24">
 
-                <!-- Water (downward triangle) - bottom -->
-                <path d="M24 40 L16 28 L32 28 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-
-                <!-- Air (upward triangle with line) - left -->
-                <path d="M8 24 L20 16 L20 32 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <line x1="11" y1="24" x2="17" y2="24" stroke="currentColor" stroke-width="1.5"/>
-
-                <!-- Earth (downward triangle with line) - right -->
-                <path d="M40 24 L28 32 L28 16 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-                <line x1="31" y1="24" x2="37" y2="24" stroke="currentColor" stroke-width="1.5"/>
-
-                <!-- Central circle binding them -->
-                <circle cx="24" cy="24" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-
-              <!-- Text - semantic tokens -->
-              <div class="flex flex-col">
-                <span class="font-mono font-black text-display-medium tracking-tighter uppercase">LOW LEVEL</span>
-                <span class="font-display font-black text-section-md tracking-widest text-hot-magenta uppercase -mt-1">MAGIC</span>
-              </div>
-            </a>
+          <!-- Text - semantic tokens -->
+          <div class="flex flex-col">
+            <span class="font-mono font-black text-display-medium tracking-tighter uppercase">LOW LEVEL</span>
+            <span class="font-display font-black text-section-md tracking-widest text-hot-magenta uppercase -mt-1">MAGIC</span>
           </div>
-        </div>
+        </a>
+      </div>
 
-      <!-- Navigation -->
-      <nav class="site-nav" aria-label="Main">
+      <div class="container-tight">
+        <div class="flex justify-end items-center py-6 min-h-[96px]">
+
+        <!-- Navigation -->
+        <nav class="site-nav" aria-label="Main">
         <!-- Mobile Menu Toggle -->
         <button
           @click="toggleMobileMenu(); $nextTick(() => $el.closest('nav').querySelector('#primary-menu a')?.focus())"
@@ -85,7 +68,7 @@
         </button>
 
         <!-- Desktop Navigation with semantic typography -->
-        <div class="hidden md:flex items-center gap-2">
+        <div class="hidden md:flex items-center gap-4">
           {% for item in site.navigation %}
             <a
               class="page-link font-mono font-bold text-body-lg uppercase tracking-wider text-inkwell no-underline px-3 py-3 transition-all duration-150 hover:bg-hot-magenta hover:text-paper relative group {% if page.url == item.url %}active{% endif %}"
@@ -118,6 +101,7 @@
           {% endfor %}
         </div>
         </nav>
+        </div>
       </div>
     </div>
   </div>

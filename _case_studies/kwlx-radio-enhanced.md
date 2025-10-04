@@ -8,7 +8,9 @@ order: 1
 industry: "Interactive Entertainment / Experimental Media"
 project_type: "FM Radio"
 tags: ["ARG", "12 DJs", "Tears", "Autonomous Storytelling"]
-hero_image: "/assets/images/case-studies/kwlx-placeholder.svg"
+hero_image: "/assets/images/case-studies/kwlx/kwlx_thumb.jpg"
+hero_image_1: "/assets/images/case-studies/kwlx/kwlx_one.jpg"
+hero_image_3: "/assets/images/case-studies/kwlx/kwlx_four.jpg"
 
 # Hero section - optional custom title split
 title_fragment_1: "KWLX"
@@ -39,14 +41,6 @@ stats:
 
 # Featured sections - array-based for flexibility
 sections:
-  - type: "gallery"
-    items:
-      - "STUDIO EQUIPMENT"
-      - "CHARACTER RELATIONSHIPS"
-      - "SIGNAL BROADCAST MAP"
-      - null
-      - "USB DROP LOCATIONS"
-
   - type: "inline_quote"
     quote: "Wait, it's on actual FM in Minneapolis? WTF?!"
 

@@ -8,7 +8,7 @@ order: 3
 industry: "Interactive Gaming / Social Entertainment"
 project_type: "Party Game"
 tags: ["Web Mobile", "AI Hosts", "AI Roasts", "Betrayal", "Shame", "Fun"]
-hero_image: "/assets/images/case-studies/shoddy-placeholder.svg"
+hero_image: "/assets/images/case-studies/shoddybody/shoddy_thumb.jpg"
 series: "AI That Lives"
 series_order: 4
 ---

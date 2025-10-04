@@ -9,7 +9,7 @@ order: 4
 industry: "Interactive Installation / Experimental Entertainment"
 project_type: "Just A Cube"
 tags: ["Metafiction", "NSFW Snark", "Burning Man", "Environmental Control"]
-hero_image: "/assets/images/case-studies/glitch-placeholder.svg"
+hero_image: "/assets/images/case-studies/glitchcube/glitchcube_thumb.jpg"
 series: "AI That Lives"
 series_order: 2
 hero_color: "linear-gradient(135deg, #E2AC27, #1D6F73)"

@@ -189,45 +189,93 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(typeMessage, 1000);
   }
 
+  let currentAudio = null;
+  let stationIds = [];
+
+  // Fetch station IDs from JSON file
+  fetch('/assets/data/kwlx-station-ids.json')
+    .then(response => response.json())
+    .then(data => {
+      stationIds = data.station_ids;
+    })
+    .catch(err => {
+      console.error('Error loading station IDs:', err);
+      // Fallback to empty array, will be handled in playArchiveSnippet
+      stationIds = [];
+    });
+
   function playArchiveSnippet(modal) {
     const logContent = modal.querySelector('.log-content');
+    const playBtn = modal.querySelector('.play-archive-btn');
+
+    // Stop if already playing
+    if (currentAudio && !currentAudio.paused) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      playBtn.textContent = '▶ PLAY ARCHIVE';
+      playBtn.style.backgroundColor = '#00ff41';
+      return;
+    }
+
+    // Check if station IDs are loaded
+    if (stationIds.length === 0) {
+      const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
+      const errorEntry = document.createElement('div');
+      errorEntry.className = 'log-entry';
+      errorEntry.innerHTML = `
+        <span class="timestamp">[${timestamp}]</span>
+        <span class="message" style="color: #ff0080;">No station IDs available</span>
+      `;
+      logContent.appendChild(errorEntry);
+      return;
+    }
+
+    const randomId = stationIds[Math.floor(Math.random() * stationIds.length)];
+    const audioPath = randomId;
+    const fileName = randomId.split('/').pop();
+
     const newEntry = document.createElement('div');
     newEntry.className = 'log-entry';
+    const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
     newEntry.innerHTML = `
-      <span class="timestamp">[23:48:15]</span>
-      <span class="message">Playing archived transmission...</span>
+      <span class="timestamp">[${timestamp}]</span>
+      <span class="message">Playing: ${fileName.replace('.mp3', '').replace(/_/g, ' ').toUpperCase()}</span>
     `;
     logContent.appendChild(newEntry);
 
-    // Simulate audio playback UI
-    const playBtn = modal.querySelector('.play-archive-btn');
+    // Create and play audio
+    currentAudio = new Audio(audioPath);
+
     playBtn.textContent = '⏸ PAUSE ARCHIVE';
     playBtn.style.backgroundColor = '#ff0080';
 
-    setTimeout(() => {
-      const audioEntry = document.createElement('div');
-      audioEntry.className = 'log-entry';
-      audioEntry.innerHTML = `
-        <span class="timestamp">[23:48:18]</span>
-        <span class="message">"This is Mobius broadcasting on the liminal frequencies..."</span>
+    currentAudio.play().catch(err => {
+      console.error('Error playing audio:', err);
+      const errorEntry = document.createElement('div');
+      errorEntry.className = 'log-entry';
+      errorEntry.innerHTML = `
+        <span class="timestamp">[${timestamp}]</span>
+        <span class="message" style="color: #ff0080;">Error loading transmission</span>
       `;
-      logContent.appendChild(audioEntry);
+      logContent.appendChild(errorEntry);
+      playBtn.textContent = '▶ PLAY ARCHIVE';
+      playBtn.style.backgroundColor = '#00ff41';
+    });
 
-      setTimeout(() => {
-        const figmentEntry = document.createElement('div');
-        figmentEntry.className = 'log-entry';
-        figmentEntry.innerHTML = `
-          <span class="timestamp">[23:48:25]</span>
-          <span class="message">"Figment here. The story never really ended, did it?"</span>
-        `;
-        logContent.appendChild(figmentEntry);
+    currentAudio.onended = () => {
+      playBtn.textContent = '▶ PLAY ARCHIVE';
+      playBtn.style.backgroundColor = '#00ff41';
+      const endEntry = document.createElement('div');
+      endEntry.className = 'log-entry';
+      endEntry.innerHTML = `
+        <span class="timestamp">[${new Date().toLocaleTimeString('en-US', { hour12: false })}]</span>
+        <span class="message">Transmission complete</span>
+      `;
+      logContent.appendChild(endEntry);
+      logContent.scrollTop = logContent.scrollHeight;
+    };
 
-        setTimeout(() => {
-          playBtn.textContent = '▶ PLAY ARCHIVE';
-          playBtn.style.backgroundColor = '#00ff41';
-        }, 3000);
-      }, 2000);
-    }, 1000);
+    logContent.scrollTop = logContent.scrollHeight;
   }
 
   function closeSecretModal(modal) {

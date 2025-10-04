@@ -1,0 +1,10 @@
+---
+---
+{
+  "station_ids": [
+    {% assign station_ids = site.static_files | where_exp: "file", "file.path contains 'kwlx/station_ids'" | where_exp: "file", "file.extname == '.mp3'" %}
+    {% for file in station_ids %}
+    "{{ file.path | relative_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

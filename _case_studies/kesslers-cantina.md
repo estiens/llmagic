@@ -17,14 +17,13 @@ results:
   - "Created running jokes with regular visitors"
   - "Maintained character immersion 24/7 for 2 months"
 tags: ["Outer-Rim", "Negative Twenty", "Existential Crisis", "Lights/Sound/Bullhorn"]
-hero_image: "/assets/images/case-studies/kesslers-placeholder.svg"
+hero_image: "/assets/images/case-studies/kessler/kessler_thumb.jpg"
 series: "AI That Lives"
 series_order: 1
 mode: "proof"
 artifacts:
-  - type: screenshot
-    caption: "Kessler's LED marquee displaying sarcastic commentary during jazz discussion"
-    image: "/assets/images/kessler-marquee.jpg"
+  - type: video
+    caption: "Kessler in action"
     tags: ["hardware", "personality"]
   - type: quote
     content: "Am I really a jukebox? Do I just think people are listening to me?"
@@ -64,6 +63,8 @@ artifacts:
 ## The Challenge
 
 Build an AI bartender that's both functional jukebox and compelling character—surviving Minnesota winters and maintaining immersion 24/7.
+
+<div class="kessler-video-container" style="max-width: 600px; margin: 2rem auto; border: 2px solid #1D6F73; padding: 0.5rem; background: #000;"></div>
 
 ## The Solution
 

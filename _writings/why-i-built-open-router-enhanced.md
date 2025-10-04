@@ -140,7 +140,7 @@ Most LLM infrastructure optimizes for correctness—did the chatbot answer corre
 
 The infrastructure needs are completely different. Current tools optimize for accuracy metrics. I need tools that optimize for consistent behavior, reliable system integration, and graceful degradation when things go wrong.
 
-We're all building the ladder while we climb. If you're patching the same holes, the repo is at [github.com/estiens/open_router_enhanced](https://github.com/estiens/open_router_enhanced). Open an issue or PR—we're making this up as we go, might as well do it together.
+We're all building the ladder while we climb. If you're patching the same holes, the repo is at [open_router_enhanced](https://github.com/estiens/open_router). Open an issue or PR—we're making this up as we go, might as well do it together.
 
 ---
 

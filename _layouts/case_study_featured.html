@@ -11,19 +11,40 @@ layout: default
 
 <!-- HERO COLLAGE SECTION -->
 <section id="hero" class="hero-collage">
-  <div class="editorial-grid">
+  <div class="editorial-grid" {% if page.url contains 'kwlx' %}x-data="kwlxEasterEgg"{% endif %}>
 
     <!-- Fragmented Title -->
+    {% if page.url contains 'kwlx' %}
     <h1 class="title-fragment-1 display-massive">
-      {% if page.title_fragment_1 %}{{ page.title_fragment_1 }}{% else %}{{ page.title | split: ' ' | first }}{% endif %}
+      {% assign letters = page.title_fragment_1 | split: '' %}
+      {% for letter in letters %}<span class="kwlx-letter" @click="activateSecret">{{ letter }}</span>{% endfor %}
     </h1>
     <div class="title-fragment-2 display-large">
-      {% if page.title_fragment_2 %}{{ page.title_fragment_2 }}{% else %}{{ page.title | split: ' ' | slice: 1, 10 | join: ' ' }}{% endif %}
+      {% assign letters = page.title_fragment_2 | split: '' %}
+      {% for letter in letters %}<span class="kwlx-letter" @click="activateSecret">{{ letter }}</span>{% endfor %}
     </div>
+    {% else %}
+    <h1 class="title-fragment-1 display-massive">
+      {% if page.title_fragment_1 %}
+        {{ page.title_fragment_1 }}
+      {% else %}
+        {{ page.title | split: ' ' | first }}
+      {% endif %}
+    </h1>
+    <div class="title-fragment-2 display-large">
+      {% if page.title_fragment_2 %}
+        {{ page.title_fragment_2 }}
+      {% else %}
+        {{ page.title | split: ' ' | slice: 1, 10 | join: ' ' }}
+      {% endif %}
+    </div>
+    {% endif %}
 
     <!-- Hero Images -->
     <div class="hero-image-1">
-      {% if page.hero_labels.image_1 %}
+      {% if page.hero_image_1 %}
+      <img src="{{ page.hero_image_1 | relative_url }}" alt="{{ page.title }}" loading="eager" decoding="async">
+      {% elsif page.hero_labels.image_1 %}
       <span class="technical-label">{{ page.hero_labels.image_1 | upcase }}</span>
       {% elsif page.industry %}
       <span class="technical-label">{{ page.industry | upcase }}</span>
@@ -37,7 +58,9 @@ layout: default
     </div>
 
     <div class="hero-image-3">
-      {% if page.hero_labels.image_3 %}
+      {% if page.hero_image_3 %}
+      <img src="{{ page.hero_image_3 | relative_url }}" alt="{{ page.title }}" loading="eager" decoding="async">
+      {% elsif page.hero_labels.image_3 %}
       <span class="technical-label">{{ page.hero_labels.image_3 | upcase }}</span>
       {% elsif page.project_type %}
       <span class="technical-label">{{ page.project_type | upcase }}</span>
@@ -79,6 +102,60 @@ layout: default
   <!-- Color Accent Blocks -->
   <div class="color-accent-block accent-cyan" aria-hidden="true"></div>
   <div class="color-accent-block accent-magenta" aria-hidden="true"></div>
+
+  <!-- KWLX Easter Egg Modal -->
+  {% if page.url contains 'kwlx' %}
+  <div x-show="modalVisible"
+       x-transition
+       class="kwlx-secret-modal"
+       style="display: none;">
+    <div class="kwlx-secret-overlay" @click="closeModal"></div>
+    <div class="kwlx-secret-content">
+      <div class="radio-display">
+        <div class="frequency-display">
+          <span class="frequency-number">107.3</span>
+          <span class="frequency-band">FM</span>
+        </div>
+        <div class="signal-strength" x-ref="signalBars">
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+        </div>
+        <div class="tuning-dial"></div>
+      </div>
+
+      <div class="transmission-log">
+        <div class="log-header">KWLX TRANSMISSION LOG</div>
+        <div class="log-content">
+          <div class="log-entry">
+            <span class="timestamp">[23:47:33]</span>
+            <span class="message">Signal acquired... Mobius online</span>
+          </div>
+          <div class="log-entry">
+            <span class="timestamp">[23:47:41]</span>
+            <span class="message">Figment consciousness stable</span>
+          </div>
+          <div class="log-entry">
+            <span class="timestamp">[23:47:52]</span>
+            <span class="message">Archive access granted</span>
+          </div>
+          <div class="log-entry typing">
+            <span class="timestamp">[23:48:03]</span>
+            <span class="message" x-ref="typingText"></span>
+            <span class="cursor">▊</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="secret-controls">
+        <button @click="playArchive" class="play-archive-btn" x-text="isPlaying ? '⏸ PAUSE ARCHIVE' : '▶ PLAY ARCHIVE'"></button>
+        <button @click="closeModal" class="close-modal-btn">✕ CLOSE TRANSMISSION</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
 </section>
 
 <!-- MAGAZINE CONTAINER -->
