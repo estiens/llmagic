@@ -1,18 +1,7 @@
 // lowlevelmagic - Alpine.js Components
 // Street Baroque Systems with Alpine.js
 
-// Wait for Alpine to be available, then register components and start
-window.addEventListener('DOMContentLoaded', () => {
-  // Wait for Alpine to load
-  const checkAlpine = setInterval(() => {
-    if (window.Alpine) {
-      clearInterval(checkAlpine);
-      initializeAlpine();
-    }
-  }, 10);
-});
-
-function initializeAlpine() {
+document.addEventListener('alpine:init', () => {
 
   // Header Component - Scroll effects and mobile navigation
   Alpine.data('header', () => ({
@@ -426,11 +415,4 @@ function initializeAlpine() {
       }
     }
   }));
-
-  // Start Alpine after all components are registered
-  if (window.startAlpine) {
-    window.startAlpine();
-  } else {
-    Alpine.start();
-  }
-}
+});
