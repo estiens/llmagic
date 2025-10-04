@@ -3,14 +3,13 @@ layout: case_study_featured
 title: "KWLX Radio"
 subtitle: "An AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
 summary: "AI‑run pirate radio station that wrote its own stories, built a community, and surprised even its creator"
-date: 2024-03-15
 order: 1
 industry: "Interactive Entertainment / Experimental Media"
-project_type: "FM Radio"
 tags: ["ARG", "12 DJs", "Tears", "Autonomous Storytelling"]
 hero_image: "/assets/images/case-studies/kwlx/kwlx_four.jpg"
-hero_image_1: "/assets/images/case-studies/kwlx/kwlx_one.jpg"
-hero_image_3: "/assets/images/case-studies/kwlx/kwlx_thumb.jpg"
+hero_image_1: "/assets/images/case-studies/kwlx/kwlx_three.png"
+hero_image_2: "/assets/images/case-studies/kwlx/kwlx_one.jpg"
+hero_image_3: "/assets/images/case-studies/kwlx/kwlx_two.png"
 
 # Hero section - optional custom title split
 title_fragment_1: "KWLX"
@@ -18,8 +17,9 @@ title_fragment_2: "RADIO"
 
 # Hero labels - optional custom labels for hero image blocks
 hero_labels:
-  image_1: "PIRATE FREQUENCY 107.3 FM"
-  image_3: "12 AI PERSONALITIES"
+  image_1: "GRAIN BELT SIGNAL"
+  image_2: "PIRATE FREQUENCY 107.3 FM"
+  image_3: "MOBIUS BROADCAST"
 
 challenge: |
   The challenge was simple to state, fiendishly difficult to execute: create a 24/7 interactive narrative experience where AI personalities don't just generate content on demand, but develop genuine relationships, drive their own plot forward, and foster real audience attachment over months of continuous operation. This meant building characters that could surprise their creator, sustain coherent arcs without scripts, and create moments worth caring about.

@@ -343,7 +343,7 @@ style.textContent = `
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 10000;
+  z-index: 999999;
   opacity: 0;
   transition: opacity 0.3s ease;
 }

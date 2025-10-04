@@ -393,11 +393,12 @@
 
   /* KWLX Easter Egg Letters */
   .kwlx-letter {
-    @apply inline-block transition-all duration-200;
+    @apply inline-block transition-all duration-200 cursor-pointer;
   }
 
   .kwlx-letter:hover {
-    @apply scale-105;
+    @apply scale-105 text-oxide-teal;
+    cursor: none;
   }
 
   /* Title color scheme: KWLX in hot-magenta, RADIO in spray-cyan */

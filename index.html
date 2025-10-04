@@ -241,16 +241,22 @@ title: "LOW LEVEL MAGIC | Building AI Characters That Live. Creative AI consulti
 
   <div class="container-tight relative z-10">
     <div class="max-w-3xl">
-      <h2 class="font-display text-display-medium font-black text-spray-cyan spacing-standard">Senior Technical Leadership</h2>
+      <h2 class="font-display text-display-medium font-black text-spray-cyan spacing-standard">Background</h2>
       <div class="space-y-4 text-body-lg text-paper/90">
         <p class="font-semibold">
-          Currently: Lead Application Engineer, State of Minnesota
+          Currently: Lead Application Engineer: State of MN
         </p>
         <p>
-          12+ years building production systems that serve hundreds of thousands of users
+          Technical Lead/Staff Engineer
         </p>
         <p>
-          From government-scale backend architecture to real-time AI orchestration
+          12+ years experience startups/enterprise/govt
+        </p>
+        <p>
+          MSW (WashU) / BA (Macalester)
+        </p>
+        <p>
+          Empathy Driven Development
         </p>
       </div>
     </div>
@@ -276,21 +282,23 @@ title: "LOW LEVEL MAGIC | Building AI Characters That Live. Creative AI consulti
         <div class="bg-paper border-2 border-inkwell overflow-hidden flex flex-col clip-angular-tr h-full">
 
           <!-- Hero Image -->
-          <div class="relative aspect-[3/2] overflow-hidden bg-graphite/5">
+          <a href="{{ case_study.url | relative_url }}" class="relative aspect-[3/2] overflow-hidden bg-graphite/5 block">
             {% if case_study.hero_image %}
-            <img src="{{ case_study.hero_image | relative_url }}" alt="{{ case_study.title }}" class="w-full h-full object-cover">
+            <img src="{{ case_study.hero_image | relative_url }}" alt="{{ case_study.title }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
             {% else %}
             <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-graphite/10 to-graphite/5">
               <span class="font-mono text-technical-lg uppercase text-graphite/30 tracking-wider">{{ case_study.project_type }}</span>
             </div>
             {% endif %}
-          </div>
+          </a>
 
           <!-- Title header -->
           <div class="{% cycle 'bg-inkwell', 'bg-hot-magenta', 'bg-spray-cyan', 'bg-radio-mustard', 'bg-oxide-teal', 'bg-inkwell' %} text-paper padding-comfortable">
-            <h3 class="font-display font-black text-section-lg uppercase tracking-tight">
-              {{ case_study.title }}
-            </h3>
+            <a href="{{ case_study.url | relative_url }}" class="block">
+              <h3 class="font-display font-black text-section-lg uppercase tracking-tight hover:opacity-80 transition-opacity">
+                {{ case_study.title }}
+              </h3>
+            </a>
           </div>
 
           <!-- Content area -->

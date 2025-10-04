@@ -58,7 +58,9 @@ layout: default
         <!-- Hero Visual with Brutalist Shadow -->
         <div class="col-span-12 lg:col-span-5">
           {% if page.hero_image %}
-          <div class="visual shadow-cyan relative overflow-hidden" {% if page.url contains 'kessler' %}x-data="kesslerVideo" @click="toggleVideo" @mouseenter="hovering = true" @mouseleave="hovering = false" style="cursor: pointer;"{% endif %}>
+          <div class="visual shadow-cyan relative overflow-hidden"
+               {% if page.url contains 'kessler' %}x-data="kesslerVideo" @click="toggleVideo" @mouseenter="hovering = true" @mouseleave="hovering = false" style="cursor: pointer;"{% endif %}
+               {% if page.url contains 'shoddy' %}x-data="shoddyAudio" @click="playRandomAudio" @mouseenter="hovering = true" @mouseleave="hovering = false" style="cursor: pointer;"{% endif %}>
             <img src="{{ page.hero_image | relative_url }}" alt="{{ page.title }}" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high">
             {% if page.url contains 'kessler' %}
             <video x-ref="video" class="w-full h-full object-cover absolute inset-0 hidden" loop playsinline :src="videoSrc"></video>
@@ -68,6 +70,19 @@ layout: default
                   <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                 </svg>
                 <span class="text-paper font-mono text-sm uppercase tracking-wider">Click to Play</span>
+              </div>
+            </div>
+            {% endif %}
+            {% if page.url contains 'shoddy' %}
+            <div x-show="hovering" x-transition class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+              <div class="text-center">
+                <svg x-show="!isPlaying" class="w-16 h-16 mx-auto mb-2 text-hot-magenta" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z"/>
+                </svg>
+                <svg x-show="isPlaying" class="w-16 h-16 mx-auto mb-2 text-hot-magenta" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"/>
+                </svg>
+                <span x-text="isPlaying ? 'Click to Stop' : 'Hear the Roast'" class="text-paper font-mono text-sm uppercase tracking-wider"></span>
               </div>
             </div>
             {% endif %}

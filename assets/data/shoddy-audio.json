@@ -1,0 +1,11 @@
+---
+layout: null
+---
+{
+  "audio": [
+    {% assign audio_files = site.static_files | where_exp: "file", "file.path contains 'shoddybody/audio'" | where_exp: "file", "file.extname == '.mp3'" %}
+    {% for file in audio_files %}
+    "{{ file.path | relative_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
