@@ -400,6 +400,15 @@
     @apply scale-105;
   }
 
+  /* Title color scheme: KWLX in hot-magenta, RADIO in spray-cyan */
+  .title-fragment-1 {
+    @apply text-hot-magenta;
+  }
+
+  .title-fragment-2 {
+    @apply text-spray-cyan;
+  }
+
   .kwlx-title .frequency {
     @apply block text-2xl font-mono text-radio-mustard mb-4;
     letter-spacing: 0.2em;

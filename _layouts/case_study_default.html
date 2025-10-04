@@ -58,8 +58,19 @@ layout: default
         <!-- Hero Visual with Brutalist Shadow -->
         <div class="col-span-12 lg:col-span-5">
           {% if page.hero_image %}
-          <div class="visual shadow-cyan">
+          <div class="visual shadow-cyan relative overflow-hidden" {% if page.url contains 'kessler' %}x-data="kesslerVideo" @click="toggleVideo" @mouseenter="hovering = true" @mouseleave="hovering = false" style="cursor: pointer;"{% endif %}>
             <img src="{{ page.hero_image | relative_url }}" alt="{{ page.title }}" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high">
+            {% if page.url contains 'kessler' %}
+            <video x-ref="video" class="w-full h-full object-cover absolute inset-0 hidden" loop playsinline :src="videoSrc"></video>
+            <div x-show="hovering && !playing" x-transition class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-16 h-16 mx-auto mb-2 text-spray-cyan" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                </svg>
+                <span class="text-paper font-mono text-sm uppercase tracking-wider">Click to Play</span>
+              </div>
+            </div>
+            {% endif %}
           </div>
           {% elsif page.hero_color %}
           <div class="visual shadow-magenta" style="--hero-bg: {{ page.hero_color }}; background: var(--hero-bg);">

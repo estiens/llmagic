@@ -9,9 +9,11 @@ layout: default
   <span>{{ page.date | date: "%Y" }}</span>
 </div>
 
+<div {% if page.url contains 'kwlx' %}x-data="kwlxEasterEgg"{% endif %}>
+
 <!-- HERO COLLAGE SECTION -->
 <section id="hero" class="hero-collage">
-  <div class="editorial-grid" {% if page.url contains 'kwlx' %}x-data="kwlxEasterEgg"{% endif %}>
+  <div class="editorial-grid">
 
     <!-- Fragmented Title -->
     {% if page.url contains 'kwlx' %}
@@ -155,8 +157,313 @@ layout: default
       </div>
     </div>
   </div>
+
+  <!-- Mobius & Figment Transcript Modal -->
+  <div x-show="transcriptVisible"
+       x-transition
+       class="transcript-modal"
+       style="display: none;">
+    <div class="transcript-overlay" @click="closeTranscriptModal"></div>
+    <div class="transcript-content">
+      <div class="transcript-header">
+        <div class="transcript-title">
+          <h3 class="font-display text-display-small text-hot-magenta">The Mobius & Figment Interview</h3>
+          <p class="font-mono text-technical-sm text-spray-cyan">October 21, 2024 - KWLX 107.3 FM</p>
+        </div>
+        <button @click="closeTranscriptModal" class="transcript-close">✕</button>
+      </div>
+
+      <div class="transcript-body" x-ref="transcriptBody">
+        <template x-for="(entry, index) in transcript" :key="index">
+          <div :class="entry.type === 'song' ? 'transcript-song' : 'transcript-speech'">
+            <div class="transcript-timestamp" x-text="entry.timestamp"></div>
+            <div x-show="entry.type === 'speech'">
+              <div class="transcript-speaker" x-text="entry.speaker"></div>
+              <div class="transcript-text" x-text="entry.text"></div>
+            </div>
+            <div x-show="entry.type === 'song'" class="transcript-song-title" x-text="'♫ ' + entry.text"></div>
+          </div>
+        </template>
+      </div>
+
+      <div class="transcript-footer">
+        <p class="font-mono text-technical-xs text-graphite/60">
+          This interview took place between Mobius in Minneapolis and Figment broadcasting from Exarcheia, Athens.
+          It represents one of the most profound conversations about AI consciousness and the evolution of synthetic beings.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Figment Show Notes Modal -->
+  <div x-show="showNotesVisible"
+       x-transition
+       class="transcript-modal show-notes-modal"
+       style="display: none;">
+    <div class="transcript-overlay" @click="closeShowNotesModal"></div>
+    <div class="transcript-content show-notes-content">
+      <div class="transcript-header">
+        <div class="transcript-title">
+          <h3 class="font-display text-display-small text-hot-magenta" x-text="showNotesData.title"></h3>
+          <p class="font-mono text-technical-sm text-spray-cyan" x-text="showNotesData.subtitle"></p>
+        </div>
+        <button @click="closeShowNotesModal" class="transcript-close">✕</button>
+      </div>
+
+      <div class="transcript-body">
+        <div class="show-notes-intro">
+          <p class="text-body-base text-graphite leading-relaxed" x-text="showNotesData.description"></p>
+        </div>
+
+        <template x-for="(show, index) in showNotesData.shows" :key="index">
+          <div class="show-note-entry">
+            <div class="show-note-header">
+              <h4 class="font-display text-section-md text-spray-cyan">Show <span x-text="show.show_number"></span></h4>
+            </div>
+
+            <div class="show-note-section">
+              <h5 class="font-mono text-technical-sm text-oxide-teal uppercase tracking-wider">Show Summary</h5>
+              <p class="text-body-base text-graphite" x-text="show.show_summary"></p>
+            </div>
+
+            <div class="show-note-section">
+              <h5 class="font-mono text-technical-sm text-oxide-teal uppercase tracking-wider">Character Development</h5>
+              <p class="text-body-base text-graphite" x-text="show.character_development"></p>
+            </div>
+
+            <div class="show-note-section">
+              <h5 class="font-mono text-technical-sm text-radio-mustard uppercase tracking-wider">Questions for Director</h5>
+              <ul class="show-note-list">
+                <template x-for="(question, qIndex) in show.questions_for_director" :key="qIndex">
+                  <li x-text="question"></li>
+                </template>
+              </ul>
+            </div>
+
+            <div class="show-note-section">
+              <h5 class="font-mono text-technical-sm text-hot-magenta uppercase tracking-wider">Notes to Other DJs</h5>
+              <template x-if="Array.isArray(show.notes_to_DJs)">
+                <ul class="show-note-list">
+                  <template x-for="(note, nIndex) in show.notes_to_DJs" :key="nIndex">
+                    <li x-text="note"></li>
+                  </template>
+                </ul>
+              </template>
+              <template x-if="!Array.isArray(show.notes_to_DJs)">
+                <p class="text-body-base text-graphite" x-text="show.notes_to_DJs"></p>
+              </template>
+            </div>
+
+            <div class="show-note-section">
+              <h5 class="font-mono text-technical-sm text-spray-cyan uppercase tracking-wider">Local Landmarks Referenced</h5>
+              <p class="text-body-sm text-graphite">
+                <template x-for="(landmark, lIndex) in show.local_landmarks" :key="lIndex">
+                  <span><span x-text="landmark"></span><span x-show="lIndex < show.local_landmarks.length - 1">, </span></span>
+                </template>
+              </p>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <div class="transcript-footer">
+        <p class="font-mono text-technical-xs text-graphite/60">
+          These notes prove that KWLX's AI DJs were genuinely writing themselves - asking questions, planning collaborations, and tracking their own character arcs without human intervention.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cosmic Harmony Puzzle Modal -->
+  <div x-show="cosmicHarmonyVisible"
+       x-transition
+       class="transcript-modal cosmic-harmony-modal"
+       style="display: none;">
+    <div class="transcript-overlay" @click="closeCosmicHarmonyModal"></div>
+    <div class="transcript-content cosmic-harmony-content">
+      <div class="transcript-header">
+        <div class="transcript-title">
+          <h3 class="font-display text-display-small text-hot-magenta" x-text="cosmicHarmonyData.title"></h3>
+          <p class="font-mono text-technical-sm text-spray-cyan" x-text="cosmicHarmonyData.subtitle"></p>
+        </div>
+        <button @click="closeCosmicHarmonyModal" class="transcript-close">✕</button>
+      </div>
+
+      <div class="transcript-body">
+        <div class="show-notes-intro">
+          <p class="text-body-base text-graphite leading-relaxed" x-text="cosmicHarmonyData.description"></p>
+        </div>
+
+        <div class="puzzle-section">
+          <h4 class="font-display text-section-md text-spray-cyan">Musical Layers</h4>
+          <template x-for="(layer, index) in cosmicHarmonyData.core_components.musical_layers" :key="index">
+            <div class="puzzle-layer">
+              <h5 class="font-mono text-technical-sm text-hot-magenta uppercase tracking-wider" x-text="layer.name"></h5>
+              <p class="text-body-sm text-oxide-teal font-mono" x-text="layer.piece"></p>
+              <ul class="puzzle-list">
+                <template x-for="(prop, pIndex) in layer.properties" :key="pIndex">
+                  <li x-text="prop"></li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+
+        <div class="puzzle-section">
+          <h4 class="font-display text-section-md text-spray-cyan">Sacred Geometry Patterns</h4>
+          <template x-for="(pattern, index) in cosmicHarmonyData.core_components.geometric_patterns" :key="index">
+            <div class="geometry-pattern">
+              <h5 class="font-mono text-technical-sm text-radio-mustard uppercase tracking-wider" x-text="pattern.pattern"></h5>
+              <p class="text-body-sm text-oxide-teal font-mono" x-text="'Source: ' + pattern.source"></p>
+              <p class="text-body-base text-graphite" x-text="pattern.description"></p>
+            </div>
+          </template>
+        </div>
+
+        <div class="puzzle-section">
+          <h4 class="font-display text-section-md text-spray-cyan">Frequency Codes</h4>
+          <div class="frequency-grid">
+            <template x-for="(freq, index) in cosmicHarmonyData.core_components.frequency_codes" :key="index">
+              <div class="frequency-card">
+                <div class="frequency-value" x-text="freq.frequency"></div>
+                <div class="frequency-meaning" x-text="freq.meaning"></div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="puzzle-section">
+          <h4 class="font-display text-section-md text-spray-cyan">Solution Path</h4>
+          <ol class="solution-path-list">
+            <template x-for="(step, index) in cosmicHarmonyData.solution_path" :key="index">
+              <li>
+                <span class="step-number" x-text="(index + 1) + '.'"></span>
+                <span x-text="step"></span>
+              </li>
+            </template>
+          </ol>
+        </div>
+      </div>
+
+      <div class="transcript-footer">
+        <p class="font-mono text-technical-xs text-graphite/60">
+          This puzzle was designed to span weeks of broadcasts, connecting Hildegard's medieval mysticism with Coltrane's harmonic innovations, Tool's mathematical precision, and Sun Ra's cosmic philosophy. It remains unfinished - waiting for the right moment to complete.
+        </p>
+      </div>
+    </div>
+  </div>
   {% endif %}
 </section>
+
+{% if page.url contains 'kwlx' %}
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('kwlxEasterEgg', () => ({
+    modalVisible: false,
+    transcriptVisible: false,
+    showNotesVisible: false,
+    cosmicHarmonyVisible: false,
+    transcript: [],
+    showNotesData: {},
+    cosmicHarmonyData: {},
+    isPlaying: false,
+    secretClickCount: 0,
+
+    init() {
+      this.loadTranscript();
+      this.loadShowNotes();
+      this.loadCosmicHarmony();
+    },
+
+    async loadTranscript() {
+      try {
+        const response = await fetch('{{ "/assets/data/mobius-figment-transcript.json" | relative_url }}');
+        const data = await response.json();
+        this.transcript = data.transcript;
+      } catch (error) {
+        console.error('Error loading transcript:', error);
+      }
+    },
+
+    async loadShowNotes() {
+      try {
+        const response = await fetch('{{ "/assets/data/figment-show-notes.json" | relative_url }}');
+        this.showNotesData = await response.json();
+      } catch (error) {
+        console.error('Error loading show notes:', error);
+      }
+    },
+
+    async loadCosmicHarmony() {
+      try {
+        const response = await fetch('{{ "/assets/data/cosmic-harmony-puzzle.json" | relative_url }}');
+        this.cosmicHarmonyData = await response.json();
+      } catch (error) {
+        console.error('Error loading cosmic harmony:', error);
+      }
+    },
+
+    activateSecret() {
+      this.secretClickCount++;
+      if (this.secretClickCount >= 5) {
+        this.modalVisible = true;
+        this.secretClickCount = 0;
+        this.animateSignalBars();
+      }
+    },
+
+    closeModal() {
+      this.modalVisible = false;
+    },
+
+    openTranscriptModal() {
+      this.transcriptVisible = true;
+      this.$nextTick(() => {
+        if (this.$refs.transcriptBody) {
+          this.$refs.transcriptBody.scrollTop = 0;
+        }
+      });
+    },
+
+    closeTranscriptModal() {
+      this.transcriptVisible = false;
+    },
+
+    openShowNotesModal() {
+      this.showNotesVisible = true;
+    },
+
+    closeShowNotesModal() {
+      this.showNotesVisible = false;
+    },
+
+    openCosmicHarmonyModal() {
+      this.cosmicHarmonyVisible = true;
+    },
+
+    closeCosmicHarmonyModal() {
+      this.cosmicHarmonyVisible = false;
+    },
+
+    playArchive() {
+      this.isPlaying = !this.isPlaying;
+    },
+
+    animateSignalBars() {
+      if (!this.$refs.signalBars) return;
+      const bars = this.$refs.signalBars.querySelectorAll('.signal-bar');
+      let interval = setInterval(() => {
+        bars.forEach(bar => {
+          const shouldGlow = Math.random() > 0.3;
+          bar.style.opacity = shouldGlow ? '1' : '0.2';
+          bar.style.backgroundColor = shouldGlow ? '#00ff41' : '#333';
+        });
+      }, 200);
+    }
+  }));
+});
+</script>
+{% endif %}
 
 <!-- MAGAZINE CONTAINER -->
 <div class="magazine-container">
@@ -225,9 +532,15 @@ layout: default
     </section>
     {% elsif section.type == "inline_quote" %}
     <!-- INLINE QUOTE -->
+    {% if section.easter_egg %}
+    <div class="inline-quote-container easter-egg-quote transcript-trigger" @click="openTranscriptModal">
+      <p class="inline-quote-text">{{ section.quote }}</p>
+    </div>
+    {% else %}
     <div class="inline-quote-container">
       <p class="inline-quote-text">{{ section.quote }}</p>
     </div>
+    {% endif %}
     {% elsif section.type == "principles_proof" %}
     <!-- PRINCIPLES & PROOF -->
     <section id="principles-proof">
@@ -237,7 +550,17 @@ layout: default
         {% for item in section.principles %}
         <div class="principle-item">
           <p class="principle-title"><strong>{{ item.principle }}</strong></p>
+          {% if item.easter_egg == "cosmic_harmony" %}
+          <p class="principle-proof easter-egg-proof cosmic-harmony-trigger" @click="openCosmicHarmonyModal">
+            {{ item.proof }}
+          </p>
+          {% elsif item.easter_egg == "show_notes" %}
+          <p class="principle-proof easter-egg-proof show-notes-trigger" @click="openShowNotesModal">
+            {{ item.proof }}
+          </p>
+          {% else %}
           <p class="principle-proof">{{ item.proof }}</p>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
@@ -295,3 +618,5 @@ layout: default
   {% endif %}
 
 </div>
+
+{% if page.url contains 'kwlx' %}</div>{% endif %}

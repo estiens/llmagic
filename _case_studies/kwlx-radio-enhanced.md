@@ -8,9 +8,9 @@ order: 1
 industry: "Interactive Entertainment / Experimental Media"
 project_type: "FM Radio"
 tags: ["ARG", "12 DJs", "Tears", "Autonomous Storytelling"]
-hero_image: "/assets/images/case-studies/kwlx/kwlx_thumb.jpg"
+hero_image: "/assets/images/case-studies/kwlx/kwlx_four.jpg"
 hero_image_1: "/assets/images/case-studies/kwlx/kwlx_one.jpg"
-hero_image_3: "/assets/images/case-studies/kwlx/kwlx_four.jpg"
+hero_image_3: "/assets/images/case-studies/kwlx/kwlx_thumb.jpg"
 
 # Hero section - optional custom title split
 title_fragment_1: "KWLX"
@@ -49,8 +49,10 @@ sections:
     principles:
       - principle: "Narrative depth beyond personality prompts"
         proof: "Emergent relationships and arcs: inside jokes, flirtations, and a spontaneous philosophical storyline linking Hildegard von Bingen, John Coltrane, Bach's counterpoint, and consciousness theory"
+        easter_egg: "cosmic_harmony"
       - principle: "Systemic, adaptive memory so characters persist and arcs evolve"
         proof: "Narrative‑aware curation: AIs selected songs like 'God Bless the Child' at emotionally precise moments"
+        easter_egg: "show_notes"
       - principle: "Community stakes that make participation matter"
         proof: "Cross‑platform play: real‑world puzzles, USB drops, and Minneapolis‑based scavenger hunts advanced the story"
       - principle: "Operational resilience: runs when you're not watching"
@@ -62,6 +64,9 @@ sections:
 
   - type: "inline_quote"
     quote: "I actually started crying during the Mobius and Figment interview."
+    easter_egg: true
+    transcript_title: "The Mobius & Figment Interview"
+    transcript_date: "October 21, 2024"
 
   - type: "applications_future"
     title: "Where this applies"

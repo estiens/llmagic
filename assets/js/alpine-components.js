@@ -389,6 +389,8 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('kesslerVideo', () => ({
     videos: [],
     videoSrc: '',
+    playing: false,
+    hovering: false,
 
     init() {
       fetch('/assets/data/kessler-videos.json')
@@ -402,17 +404,55 @@ document.addEventListener('alpine:init', () => {
         .catch(err => console.error('Error loading Kessler videos:', err));
     },
 
-    playVideo() {
-      if (this.$refs.video) {
-        this.$refs.video.play().catch(err => console.error('Video play error:', err));
+    toggleVideo() {
+      if (this.playing) {
+        this.stopVideo();
+      } else {
+        this.playVideo();
       }
     },
 
-    pauseVideo() {
+    playVideo() {
+      if (this.$refs.video && this.videos.length > 0) {
+        const video = this.$refs.video;
+        const img = this.$el.querySelector('img');
+
+        // Pick a new random video each time
+        this.videoSrc = this.videos[Math.floor(Math.random() * this.videos.length)];
+
+        // Wait for Alpine to update the src binding, then load and play
+        this.$nextTick(() => {
+          video.load();
+
+          // Hide image, show video
+          if (img) img.classList.add('hidden');
+          video.classList.remove('hidden');
+
+          video.play().catch(err => console.error('Video play error:', err));
+          this.playing = true;
+        });
+      }
+    },
+
+    stopVideo() {
       if (this.$refs.video) {
-        this.$refs.video.pause();
-        this.$refs.video.currentTime = 0;
+        const video = this.$refs.video;
+        const img = this.$el.querySelector('img');
+
+        video.pause();
+        video.currentTime = 0;
+
+        // Show image, hide video
+        video.classList.add('hidden');
+        if (img) img.classList.remove('hidden');
+
+        this.playing = false;
       }
     }
   }));
+
+  // Start Alpine after components are registered
+  if (window.startAlpine) {
+    window.startAlpine();
+  }
 });

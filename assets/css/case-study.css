@@ -678,11 +678,11 @@
     grid-column: 1 / span 8;
     grid-row: 4 / span 4;
     height: 320px;
-    background: var(--spray-cyan);
-    mix-blend-mode: multiply;
-    opacity: 0.15;
+    background: var(--paper);
+    border: 2px solid var(--inkwell);
     z-index: 3;
     transform: rotate(1deg);
+    @apply overflow-hidden;
   }
 
   .hero-image-3 {
@@ -1739,6 +1739,400 @@
     .poster-meta {
       grid-column: 1;
       justify-content: center;
+    }
+  }
+
+  /* ===========================================================================
+     TRANSCRIPT MODAL - Mobius & Figment Interview Easter Egg
+     =========================================================================== */
+
+  .easter-egg-quote,
+  .easter-egg-proof {
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .easter-egg-quote::after,
+  .easter-egg-proof::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--spray-cyan);
+    transition: width 0.3s ease;
+  }
+
+  .easter-egg-quote:hover,
+  .easter-egg-proof:hover {
+    color: var(--spray-cyan);
+    transform: translateX(4px);
+  }
+
+  .easter-egg-quote:hover::after,
+  .easter-egg-proof:hover::after {
+    width: 100%;
+  }
+
+  .cosmic-harmony-trigger:hover::after {
+    background: var(--radio-mustard);
+  }
+
+  .cosmic-harmony-trigger:hover {
+    color: var(--radio-mustard);
+  }
+
+  .show-notes-trigger:hover::after {
+    background: var(--hot-magenta);
+  }
+
+  .show-notes-trigger:hover {
+    color: var(--hot-magenta);
+  }
+
+  .transcript-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .transcript-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 16, 0.95);
+    backdrop-filter: blur(8px);
+  }
+
+  .transcript-content {
+    position: relative;
+    background: var(--paper);
+    border: 4px solid var(--hot-magenta);
+    box-shadow: 12px 12px 0 var(--spray-cyan), 24px 24px 0 rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 10001;
+  }
+
+  .transcript-header {
+    padding: 2rem;
+    border-bottom: 3px solid var(--inkwell);
+    background: linear-gradient(135deg, var(--paper) 0%, var(--paper-quiet) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .transcript-title h3 {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.1;
+  }
+
+  .transcript-title p {
+    margin: 0;
+  }
+
+  .transcript-close {
+    background: var(--hot-magenta);
+    color: var(--paper);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0 var(--inkwell);
+  }
+
+  .transcript-close:hover {
+    background: var(--spray-cyan);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--inkwell);
+  }
+
+  .transcript-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1;
+    background: var(--paper);
+  }
+
+  .transcript-speech,
+  .transcript-song {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--paper-muted);
+  }
+
+  .transcript-song {
+    border-left-color: var(--radio-mustard);
+    background: rgba(226, 172, 39, 0.05);
+    padding: 1rem;
+    margin-left: -1rem;
+  }
+
+  .transcript-timestamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--oxide-teal);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .transcript-speaker {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--hot-magenta);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .transcript-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--graphite);
+  }
+
+  .transcript-song-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    color: var(--radio-mustard);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .transcript-footer {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid var(--inkwell);
+    background: var(--paper-quiet);
+  }
+
+  .transcript-footer p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .transcript-content {
+      width: 95vw;
+      max-height: 90vh;
+    }
+
+    .transcript-header {
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .transcript-close {
+      align-self: flex-end;
+    }
+
+    .transcript-body {
+      padding: 1.5rem;
+    }
+
+    .transcript-footer {
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  /* ===========================================================================
+     SHOW NOTES MODAL - Figment's IC/OOC Development Logs
+     =========================================================================== */
+
+  .show-notes-intro {
+    padding: 1.5rem;
+    background: rgba(92, 190, 192, 0.05);
+    border-left: 4px solid var(--spray-cyan);
+    margin-bottom: 2rem;
+  }
+
+  .show-note-entry {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid var(--paper-muted);
+    background: var(--paper);
+  }
+
+  .show-note-entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .show-note-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--spray-cyan);
+  }
+
+  .show-note-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .show-note-section h5 {
+    margin-bottom: 0.75rem;
+  }
+
+  .show-note-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .show-note-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--graphite);
+  }
+
+  .show-note-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--hot-magenta);
+    font-weight: 900;
+  }
+
+  /* ===========================================================================
+     COSMIC HARMONY MODAL - Sacred Geometry Puzzle Design
+     =========================================================================== */
+
+  .puzzle-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--paper-muted);
+  }
+
+  .puzzle-section:last-child {
+    border-bottom: none;
+  }
+
+  .puzzle-section h4 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--spray-cyan);
+  }
+
+  .puzzle-layer,
+  .geometry-pattern {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(92, 190, 192, 0.03);
+    border-left: 3px solid var(--oxide-teal);
+  }
+
+  .puzzle-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .puzzle-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--graphite);
+  }
+
+  .puzzle-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--spray-cyan);
+    font-size: 0.7em;
+  }
+
+  .frequency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .frequency-card {
+    padding: 1.5rem;
+    background: var(--inkwell);
+    color: var(--paper);
+    text-align: center;
+    border: 2px solid var(--radio-mustard);
+    box-shadow: 4px 4px 0 var(--radio-mustard);
+  }
+
+  .frequency-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--radio-mustard);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .frequency-meaning {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--paper);
+    line-height: 1.4;
+  }
+
+  .solution-path-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    counter-reset: step-counter;
+  }
+
+  .solution-path-list li {
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--graphite);
+  }
+
+  .step-number {
+    position: absolute;
+    left: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 900;
+    color: var(--hot-magenta);
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .frequency-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .show-note-entry {
+      padding: 1.5rem;
+    }
+
+    .puzzle-section {
+      margin-bottom: 2rem;
     }
   }
 }

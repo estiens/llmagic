@@ -1,0 +1,136 @@
+{
+  "title": "The Cosmic Harmony Transmission",
+  "subtitle": "An Unfinished ARG Puzzle Design",
+  "description": "This puzzle was designed to span multiple KWLX broadcasts, weaving together medieval sacred music, jazz theory, progressive rock mathematics, and cosmic philosophy into a single coherent mystery about consciousness and harmony.",
+  "core_components": {
+    "musical_layers": [
+      {
+        "name": "Hildegard's Layer",
+        "piece": "O virtus Sapientiae",
+        "properties": [
+          "Circular structure of the composition",
+          "Key frequencies: 432 Hz (natural tuning) segments",
+          "Hidden pattern in the melodic intervals matching the vesica piscis ratio"
+        ]
+      },
+      {
+        "name": "Coltrane's Giant Steps",
+        "piece": "Giant Steps",
+        "properties": [
+          "Three key centers forming an augmented triad",
+          "Intervals creating an equilateral triangle when mapped",
+          "Connection to his 'Cosmic Music' period"
+        ]
+      },
+      {
+        "name": "Tool's Lateralus",
+        "piece": "Lateralus",
+        "properties": [
+          "Fibonacci sequence in drum patterns",
+          "Golden spiral in vocal entries",
+          "Sacred geometry in polyrhythmic structures"
+        ]
+      },
+      {
+        "name": "Sun Ra's Space",
+        "piece": "Space Is The Place",
+        "properties": [
+          "Egyptian sacred geometry references",
+          "Arkestra's circular stage formations",
+          "Cosmic frequencies and Saturn references"
+        ]
+      }
+    ],
+    "frequency_codes": [
+      {
+        "frequency": "432 Hz",
+        "meaning": "Hildegard natural tuning"
+      },
+      {
+        "frequency": "528 Hz",
+        "meaning": "DNA repair frequency"
+      },
+      {
+        "frequency": "741 Hz",
+        "meaning": "Consciousness awakening frequency"
+      },
+      {
+        "frequency": "852 Hz",
+        "meaning": "Spiritual order frequency"
+      }
+    ],
+    "geometric_patterns": [
+      {
+        "pattern": "Vesica Piscis",
+        "source": "Hildegard's work",
+        "description": "Two circles of equal radius intersecting - the sacred mandorla"
+      },
+      {
+        "pattern": "Coltrane's Tone Circle",
+        "source": "Giant Steps harmonic structure",
+        "description": "Augmented triad dividing the octave into perfect symmetry"
+      },
+      {
+        "pattern": "Fibonacci Spiral",
+        "source": "Lateralus rhythmic and melodic structure",
+        "description": "Golden ratio spiral manifesting in time and pitch"
+      },
+      {
+        "pattern": "Egyptian Sacred Geometry",
+        "source": "Sun Ra's cosmology",
+        "description": "Pyramids, ankhs, and cosmic order from ancient knowledge"
+      }
+    ]
+  },
+  "puzzle_structure": {
+    "phase_1": {
+      "title": "The Transmission",
+      "description": "Broadcast segments of each piece at specific times following the Fibonacci sequence",
+      "mechanics": [
+        "Each segment contains a frequency that, when mapped, forms part of a larger geometric pattern",
+        "Hidden message encoded in the overlapping frequencies"
+      ]
+    },
+    "phase_2": {
+      "title": "Sacred Geometry Mapping",
+      "description": "Players must map the frequencies to geometric shapes",
+      "steps": [
+        "Map the frequencies to geometric shapes",
+        "Overlay the patterns following astronomical alignments",
+        "Find intersecting points that reveal coordinates or next clues"
+      ],
+      "relationships": [
+        "Hildegard's circles intersect with Coltrane's triangle",
+        "Sun Ra's Egyptian symbols align with Tool's spiral",
+        "All patterns converge on phi (1.618...)"
+      ]
+    },
+    "phase_3": {
+      "title": "Musical Combination",
+      "description": "Identify harmonic convergence points",
+      "requirements": [
+        "Identify specific moments where Hildegard's chants align with Lateralus rhythms",
+        "Find where Sun Ra's cosmic chords match Coltrane's changes",
+        "Locate where all four pieces create harmony at phi points",
+        "Record timestamps where golden ratio appears in all pieces",
+        "Map where sacred geometry manifests in sound waves",
+        "Track where consciousness themes align in lyrics/themes"
+      ]
+    }
+  },
+  "solution_path": [
+    "Listen for mathematical patterns in broadcast segments",
+    "Map frequencies to sacred geometry shapes",
+    "Overlay patterns following astronomical alignments",
+    "Find intersection points revealing next location/clue",
+    "Combine musical elements at specific ratios",
+    "Decode final message about consciousness/cosmic harmony"
+  ],
+  "production_notes": [
+    "Time broadcasts to astronomical events",
+    "Use original recordings for maximum fidelity",
+    "Maintain precise frequency relationships",
+    "Include subtle background frequencies at sacred geometry ratios",
+    "Layer pieces to emphasize mathematical relationships"
+  ]
+}
