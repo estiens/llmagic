@@ -1,7 +1,7 @@
 # Site settings
 title: LOW LEVEL MAGIC
 email: hello@lowlevelmagic.io
-formspree_id: <%= ENV['FORMSPREE_ID'] || 'xpwaeqkb' %>
+formspree_id: xovkdnwg
 description: >-
   We build AI characters with soul and experiences that survive the real world.
   Partner with Low Level Magic to create unforgettable, production-ready AI for your next project.
