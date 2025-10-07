@@ -1,1 +1,2 @@
-Static Site for [https://lowlevelmagic.io](lowlevelmagic.io)
+Static Site for lowlevelmagic.io
+
