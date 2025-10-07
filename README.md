@@ -1,2 +1,3 @@
-Static Site for lowlevelmagic.io
+Static Site for https://lowlevelmagic.io
+
 
